@@ -1,0 +1,8 @@
+## Ignorar los archivos generados por la compilación de LaTex en la Practica01
+Practica01/main.aux
+Practica01/main.bbl
+Practica01/main.bcf
+Practica01/main.blg
+Practica01/main.log
+Practica01/main.out
+Practica01/main.run.xml
