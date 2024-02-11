@@ -58,15 +58,4 @@ def get_bot_response():
 if __name__ == "__main__":
     app.run(debug=True)
 
-# Entramos a un bucle donde se pide al usuario la entrada
-#  la variable hace la verificación para saber si debe salir
-#  de lo contrario se llama al metodo para obtener respuestas
-#exit_conditions = (":q", "quit", "exit")
-#while True:
-#    query = input("> ")
-#    if query in exit_conditions:
-#        break
-#    else:
-#        print(f"🐶 {chatbot.get_response(query)}")
-
 ## NOTA : eliminar la base de datos generada para reiniciar el aprendizaje

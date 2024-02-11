@@ -4,12 +4,145 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title> Chat Dog </title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    
+
+    <style>
+        body {
+            background-color: #6cb6f1; /* Cambia el color de fondo de toda la página f7f7f7*/
+        }
+
+        .navbar{
+            background-color: #2196f3; 
+        }
+
+        .navbar-brand{            
+            margin-left: 90px;
+            font-size: 28px;            
+        }
+
+        /* Estilos para el contenedor del chat */
+        #chat-container {
+            width: 830px;            
+            margin: 0 auto;
+            border: 1px solid #ccc; 
+            padding: 10px;
+            border-radius: 10px;
+            border-width: 3px;
+            border-color: #000000;
+            margin-top: 20px;
+            color: #000000;
+            background-color: #ff9800; 
+        }
+
+        .intrucciones{
+            margin: 20px;
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            margin-bottom: 5px;
+            margin-top: 5px;
+            font-size: 23px;
+            color: #000000;
+            padding: 10px;
+        }
+        
+        /* Estilos para el cuadro de chat */
+        #chat-box {
+            background-color: #fa5c51; 
+            height: 300px;
+            overflow-y: scroll;
+            border: 1px solid #ccc;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            border-width: 2px;
+            border-color: #000000;
+            font-size: 23px; 
+        }   
+
+        /* Estilos para el contenedor de entrada de usuarios */
+        .entrada-usuarios {
+            display: flex; 
+            align-items: center; 
+            justify-content: center;
+            text-align: center; 
+            padding: 5px;
+            margin-top: 15px;
+        }
+
+        /* Estilos para el input de usuario */
+        #user-input {
+            background-color: #faf1e4; 
+            color: #000000;
+            width: 60%;
+            height: 50px;
+            margin-bottom: 10px;
+            padding: 10px;                        
+            display: inline-block;
+            font-size: 20px; 
+            margin-right: 55px;            
+            border-radius: 10px;
+            border-width: 2px;
+            border-color: #000000;
+        }
+
+        /* Estilos para el botón */
+        button {
+            background-color: #f44336;
+            color: #fff;            
+            padding: 5px 10px;
+            cursor: pointer;
+            width: 85px;
+            height: 85px;
+            border-radius: 50px;
+            border-width: 2px;
+            border-color: #faf1e4;
+            font-size: 20px;             
+            margin-bottom: 17px;
+        }        
+        
+        button:hover {
+            background-color: #1e994d; /* Cambia el color de fondo al pasar el mouse sobre el botón */
+            border-color: #000000;
+        }
+
+    </style>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#"> Bienvenido a Chat-Dog </a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="https://realpython.com/build-a-chatbot-python-chatterbot/#step-4-clean-your-chat-export"> Chatterbot </a>
+              </li>              
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="https://www.digitalocean.com/community/tutorials/how-to-make-a-web-application-using-flask-in-python-3"> Flask </a>
+              </li>              
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+
     <div id="chat-container">
+        <div class="intrucciones">
+            Para hablar con nuestro ChatDog escriba en el recuadro de abajo y despues haga click en Enviar
+        </div>
         <div id="chat-box"></div>
-        <input type="text" id="user-input" placeholder="Escribe tu mensaje...">
-        <button onclick="enviarMensaje()">Enviar</button>
+        <div class="entrada-usuarios">
+            <input type="text" id="user-input" placeholder="Escribe tu mensaje...">        
+            <button class="boton-huella" onclick="enviarMensaje()">
+                <i class="fas fa-paw"></i> Enviar
+            </button>
+        </div>
     </div>
 
     <script>
@@ -31,7 +164,7 @@
                     if (xhr.status === 200) { // Verificar si la respuesta del servidor es exitosa
                         var response = JSON.parse(xhr.responseText); // Convertir la respuesta del servidor de JSON a un objeto JavaScript
                         // Agregar la respuesta del chatbot al cuadro de chat
-                        document.getElementById("chat-box").innerHTML += "<p><strong>Chatbot:</strong> " + "🐶" + response.response + "</p>";
+                        document.getElementById("chat-box").innerHTML += "<p><strong>Chat Dog:</strong> " + "🐶" + response.response + "</p>";
                     }
                 }
             };
