@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> Chat Dog </title>
+</head>
+<body>
+    <div id="chat-container">
+        <div id="chat-box"></div>
+        <input type="text" id="user-input" placeholder="Escribe tu mensaje...">
+        <button onclick="enviarMensaje()">Enviar</button>
+    </div>
+
+    <script>
+        // Funcón para enviar el mensaje del usuario al Chat Dog
+        function enviarMensaje() {            
+            // Obtener el texto ingresado por el usuario
+            var userInput = document.getElementById("user-input").value;
+            // Agregar el mensaje del usuario al cuadro de chat
+            document.getElementById("chat-box").innerHTML += "<p><strong>Tú:</strong> " + userInput + "</p>";
+            // Limpiar el campo de entrada del usuario
+            document.getElementById("user-input").value = "";
+            
+             // Enviar el mensaje del usuario al servidor
+            var xhr = new XMLHttpRequest(); // Crear una nueva solicitud XMLHttpRequest
+            xhr.open("POST", "/get", true); // Método (POST) y la URL (/get) de la solicitud
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); // Establece el tipo de contenido de la solicitud
+            xhr.onreadystatechange = function() { // Definir una función que se ejecutará cuando cambie el estado de la solicitud
+                if (xhr.readyState === XMLHttpRequest.DONE) { // Verificar si la solicitud ha sido completada
+                    if (xhr.status === 200) { // Verificar si la respuesta del servidor es exitosa
+                        var response = JSON.parse(xhr.responseText); // Convertir la respuesta del servidor de JSON a un objeto JavaScript
+                        // Agregar la respuesta del chatbot al cuadro de chat
+                        document.getElementById("chat-box").innerHTML += "<p><strong>Chatbot:</strong> " + "🐶" + response.response + "</p>";
+                    }
+                }
+            };
+            xhr.send("msg=" + userInput); // Enviar el mensaje del usuario al servidor como datos de formulario
+        }
+    </script>    
+</body>
+</html>
