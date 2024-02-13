@@ -115,6 +115,7 @@
 \definecolor{CarnationPink}{RGB}{242,130,180}
 \definecolor{Fuchsia}{RGB}{140,54,140}
 \definecolor{WildStrawberry}{RGB}{238,41,103}
+\definecolor{blueRY}{RGB}{13,164,245}
 
 \definecolor{Grass}{RGB}{41,238,53}
 \definecolor{Meadow}{RGB}{6,243,67}
@@ -152,6 +153,7 @@
 \definecolor{codecommentTerminal}{rgb}{0.5, 0.5, 0.5} % Gris
 \definecolor{codenumizqTerminal}{rgb}{0.0, 0.0, 1.0} % Azul
 \definecolor{codeoptionTerminal}{rgb}{0.4, 0.4, 1.0} % Azul claro para opciones
+\definecolor{yellowTerminal}{RGB}{238,200,62}
 %------------------- COLORES TERMINAL-------------------- |
 %------------------- COLORES CÓDIGO ---------------------- |
 
@@ -163,8 +165,8 @@
 %-------------- ESTILO de Código PYTHON -----------------------------|
 \lstdefinestyle{mystylepython}{
     backgroundcolor=\color{backcolourPY},
-    commentstyle=\color{codegreenPY},
-    keywordstyle=\color{codeclassPY},
+    commentstyle=\color{codecommentTerminal},
+    keywordstyle=\color{blueRY},
     numberstyle=\tiny\color{codenumizq},
     stringstyle=\color{codestringPY},
     basicstyle=\footnotesize\ttfamily\color{white},
@@ -198,7 +200,7 @@
     backgroundcolor=\color{backcolourTerminal},
     commentstyle=\color{codecommentTerminal},
     keywordstyle=\color{codeclassTerminal},
-    numberstyle=\tiny\color{codenumizqTerminal},
+    numberstyle=\tiny\color{backcolourTerminal},
     stringstyle=\color{codestringTerminal},
     basicstyle=\footnotesize\ttfamily\color{codeclassTerminal},
     breakatwhitespace=false,
@@ -213,7 +215,7 @@
     tabsize=4,    
     escapechar=\&,
     literate = 
-            {--}{{\textcolor{codeoptionTerminal}{--}}}2    
+            {--}{{\textcolor{codecommentTerminal}{--}}}2            
 }
 % Usar el estilo de código
 \lstset{style=mystyleTerminal}
