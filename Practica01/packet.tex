@@ -145,7 +145,17 @@
 \definecolor{codestringPY}{RGB}{90,128,220}
 \definecolor{codesymboljava}{RGB}{255,5,0} 
 %------------------- COLORES PYTHON -------------------- |
+%------------------- COLORES TERMINAL-------------------- |
+\definecolor{backcolourTerminal}{rgb}{0.0, 0.0, 0.0} % Negro
+\definecolor{codeclassTerminal}{rgb}{1.0, 1.0, 1.0} % Blanco
+\definecolor{codestringTerminal}{rgb}{0.0, 0.6, 0.0} % Verde
+\definecolor{codecommentTerminal}{rgb}{0.5, 0.5, 0.5} % Gris
+\definecolor{codenumizqTerminal}{rgb}{0.0, 0.0, 1.0} % Azul
+\definecolor{codeoptionTerminal}{rgb}{0.4, 0.4, 1.0} % Azul claro para opciones
+%------------------- COLORES TERMINAL-------------------- |
 %------------------- COLORES CÓDIGO ---------------------- |
+
+
 
 %------------------- LISTA DE COLORES -------------------------------\
 %---------------------------------------------------------------------\
@@ -183,3 +193,28 @@
         {>}{{\textcolor{yellowpoint}{>}}}1
 }
 %-------------- ESTILO de Código PYTHON -----------------------------|
+%-------------- ESTILO de Código TERMINAL ---------------------------|
+\lstdefinestyle{mystyleTerminal}{
+    backgroundcolor=\color{backcolourTerminal},
+    commentstyle=\color{codecommentTerminal},
+    keywordstyle=\color{codeclassTerminal},
+    numberstyle=\tiny\color{codenumizqTerminal},
+    stringstyle=\color{codestringTerminal},
+    basicstyle=\footnotesize\ttfamily\color{codeclassTerminal},
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4,    
+    escapechar=\&,
+    literate = 
+            {--}{{\textcolor{codeoptionTerminal}{--}}}2    
+}
+% Usar el estilo de código
+\lstset{style=mystyleTerminal}
+%-------------- ESTILO de Código TERMINAL ---------------------------|

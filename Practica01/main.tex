@@ -14,6 +14,98 @@
 \input{portada}
 
 \newpage
+\section*{Documentación}
+\subsection*{Como funciona el ChatBot}
+
+Antes de iniciar a conversar con Chat Dog necesitamos esto en nuestra computadora:
+\begin{itemize}
+    \item Versión de python para evitar conflictos con el entorno.
+\begin{lstlisting}[language=bash]
+    $ python --version
+    $ Python 3.7.9    
+\end{lstlisting}
+
+\item Navegar hasta la carpeta donde esta el archivo bot.py    
+\begin{lstlisting}[language=bash]
+    $ cd Practica01/src
+    /src $ ls 
+    bot.py  conver.json &\textcolor{water}{templates}&  &\textcolor{water}{nenv}&
+\end{lstlisting}
+
+\item Vamos a instalar flask para que nuestro bot se vea correctamente en la web
+\begin{lstlisting}[language=bash]    
+    /src $ pip install flask
+\end{lstlisting}
+\begin{itemize}
+    \item (Se descargaran los archivos necesarios)
+\end{itemize}
+
+\item Lo que sigue es activar nuestro entorno 
+\begin{itemize}
+    \item Para Windows
+\begin{lstlisting}[language=bash]    
+    \src $ venv\Scripts\activate
+    &\textcolor{ForestGreen}{(venv)}& \src $
+\end{lstlisting}
+\item Para Linux
+\begin{lstlisting}[language=bash]    
+    \src $ source_venv/bin/activate
+    &\textcolor{ForestGreen}{(venv)}& \src $
+\end{lstlisting}
+
+\item Sabremos que esta activo el entorno al ver del lado izquierdo: (venv)
+
+\end{itemize}
+
+\item El siguiente paso es ejecutar el bot con el comando: \texttt{python bot.py}
+\begin{lstlisting}[language=bash]    
+    &\textcolor{ForestGreen}{(venv)}& \src $ ls
+    bot.py  conver.json &\textcolor{water}{templates}&  &\textcolor{water}{nenv}&
+    &\textcolor{ForestGreen}{(venv)}& \src $ python bot.py
+\end{lstlisting}
+\begin{itemize}
+    \item A continuación veremos varias lineas como estas
+\begin{lstlisting}[language=bash]    
+    &\textcolor{ForestGreen}{(venv)}& \src $ python bot.py
+    [nltk_data] Downloading package averaged_perceptron_tagger to
+    [nltk_data]     C:\Users\youruser\AppData\Roaming\nltk_data...
+    List Trainer: [####################] 100%
+    * Serving Flask app 'bot'
+    * Debug mode: on    
+\end{lstlisting}
+    \item La siguiente linea es importante porque es el puerto donde verás a Chat-Dog
+\begin{lstlisting}[language=bash]        
+    * Serving Flask app 'bot'
+    * Debug mode: on    
+    * Running on http://127.0.0.1:5000
+\end{lstlisting}
+    \item Tal vez en tu computadora sea otro puerto, pero así debe verse lo que copies y peques en tu navegador de preferencia (\texttt{http://127.0.0.1:5000})
+\begin{lstlisting}[language=bash]        
+    * Running on http://127.0.0.1:5000
+    [nltk_data]   Package stopwords is already up-to-date!
+    List Trainer: [####################] 100%
+    * Debugger is active!
+
+
+\end{lstlisting}
+\end{itemize}
+
+\item Esto te deberá permitir ver la interfaz de Chat-Dog
+\item Y listo podrás empezar a conversar con él 
+\item Para terminal el proceso basta con que en la terminal ejecutes: \texttt{Ctrl+C}
+\begin{lstlisting}[language=bash]        
+    * Running on http://127.0.0.1:5000
+    [nltk_data]   Package stopwords is already up-to-date!
+    List Trainer: [####################] 100%
+    * Debugger is active!
+
+    Ctrl+C
+    &\textcolor{ForestGreen}{(venv)}& \src $
+\end{lstlisting}
+
+\end{itemize}
+
+
 
 \section*{Investigación}
 
@@ -31,7 +123,7 @@ El propósito principal del chatbot es brindar un servicio educativo e informati
     \item \textbf{Despedida cordial:} Al finalizar la interacción manda un mensaje de despedida cordial, agradeciéndoles por utilizar el servicio.
 \end{itemize}\section*{Implementación}
 
-\section*{Documentación}
+
 
 % ----------------------|
 % Referencias           |

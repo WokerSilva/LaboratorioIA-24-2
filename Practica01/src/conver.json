@@ -1,0 +1,7 @@
+{
+    "conversations": [
+            ["Hola", "Hola Como estas"],
+            ["¿Que raza de perro es la mas grande?", "La raza de perro mas grande es el San Bernardo."],
+            ["¿Cual es la raza de perro mas pequenna?", "La raza de perro mas pequenna es el Chihuahua."]          
+    ]
+}

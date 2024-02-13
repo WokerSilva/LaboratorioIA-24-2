@@ -1,3 +1,6 @@
+## Ignorar ajustes de vscode
+.vscode
+
 ## Ignorar los archivos generados por la compilación de LaTex en la Practica01
 Practica01/main.aux
 Practica01/main.bbl
@@ -6,3 +9,7 @@ Practica01/main.blg
 Practica01/main.log
 Practica01/main.out
 Practica01/main.run.xml
+
+## Ignorar todo lo que genera el entorno creado para el bot (P01)
+Practica01/src/venv
+Practica01/src/*.sqlite3
