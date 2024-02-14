@@ -14,11 +14,41 @@
 \input{portada}
 
 \newpage
+% ------------------------------------------------------------------------------|
+% -----------------------------------------------------------------------------|
+% ----------------------------------------------------------------------------|
+\section{Propósito}
+% ----------------------------------------------------------------------------\
+% -----------------------------------------------------------------------------\
+% ------------------------------------------------------------------------------\
+
+El propósito principal del chatbot es brindar un servicio educativo e informativo sobre animales domésticos, principalmente de perros. Busca ser una herramienta que ayude a los usuarios a comprender mejor cómo cuidar adecuadamente a sus mascotas.\\
+
+\textbf{Funcionalidades básicas:}
+\begin{itemize}
+    \item \textbf{Mensaje de saludo:} El chatbot debe ser capaz de saludar a los usuarios de manera amigable, utilizando una variedad de saludos para crear una experiencia acogedora desde el inicio de la interacción.
+    
+    \item \textbf{Descripción de servicios:} Proporciona una descripción clara y concisa de los servicios que ofrece 
+
+    \item \textbf{Datos interesantes:} Proporciona curiosidades y datos interesantes sobre animales domésticos, como sus habilidades naturales, comportamientos únicos,etc.
+
+    \item \textbf{Despedida cordial:} Al finalizar la interacción manda un mensaje de despedida cordial, agradeciéndoles por utilizar el servicio.
+\end{itemize}
+
+
+
+% ------------------------------------------------------------------------------|
+% -----------------------------------------------------------------------------|
+% ----------------------------------------------------------------------------|
 \section{Documentación}
+% ----------------------------------------------------------------------------\
+% -----------------------------------------------------------------------------\
+% ------------------------------------------------------------------------------\
 
 \subsection{Organización del proyecto}
-Dentro del archivo \texttt{.zip}, el proyecto se compone de la siguiente forma\\
 
+
+Dentro del archivo \texttt{.zip}, el proyecto se compone de la siguiente forma\\
 
 \begin{minipage}[t]{6.8cm}
 \begin{itemize}
@@ -96,7 +126,7 @@ Antes de iniciar a conversar con Chat Dog necesitamos esto en nuestra computador
 \end{lstlisting}
     \item Para Linux
 \begin{lstlisting}[language=bash]    
-    &\textcolor{rubber}{Skynet}& : &\textcolor{Meadow}{/src}& $ python_-m_venv_venv    
+    &\textcolor{rubber}{Skynet}& : &\textcolor{Meadow}{/src}& $ python -m venv venv    
 \end{lstlisting}
 \end{itemize}
 
@@ -158,7 +188,12 @@ Antes de iniciar a conversar con Chat Dog necesitamos esto en nuestra computador
     * Running on http://127.0.0.1:5000
     [nltk_data]   Package stopwords is already up-to-date!
     List Trainer: [####################] 100%
+    List Trainer: [####################] 100%
+    List Trainer: [####################] 100%
+    List Trainer: [####################] 100%
+    List Trainer: [####################] 100%
     * Debugger is active!
+
 
 
 \end{lstlisting}
@@ -171,6 +206,7 @@ Antes de iniciar a conversar con Chat Dog necesitamos esto en nuestra computador
     * Running on http://127.0.0.1:5000
     [nltk_data]   Package stopwords is already up-to-date!
     List Trainer: [####################] 100%
+    List Trainer: [####################] 100%
     * Debugger is active!
 
     Ctrl+C
@@ -179,33 +215,6 @@ Antes de iniciar a conversar con Chat Dog necesitamos esto en nuestra computador
 
 \end{enumerate}
 
-\subsection{Lógica del Código}
-
-Necesitamos hacer las siguientes importaciones en el código para tener el funcionamiento de de python
-con las aplicaciones web (para eso es flask), se necesita por supuesto la importación de 
-chatterbot para construir el bot y trainers es utilizado para hacer el entrenamiento y hable 
-de manera más fluida con el usuario. Finalmente json para trabajar con estos archivos pues son los 
-que contienen toda la información de entrenamiento.
-
-\begin{lstlisting}[style=mystylepython, language=Python, caption=Fragmento de código Python]    
-    from flask import Flask, render_template, request, jsonify
-    from chatterbot import ChatBot
-    from chatterbot.trainers import ListTrainer  
-    import json
-\end{lstlisting}
-
-Entonces trabajaremos con un chatbot, debemos crearlo y eso se hace así:
-
-\begin{lstlisting}[style=mystylepython, language=Python, caption=Fragmento de código Python]    
-    chatbot = ChatBot("ChatDog")
-\end{lstlisting}
-
-\textit{ChatDog} es el nombre con el cual distinguimos a nuestro bot y es la referencia para hacer
-acciones específicas.
-
-
-
-
 % ------------------------------------------------------------------------------|
 % -----------------------------------------------------------------------------|
 % ----------------------------------------------------------------------------|
@@ -213,32 +222,6 @@ acciones específicas.
 % ----------------------------------------------------------------------------\
 % -----------------------------------------------------------------------------\
 % ------------------------------------------------------------------------------\
-
-
-
-
-
-% ------------------------------------------------------------------------------|
-% -----------------------------------------------------------------------------|
-% ----------------------------------------------------------------------------|
-\section{Propósito}
-% ----------------------------------------------------------------------------\
-% -----------------------------------------------------------------------------\
-% ------------------------------------------------------------------------------\
-
-El propósito principal del chatbot es brindar un servicio educativo e informativo sobre animales domésticos, principalmente de perros. Busca ser una herramienta que ayude a los usuarios a comprender mejor cómo cuidar adecuadamente a sus mascotas.\\
-
-\textbf{Funcionalidades básicas:}
-\begin{itemize}
-    \item \textbf{Mensaje de saludo:} El chatbot debe ser capaz de saludar a los usuarios de manera amigable, utilizando una variedad de saludos para crear una experiencia acogedora desde el inicio de la interacción.
-    
-    \item \textbf{Descripción de servicios:} Proporciona una descripción clara y concisa de los servicios que ofrece 
-
-    \item \textbf{Datos interesantes:} Proporciona curiosidades y datos interesantes sobre animales domésticos, como sus habilidades naturales, comportamientos únicos,etc.
-
-    \item \textbf{Despedida cordial:} Al finalizar la interacción manda un mensaje de despedida cordial, agradeciéndoles por utilizar el servicio.
-\end{itemize}
-
 
 
 % ----------------------|
