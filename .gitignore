@@ -12,4 +12,4 @@ Practica01/main.run.xml
 
 ## Ignorar todo lo que genera el entorno creado para el bot (P01)
 Practica01/src/venv
-Practica01/src/*.sqlite3
+# Practica01/src/*.sqlite3

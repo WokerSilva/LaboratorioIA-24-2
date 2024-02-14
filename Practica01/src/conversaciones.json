@@ -1,6 +1,6 @@
 {
-    "conversations": [            
-        ["Hola", "¡Hola! ¿Cómo estás?"],
+    "conversaciones": [            
+        ["Hola", "¡Hola! Como puedo ayudarte?"],
         ["¿Qué tal?", "¡Hola! Todo bien, gracias ¿Y tú?"],
         ["Buenos días", "¡Buenos días! ¿Cómo puedo ayudarte hoy?"],
         ["Hola, ¿cómo estás?", "Hola, estoy bien. ¿Y tú?"],
@@ -118,11 +118,10 @@
         ["¿Por qué mi perro tiene los ojos rojos?","Las causas mas comunes son la conjuntivitis facil, o a la inflamación y/o infección del saco que rodea al ojo, generalmente, esto tiene lugar debido a la inflamación por un irritante transportado por el aire, o un contaminante como el humo. Los animales domésticos también pueden contagiar la conjuntivitis microbiana entre ellos, si tu mascota presenta este problema aconsejo llevarlo con un especialista"],
         ["¿Por qué las mascotas mueven la cola?", "Muchos especialistas en comportamiento piensan que el movimiento de la cola es simplemente un indicador de un sentimiento fuerte, normalmente corresponde a la felicidad, sin embargo, puede sugerir, además, el canino está preocupado o tiene cuidado acerca de un nuevo escenario, algunas mascotas mueven la cola cuando se sienten amenazadas."],
         ["¿Qué es el estrés por separación en perros?", "Es la ansiedad que sienten los perros al quedarse solos en casa. Esta ansiedad grave puede hacer que el perro rompa objetos y se pase el día llorando y aullando hasta que alguien regresa a casa o hasta que la persona predilecta lo haga. "],
-        ["¿Cuánto tiempo debe salir mi perro al día a pasear?", " En general, un perro requiere de 30 minutos a 2 horas de ejercicio diario, repartidos en 3 o 4 paseos cada día, asi que no hay que dejarlos desantendidos y sal con ellos al parque."],
-        ["Hola, ¿En que puedo ayudarte?"],
+        ["¿Cuánto tiempo debe salir mi perro al día a pasear?", " En general, un perro requiere de 30 minutos a 2 horas de ejercicio diario, repartidos en 3 o 4 paseos cada día, asi que no hay que dejarlos desantendidos y sal con ellos al parque."],        
         ["Tengo dudas sobre el cuidado de mi hamster, ¿Me puedes ayudar?", "Si, por supuesto ¿Dime cual es tu duda?"],
         ["Tengo una duda sobre mi mascota", "¿Dime cual es tu duda?, estoy aqui para ayudarte"],
-        ["¿Puedo bañar a mi hamster?", "No, los hámsters no se bañan bajo ninguna circunstancia al menos que por alguna razón médica que el veterinario haya prescrito. Son muy delicados y al perder su temperatura corporal por mojarse pueden enfermarse y morir, son animales muy limpios que se acicalan solitos."],
+        ["¿Puedo bannar a mi hamster?", "No, los hámsters no se bañan bajo ninguna circunstancia al menos que por alguna razón médica que el veterinario haya prescrito. Son muy delicados y al perder su temperatura corporal por mojarse pueden enfermarse y morir, son animales muy limpios que se acicalan solitos."],
         ["¿Puedo esterilizar a mi hamster?", "No, los hamsters son tan pequeñitos que cualquier tipo de operación es muy riesgosa y delicada, con tener un hamster por jaula (ya que son muy territoriales) y sacarlos a jugar por separado en caso de tener hembras y macho es suficiente para que no ocurran accidentes."],
         ["Siento que mi hamster se siente solo, ¿Es recomedable tener otro hamster para que sea su amigo?", "No, los hamsters especialmente los Sirios son animales muy territoriales y solitarios, nunca se van a sentir solos, con tu compañía es suficiente."],
         ["¿Cuantas horas duermen los hamsters?", "Los hamsters duermen aproximadamente 16 horas al día"],
@@ -133,6 +132,18 @@
         ["¿Por qué se pelean los hamster?", "Las peleas entre ellos son muy comunes, ya que suelen ser animales muy territoriales, por lo que se debe evitar a toda costa, ya que estas luchas podrian derivar en la muerte de alguno de ellos, se recomienda que cada hamster viva en su propia jaula y no juntarse con otros ejemplares tras alcanzar la madurez sexual (alrededor de los dos meses de vida), solo con el sexo opuesto cuando se quiera tener crias."],
         ["¿Por qué los hamster corren en la rueda?", "Estos animalitos son hiperactivos y necesitan hacer ejercicio para mantenerse sanos y felices. La rueda de hamster es uno de los elementos que nunca debe faltar en su jaula, ya que será en ella donde hagan el ejercicio físico que necesitan hacer a diario para tener una vida plena."],
         ["Gracias por la información." , "De nada, estoy aquí para ayudarte en lo que necesites."],
-        [" " ,"Una disculpa, no tengo la respuesta a esa pregunta, recomiendo acercarte con un profesional"]                
+        [" " ,"Una disculpa, no tengo la respuesta a esa pregunta, recomiendo acercarte con un profesional"],
+        ["Adios!", "Espero que tengas un dia maravilloso!"],
+        ["Hasta luego!", "Que tengas un buen dia!"],
+        ["Nos vemos!", "Cuidate mucho!"],
+        ["Hasta pronto!", "Que todo te vaya bien!"],
+        ["Nos leemos!", "Que tengas suerte!"],
+        ["Ciao!", "Hasta la proxima!"],
+        ["Bye!", "Que estes bien!"],
+        ["Chau!", "Adios y buena suerte!"],
+        ["Nos vemos luego!", "Que te vaya genial!"],
+        ["Hasta la vista!", "Cuidate mucho!"],                        
+        ["¡Adiós!", "Que tengas un buen dia!"],
+        ["¡Hasta pronto!", "Nos vemos en otro momento!"]
     ]
 }

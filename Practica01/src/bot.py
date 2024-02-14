@@ -21,16 +21,16 @@ app = Flask(__name__)
 chatbot = ChatBot("ChatDog")
 
 # Cargar datos de entrenamiento desde el archivo JSON
-#  los cuales cuales son almacenados en la variable "conver"
-with open('conver.json', 'r') as file:
-    conver = json.load(file)
+#  los cuales cuales son almacenados en la variable "conversaciones"
+with open('conversaciones.json', 'r') as file:
+    conversaciones = json.load(file)
 
 # Creamos el objeto entrenador de nuesto chatbot definido 
 trainer = ListTrainer(chatbot)
 
 # Iteramos entre los datos del JSON para entrenar las 
 #  respuestas futuras del chatbot
-for conversation in conver['conversations']:
+for conversation in conversaciones['conversaciones']:
     trainer.train(conversation)
 
 
