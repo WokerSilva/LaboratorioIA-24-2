@@ -14,14 +14,278 @@
 \input{portada}
 
 \newpage
+% ------------------------------------------------------------------------------|
+% -----------------------------------------------------------------------------|
+% ----------------------------------------------------------------------------|
+\section{Investigación}
+% ----------------------------------------------------------------------------\
+% -----------------------------------------------------------------------------\
+% ------------------------------------------------------------------------------\
 
-\section*{Investigación}
+\begin{center}
+    {\large ChatterBot}
+\end{center}
 
-\section*{Propósito}
+La biblioteca ChatterBot de Python está diseñada para responder de manera automatizada a las entradas que de él usuario, con la ayuda 
+de varios algoritmos de aprendizaje automático que generan una variedad de respuestas, lo que permite que al desarrollar chatbots se 
+puedan dar respuestas apropiadas en diferentes contextos. El chatbot también va a poder mejorar su rendimiento conforme aprende con 
+el paso del tiempo, presenta independencia de lenguaje, de esta manera se puede entrenar para hablar en cualquier idioma
 
-\section*{Implementación}
 
-\section*{Documentación}
+\subsection{Funcionamiento}
+
+Un chatbot no entrenado de ChatterBot inicia sin conocimiento de cómo debe comunicarse con el usuario,se pueden introducir frases y 
+respuestas para que el chatbot aprenda qué debe responder en cada ocasión, cada vez que el usuario ingresa una entrada el chatbot 
+guarda las entradas y respuestas con las que va tratando y con esos mismos datos genera respuestas automatizadas relevantes, cuando 
+recibe una nueva entrada, compara la nueva entrada con datos anteriores, así chatbot puede seleccionar una respuesta que esté vinculada 
+a la entrada conocida más cercana posible.
+
+\subsection{Capacidades}
+
+Como se mencionó anteriormente, algunas de sus capacidades es son el aprendizaje automático así como la independencia 
+de lenguaje. Entre otras de sus capacidades están:
+
+\begin{itemize}
+    \item \textbf{Almacenamiento y consulta de datos}
+    
+    ChatterBot cuenta con con módulos llamados storage adapters los cuales permiten interactuar con el sistema de almacenamiento 
+    y proporcionan una abstracción, en su version 1.0.8 tiene los siguientes storage adapters; mongodb, sql$\_$storage, django$\_$storage. 
+    De esta manera permite mantener un registro de las interacciones y facilita la gestión de datos.
+
+    \item \textbf{Procesamiento de lenguaje natural(NLP siglas en ingles)}
+    
+    ChatterBot utiliza técnicas de procesamiento de lenguaje natural para poder entender y responder a los mensajes de los usuarios, 
+    de esta manera analiza las preguntas y comentarios de los usuarios para generar respuestas relevantes y coherentes.
+
+    \item \textbf{Personalización}
+    
+    Permite al desarrollador personalizar las respuestas y entrenar al chatbot con datos específicos para que 
+    responda de manera mas precisa y personalizada. 
+\end{itemize}
+
+
+\subsection{Limitaciones}
+
+\textbf{Falta de inteligencia emocional:} Los chatbot presentan dificultad para comprender las emociones humanas, 
+sarcasmo… Lo cual puede representar un problema a la hora de interpretar el objetivo de las preguntas.\\
+
+\textbf{Dependencia de los datos de entrenamiento:} La calidad y variedad de los datos de entrenamiento de ChatterBot 
+influyen en gran medida con la calidad de las respuestas que genere. Los datos sesgados o incompletos pueden dar 
+lugar a respuestas incorrectas o sesgos involuntarios en el comportamiento del chatbot. Por lo cual depende mucho de 
+un entrenamiento adecuado para que brinde respuestas mas precisas.\\
+
+\textbf{Incapacidad para afrontar escenarios inesperados:}  Al igual que otros chatbots, ChatterBot funciona 
+siguiendo reglas y patrones predefinidos, cuando se enfrenta a situaciones que no se espera, lo mas probable es que 
+no sepa como responder de manera adecuada, de respuestas fuera de contexto e incluso que responda con información 
+poco precisa, por lo cual la base de datos del ChatterBot requiere actualizarse de manera frecuente.
+
+\textbf{Limitaciones en el contexto:} Dado que ChatterBot en su versión 1.0.8, solo trabaja con el contexto de 
+la entrada anterior esto puede ser un problema para seguir el hilo de una conversación por ejemplo. 
+
+
+
+
+% ------------------------------------------------------------------------------|
+% -----------------------------------------------------------------------------|
+% ----------------------------------------------------------------------------|
+\section{Propósito}
+% ----------------------------------------------------------------------------\
+% -----------------------------------------------------------------------------\
+% ------------------------------------------------------------------------------\
+
+El propósito principal del chatbot es brindar un servicio educativo e informativo sobre animales domésticos, principalmente de perros. Busca ser una herramienta que ayude a los usuarios a comprender mejor cómo cuidar adecuadamente a sus mascotas.\\
+
+\textbf{Funcionalidades básicas:}
+\begin{itemize}
+    \item \textbf{Mensaje de saludo:} El chatbot debe ser capaz de saludar a los usuarios de manera amigable, utilizando una variedad de saludos para crear una experiencia acogedora desde el inicio de la interacción.
+    
+    \item \textbf{Descripción de servicios:} Proporciona una descripción clara y concisa de los servicios que ofrece 
+
+    \item \textbf{Datos interesantes:} Proporciona curiosidades y datos interesantes sobre animales domésticos, como sus habilidades naturales, comportamientos únicos,etc.
+
+    \item \textbf{Despedida cordial:} Al finalizar la interacción manda un mensaje de despedida cordial, agradeciéndoles por utilizar el servicio.
+\end{itemize}
+
+
+% ------------------------------------------------------------------------------|
+% -----------------------------------------------------------------------------|
+% ----------------------------------------------------------------------------|
+\section{Documentación}
+% ----------------------------------------------------------------------------\
+% -----------------------------------------------------------------------------\
+% ------------------------------------------------------------------------------\
+
+\subsection{Organización del proyecto}
+
+
+Dentro del archivo \texttt{.zip}, el proyecto se compone de la siguiente forma\\
+
+\begin{minipage}[t]{6.8cm}
+\begin{itemize}
+    \item Carpeta Principal: PRACTICA01
+    \begin{itemize}
+        \item Carpeta: IMA
+        \item Carpeta: src
+        \begin{itemize}
+            \item Carpeta: venv
+            \item Carpeta: templates            
+            \begin{itemize}
+                \item HTML: index.html
+            \end{itemize}
+            \item PYTHON: bot.py
+            \item JSON: conver.json
+            \item BD : db.sqlite3
+        \end{itemize}
+        \item PDF : practica01.pdf
+    \end{itemize}
+\end{itemize}
+\end{minipage}
+\hspace{2mm}
+\begin{minipage}[t]{9cm}
+    \begin{itemize}
+        \item[] Carpeta Principal: PRACTICA01
+        \begin{itemize}
+            \item[] Guarda las imágenes del proyecto 
+            \item[] Archivos ejecutables para el bot
+            \begin{itemize}
+                \item[] Contiene la configuración del entorno
+                \item[] Contiene el front del chatbot            
+                \begin{itemize}
+                    \item[] HTML: index.html
+                \end{itemize}
+                \item[] Lógica del programa
+                \item[] Es información del entrenamiento
+                \item[] Guarda el \textit{aprendizaje} del bot 
+            \end{itemize}
+            \item[] PDF : practica01.pdf
+        \end{itemize}
+    \end{itemize}
+\end{minipage}
+
+\subsection{Como ejecutar Chat Dog}
+
+Antes de iniciar a conversar con Chat Dog necesitamos esto en nuestra computadora:
+\begin{enumerate}
+    \item Iniciamos nuestra terminal
+    \item Revisamos la versión de python para evitar conflictos con el entorno.
+\begin{lstlisting}[language=bash]
+    &\textcolor{rubber}{Skynet}& : $ python --&\textcolor{codecommentTerminal}{version}&
+    &\textcolor{rubber}{Skynet}& : $  Python 3.7.9    
+\end{lstlisting}
+
+\item Navegar hasta la carpeta donde esta el archivo bot.py    
+\begin{lstlisting}[language=bash]
+    &\textcolor{rubber}{Skynet}& : $ cd Practica01/src
+    &\textcolor{rubber}{Skynet}& : &\textcolor{Meadow}{/src}& $  ls 
+    bot.py  conver.json &\textcolor{blueRY}{templates}&  &\textcolor{blueRY}{nenv}&
+\end{lstlisting}
+
+\item Vamos a instalar flask para que nuestro bot se vea correctamente en la web
+\begin{lstlisting}[language=bash]    
+    &\textcolor{rubber}{Skynet}& : &\textcolor{Meadow}{/src}& $ pip install flask
+\end{lstlisting}
+\begin{itemize}
+    \item (Se descargaran los archivos necesarios)
+\end{itemize}
+
+\item Lo que sigue es activar nuestro entorno, primero crearemos la carpeta 
+\begin{itemize}
+    \item Para Windows
+\begin{lstlisting}[language=bash]    
+    &\textcolor{rubber}{Skynet}& : &\textcolor{Meadow}{/src}& $ python -m venv venv    
+\end{lstlisting}
+    \item Para Linux
+\begin{lstlisting}[language=bash]    
+    &\textcolor{rubber}{Skynet}& : &\textcolor{Meadow}{/src}& $ python -m venv venv    
+\end{lstlisting}
+\end{itemize}
+
+\item Ahora vamos a activar el entorno
+
+\begin{itemize}
+    \item Para Windows
+\begin{lstlisting}[language=bash]    
+    &\textcolor{rubber}{Skynet}& : &\textcolor{Meadow}{/src}& $ venv\Scripts\activate
+    &\textcolor{ForestGreen}{(venv)}& &\textcolor{rubber}{Skynet}& : &\textcolor{Meadow}{/src}& $
+\end{lstlisting}
+\item Para Linux
+\begin{lstlisting}[language=bash]    
+    &\textcolor{rubber}{Skynet}& : &\textcolor{Meadow}{/src}& $ source_venv/bin/activate
+    &\textcolor{ForestGreen}{(venv)}& &\textcolor{rubber}{Skynet}& : &\textcolor{Meadow}{/src}& $
+\end{lstlisting}
+
+\item Sabremos que esta activo el entorno al ver del lado izquierdo: (venv)
+
+\end{itemize}
+
+\item Ahora instalaremos CharrterBot
+
+\begin{itemize}
+    \item Para Windows
+\begin{lstlisting}[language=bash]    
+    &\textcolor{ForestGreen}{(venv)}& &\textcolor{rubber}{Skynet}& : &\textcolor{Meadow}{/src}& $ python -m pip install chatterbot==1.0.4 pytz
+    &\textcolor{ForestGreen}{(venv)}& &\textcolor{rubber}{Skynet}& : &\textcolor{Meadow}{/src}& $
+\end{lstlisting}
+\item Para Linux
+\begin{lstlisting}[language=bash]    
+    &\textcolor{ForestGreen}{(venv)}& &\textcolor{rubber}{Skynet}& : &\textcolor{Meadow}{/src}& $ python -m pip install chatterbot==1.0.4 pytz
+    &\textcolor{ForestGreen}{(venv)}& &\textcolor{rubber}{Skynet}& : &\textcolor{Meadow}{/src}& $
+\end{lstlisting}
+\end{itemize}
+
+\item El siguiente paso es ejecutar el bot con el comando: \texttt{python bot.py}
+\begin{lstlisting}[language=bash]    
+    &\textcolor{ForestGreen}{(venv)}& &\textcolor{rubber}{Skynet}& : &\textcolor{Meadow}{/src}& $ ls
+    bot.py  conver.json &\textcolor{blueRY}{templates}&  &\textcolor{blueRY}{nenv}&
+    &\textcolor{ForestGreen}{(venv)}& &\textcolor{rubber}{Skynet}& : &\textcolor{Meadow}{/src}& $ python bot.py
+\end{lstlisting}
+\begin{itemize}
+    \item A continuación veremos varias lineas como estas
+\begin{lstlisting}[language=bash]    
+    &\textcolor{ForestGreen}{(venv)}& &\textcolor{rubber}{Skynet}& : &\textcolor{Meadow}{/src}& $ python bot.py
+    [nltk_data] Downloading package averaged_perceptron_tagger to
+    [nltk_data]     C:\Users\youruser\AppData\Roaming\nltk_data...
+    List Trainer: [####################] 100%
+    * Serving Flask app 'bot'
+    * Debug mode: on    
+\end{lstlisting}
+    \item La siguiente linea es importante porque es el puerto donde verás a Chat-Dog
+\begin{lstlisting}[language=bash]            
+    * Running on http://127.0.0.1:5000
+\end{lstlisting}
+    \item Tal vez en tu computadora sea otro puerto, pero así debe vers. Copia y pega en tu navegador de preferencia (\texttt{http://127.0.0.1:5000})
+\begin{lstlisting}[language=bash]        
+    * Running on http://127.0.0.1:5000
+    [nltk_data]   Package stopwords is already up-to-date!
+    List Trainer: [####################] 100%
+    List Trainer: [####################] 100%
+    List Trainer: [####################] 100%
+    List Trainer: [####################] 100%
+    List Trainer: [####################] 100%
+    * Debugger is active!
+
+
+
+\end{lstlisting}
+\end{itemize}
+
+\item Esto te deberá permitir ver la interfaz de Chat-Dog
+\item Y listo podrás empezar a conversar con él 
+\item Para terminal el proceso basta con que en la terminal ejecutes: \texttt{Ctrl+C}
+\begin{lstlisting}[language=bash]        
+    * Running on http://127.0.0.1:5000
+    [nltk_data]   Package stopwords is already up-to-date!
+    List Trainer: [####################] 100%
+    List Trainer: [####################] 100%
+    * Debugger is active!
+
+    Ctrl+C
+    &\textcolor{ForestGreen}{(venv)}& &\textcolor{rubber}{Skynet}& : &\textcolor{Meadow}{/src}& $
+\end{lstlisting}
+
+\end{enumerate}
+
+
 
 % ----------------------|
 % Referencias           |
