@@ -1,0 +1,39 @@
+\documentclass[a4paper,12pt]{article} 
+\usepackage[utf8]{inputenc} % Acentos válidos sin problemas
+\usepackage[spanish]{babel} % Idioma
+
+\usepackage[backend=biber, style=alphabetic, sorting=ynt]{biblatex}
+\bibliography{bibliografia.bib}
+\nocite{*} % Añade todas las referencias de bib sin cita
+
+\input{packet}
+\pagestyle{fancy}
+
+\begin{document}%----------------------INICIO DOCUMENTO------------|
+%------------------------------------------------------------------|
+\input{portada}
+
+\newpage
+
+% ------------------------------------------------------------------------------|
+% -----------------------------------------------------------------------------|
+% ----------------------------------------------------------------------------|
+\section{Documentación}
+% ----------------------------------------------------------------------------\
+% -----------------------------------------------------------------------------\
+% ------------------------------------------------------------------------------\
+
+
+% ----------------------|
+% Referencias           |
+% Forma de Compilar     |
+% pdflatex main.tex     |
+% biber main            |
+% pdflatex main.tex     |
+\newpage %              |
+\thispagestyle{fancyref}
+\printbibliography %    |
+% ----------------------|
+
+\end{document}%----------------------F I N DOCUMENTO---------------|
+%------------------------------------------------------------------|

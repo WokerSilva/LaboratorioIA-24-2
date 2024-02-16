@@ -12,4 +12,13 @@ Practica01/main.run.xml
 
 ## Ignorar todo lo que genera el entorno creado para el bot (P01)
 Practica01/src/venv
-# Practica01/src/*.sqlite3
+Practica01/src/*.sqlite3
+
+## Ignorar los archivos generados por la compilación de LaTex en la Practica01
+Practica02/main.aux
+Practica02/main.bbl
+Practica02/main.bcf
+Practica02/main.blg
+Practica02/main.log
+Practica02/main.out
+Practica02/main.run.xml
