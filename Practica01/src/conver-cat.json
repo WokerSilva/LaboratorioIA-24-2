@@ -1,6 +1,9 @@
 {
     "conversations": [            
-        ["Hola", "¡Hola! Como puedo ayudarte?"],
-        ["Tiene gatos", "Si, blancos y negros"]
+        ["Hola", "Hola, es un gusto. Como puedo ayudarte?"],
+        ["Quiero adoptar un gato", "Por supuesto, tienes algun color en especial?"],
+        ["Un gato color negro", "Claro, tenemos dos gatitos color negro"],
+        ["Un gato color blanco", "Acaban de rescatar a una gatita color blanco"],
+        ["Tal vez uno amarillo", "Son poco comunes, no tenemos"]
     ]
 }

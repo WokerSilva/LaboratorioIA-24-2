@@ -1,50 +1,66 @@
+###
+#### Chat Dog
+### 
+
+# Para desarrollo web
+#  - Renderizar templates HTML : render_template
+#  - Solicitudes HTTP          : request
+#  - Trabajar JSON             : jsonify
+from flask import Flask, render_template, request, jsonify
 from chatterbot import ChatBot
+# Entrenamiento con conversaciones predefinidas
 from chatterbot.trainers import ListTrainer
 import json
 
-# Crear múltiples instancias de ChatBot
-chatbots = {}
 
-# Asociar cada instancia de ChatBot con un archivo JSON diferente
-chatbots['dog'] = ChatBot("DogBot")
-chatbots['cat'] = ChatBot("CatBot")
+# Inicializamos la  instancia para flask
+#  pasandole como argumento "name" (predeterminada)
+app = Flask(__name__)
 
-# Cargar datos de entrenamiento desde archivos JSON diferentes para cada ChatBot
+# Crear varios ChatBot con distintos
+#  nombres para su entrenamiento especifico 
+chatbots = {
+    'dog': ChatBot("DogBot", storage_adapter="chatterbot.storage.SQLStorageAdapter",
+                   database_uri="sqlite:///dogbot_database.sqlite3"),
+    'cat': ChatBot("CatBot", storage_adapter="chatterbot.storage.SQLStorageAdapter",
+                   database_uri="sqlite:///catbot_database.sqlite3")
+}
+
+# A partir de los diferentes archivos con las conversaciones 
+#  asignamos cada chatbot a su respectivo archivo
 with open('conver-dog.json', 'r') as file:
     conversaciones_dog = json.load(file)
 
 with open('conver-cat.json', 'r') as file:
     conversaciones_cat = json.load(file)
 
-# Crear entrenadores para cada instancia de ChatBot
+# Como trabajamos con distintos chat y archivos 
+#  no podía ser diferente que cada uno tendía su 
+#  propio entrenamiento con la importación ListTrainer
 trainers_dog = ListTrainer(chatbots['dog'])
 trainers_cat = ListTrainer(chatbots['cat'])
 
-# Entrenar cada ChatBot con los datos correspondientes
+# Iteramos entre los datos del JSON para cargar las 
+#  respuestas del chatbot
 for conversation in conversaciones_dog['conversations']:
     trainers_dog.train(conversation)
 
 for conversation in conversaciones_cat['conversations']:
     trainers_cat.train(conversation)
 
-# Definir las condiciones de salida
-exit_conditions = (":q", "quit", "exit")
 
-while True:
-    query = input("> ")
+@app.route('/') # Definimos la ruta raiz para la appweb
+def home():     #  donde buscamos el archivo html
+    return render_template('index.html')
 
-    # Switch para determinar qué ChatBot utilizar basándose en la entrada del usuario
-    if query.startswith("dog"):
-        bot = chatbots['dog']
-    elif query.startswith("cat"):
-        bot = chatbots['cat']
-    else:
-        # Si no se especifica ningún bot, se utiliza uno predeterminado (en este caso, DogBot)
-        bot = chatbots['dog']
+# Asignar la ruta para manejar las solicitudes POST del usuario
+@app.route('/get', methods=['POST'])
+def get_bot_response():
+    entrada_usuario = request.form['msg']
+    bots = request.form.get('bot', 'dog')      # Opciones del bot
+    bot = chatbots.get(bots, chatbots['dog'])  # Bot predefinido
+    respuesta = str(bot.get_response(entrada_usuario))
+    return jsonify({'response': respuesta})
 
-    # Salir del bucle si se ingresa una condición de salida
-    if query in exit_conditions:
-        break
-    else:
-        # Obtener una respuesta del ChatBot correspondiente
-        print(f"🐶 {bot.get_response(query)}")
+if __name__ == '__main__':
+    app.run(debug=True)
