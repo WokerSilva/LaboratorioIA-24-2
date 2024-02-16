@@ -1,0 +1,19 @@
+{
+    "bots": {
+      "conversations": {
+        "dog": [
+          ["Hola", "¡Hola! ¿Cómo estás?"],
+          ["¿Qué raza de perro es la más grande?", "La raza de perro más grande es el San Bernardo."],
+          ["¿Cuál es la raza de perro más pequeña?", "La raza de perro más pequeña es el Chihuahua."]
+        ]
+      },
+      "cat": {
+        "conversations": [
+          ["Hola", "¡Hola! ¿Cómo estás?"],
+          ["¿Qué raza de gato es la más grande?", "La raza de gato más grande es el Maine Coon."],
+          ["¿Cuál es la raza de gato más pequeña?", "La raza de gato más pequeña es el Singapura."]
+        ]
+      }
+    }
+  }
+  

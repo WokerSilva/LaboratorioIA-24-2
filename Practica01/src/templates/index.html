@@ -132,9 +132,9 @@
       </nav>
 
 
-    <div id="chat-container">
-        <div class="intrucciones">
-            Para hablar con nuestro ChatDog escriba en el recuadro de abajo y despues haga click en Enviar
+      <div id="chat-container">
+        <div class="instrucciones">
+            Para hablar con nuestro ChatDog escriba en el recuadro de abajo y después haga click en Enviar
         </div>
         <div id="chat-box"></div>
         <div class="entrada-usuarios">
@@ -146,7 +146,7 @@
     </div>
 
     <script>
-        // Funcón para enviar el mensaje del usuario al Chat Dog
+        // Función para enviar el mensaje del usuario al Chat Dog
         function enviarMensaje() {            
             // Obtener el texto ingresado por el usuario
             var userInput = document.getElementById("user-input").value;
@@ -155,10 +155,10 @@
             // Limpiar el campo de entrada del usuario
             document.getElementById("user-input").value = "";
             
-             // Enviar el mensaje del usuario al servidor
+            // Enviar el mensaje del usuario al servidor
             var xhr = new XMLHttpRequest(); // Crear una nueva solicitud XMLHttpRequest
             xhr.open("POST", "/get", true); // Método (POST) y la URL (/get) de la solicitud
-            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); // Establece el tipo de contenido de la solicitud
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded"); // Establecer el tipo de contenido de la solicitud
             xhr.onreadystatechange = function() { // Definir una función que se ejecutará cuando cambie el estado de la solicitud
                 if (xhr.readyState === XMLHttpRequest.DONE) { // Verificar si la solicitud ha sido completada
                     if (xhr.status === 200) { // Verificar si la respuesta del servidor es exitosa
@@ -170,6 +170,6 @@
             };
             xhr.send("msg=" + userInput); // Enviar el mensaje del usuario al servidor como datos de formulario
         }
-    </script>    
+    </script> 
 </body>
 </html>
