@@ -53,7 +53,11 @@ def get_bot_response():
         response = str(chatbot.get_response(entrada_usuario))
     else:
         response = "Ingrese texto valido"
+
+    response = response.encode('latin1').decode('utf-8')
+
     return jsonify({'response': response})
+
 
 if __name__ == "__main__":
     app.run(debug=True)
