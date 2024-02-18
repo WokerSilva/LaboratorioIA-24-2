@@ -1,0 +1,20 @@
+{
+    "conversations": [            
+        ["Iniciar Entrevista", "Hola, es un placer. Comenzaremos tu entrevista. Recuerda numerar la respuesta seguido de: bajo, medio o alto. 1-¿Nivel de atención al cliente?"],        
+        ["1-bajo","Entiendo vas comenzando. 2-¿Nivel con manejo de animales?"],
+        ["1-medio","Eso es bueno. 2-¿Nivel con manejo de animales?"],
+        ["1-alto","Exelente. 2-¿Nivel con manejo de animales?"],
+        ["2-bajo","Aquí vas a aprender mucho. 3-¿Cuál es tu nivel de habilidad para trabajar en equipo?"],
+        ["2-medio","Eso es bueno. 3-¿Cuál es tu nivel de habilidad para trabajar en equipo?"],
+        ["2-alto","Suma muchos puntos. 3-¿Cuál es tu nivel de habilidad para trabajar en equipo?"],
+        ["3-bajo","Debemos mejorar eso. 4-¿Qué tan organizado y meticuloso eres al llevar registros y documentación relacionada con los animales?"],
+        ["3-medio","Eso es bueno. 4-¿Qué tan organizado y meticuloso eres al llevar registros y documentación relacionada con los animales?"],
+        ["3-alto","Me alegra escuchar eso. 4-¿Qué tan organizado y meticuloso eres al llevar registros y documentación relacionada con los animales?"],
+        ["4-bajo","Entiendo. 5-¿Experiencia con decesos de animales?"],
+        ["4-medio","Entiendo. 5-¿Experiencia con decesos de animales?"],
+        ["4-alto","Entiendo. 5-¿Experiencia con decesos de animales?"],
+        ["5-bajo","Entiendo. Nos has dejado un número, nosotros te llamamos. Tenga buen día"],
+        ["5-medio","Entiendo. Nos has dejado un número, nosotros te llamamos. Tenga buen día"],
+        ["5-alto","Entiendo. Nos has dejado un número, nosotros te llamamos. Tenga buen día"]
+    ]
+}

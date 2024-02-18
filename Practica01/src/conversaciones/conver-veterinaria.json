@@ -1,0 +1,18 @@
+{
+    "conversations": [            
+        ["¿Qué servicios ofrecen?", "Ofrecemos servicios veterinarios, incluyendo consultas, vacunaciones, cirugías, análisis de laboratorio y atención de emergencias."],
+        ["Cuales son sus servicios?", "Nuestro personal realiza consultas, vacunaciones, cirugías, análisis de laboratorio y atención de emergencias."],
+        ["Diganme sus servicios?", "Nuestra Veterinaria realiza consultas generales, vacunaciones, cirugías, análisis de laboratorio y atención de emergencias."],
+        ["¿Cuáles son sus costos?", "Los costos pueden variar dependiendo del servicio requerido"],
+        ["¿Costo de consulta general?", "$50 pesos mexicanos"],
+        ["¿Costo de vacunas?", "Tienen un rango de $80 a $200 pesos mexicanos"],
+        ["¿Costo de los analisis?", "$300 pesos mexicanos"],
+        ["¿Costo de cirugias?", "Tienen un rango de $400 a $1,000 pesos mexicanos"],
+        ["¿Costo de los analisis?", "$300 pesos mexicanos"],
+        ["¿Dónde se ubica la clínica", "Estamos ubicados dentro de la UNAM en Investigación Cientifica 1500 a un lado de la facultad de Ciencias "],
+        ["¿Cuales son sus horarios?","Son de lunes a viernes de 8:00 a.m. a 7:00 p.m., y los sábados de 9:00 a.m. a 2:00 p.m."],
+        ["¿Quiénes son los veterinarios que atienden en la clínica?", "Contamos con un equipo graduado en la UNAM y con mucha experiencia"],
+        ["¿Tienen estacionamiento?", "Sí, contamos con estacionamiento pero tiene pocos lugares"],
+        ["¿Qué medidas de seguridad tienen para garantizar el bienestar de los animales?", "Nuestra clínica está equipada con instalaciones seguras y seguimos estrictos protocolos para garantizar la seguridad y comodidad de las mascotas durante su visita."]
+    ]
+}
