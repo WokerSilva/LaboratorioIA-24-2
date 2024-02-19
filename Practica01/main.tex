@@ -142,17 +142,16 @@ Dentro del archivo \texttt{.zip}, el proyecto se compone de la siguiente forma\\
 \begin{minipage}[t]{6.8cm}
 \begin{itemize}
     \item Carpeta Principal: PRACTICA01
-    \begin{itemize}
-        \item Carpeta: IMA
+    \begin{itemize}        
         \item Carpeta: src
         \begin{itemize}
             \item Carpeta: venv
-            \item Carpeta: templates            
+            \item Carpeta: templates                        
             \begin{itemize}
                 \item HTML: index.html
             \end{itemize}
-            \item PYTHON: bot.py
-            \item JSON: conver.json
+            \item Carpeta: conversaciones
+            \item PYTHON: chat.py            
             \item BD : db.sqlite3
         \end{itemize}
         \item PDF : practica01.pdf
@@ -164,7 +163,6 @@ Dentro del archivo \texttt{.zip}, el proyecto se compone de la siguiente forma\\
     \begin{itemize}
         \item[] Carpeta Principal: PRACTICA01
         \begin{itemize}
-            \item[] Guarda las imágenes del proyecto 
             \item[] Archivos ejecutables para el bot
             \begin{itemize}
                 \item[] Contiene la configuración del entorno
@@ -172,8 +170,8 @@ Dentro del archivo \texttt{.zip}, el proyecto se compone de la siguiente forma\\
                 \begin{itemize}
                     \item[] HTML: index.html
                 \end{itemize}
-                \item[] Lógica del programa
-                \item[] Es información del entrenamiento
+                \item[] Archivos .json de cada funcionalidad
+                \item[] Lógica del programa                
                 \item[] Guarda el \textit{aprendizaje} del bot 
             \end{itemize}
             \item[] PDF : practica01.pdf
@@ -303,19 +301,6 @@ Antes de iniciar a conversar con Chat Dog necesitamos esto en nuestra computador
 \end{lstlisting}
 
 \end{enumerate}
-
-\section{Aspectos del Código}
-
-\subsection{Solicitud XMLHttpRequest}
-\subsection{Método (POST) y la URL (/get) de la solicitud}
-\subsection{JSON.parse como se convierte }
-
-
-chatterbot.storage.SQLStorageAdapter (line 10)
-
-
-@app.route("/get", methods=["POST"])
-
 
 
 % ------------------------------------------------------------------------------|

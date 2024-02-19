@@ -1,6 +1,6 @@
 {
     "conversations": [            
-        ["¿Qué servicios ofrecen?", "Ofrecemos servicios veterinarios, incluyendo consultas, vacunaciones, cirugías, análisis de laboratorio y atención de emergencias."],
+        ["¿Que servicios ofrecen?", "Ofrecemos servicios veterinarios, incluyendo consultas, vacunaciones, cirugías, análisis de laboratorio y atención de emergencias."],
         ["Cuales son sus servicios?", "Nuestro personal realiza consultas, vacunaciones, cirugías, análisis de laboratorio y atención de emergencias."],
         ["Diganme sus servicios?", "Nuestra Veterinaria realiza consultas generales, vacunaciones, cirugías, análisis de laboratorio y atención de emergencias."],
         ["¿Cuáles son sus costos?", "Los costos pueden variar dependiendo del servicio requerido"],
