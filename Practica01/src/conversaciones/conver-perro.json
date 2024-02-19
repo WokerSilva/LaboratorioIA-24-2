@@ -1,0 +1,23 @@
+{
+    "conversations": [            
+        ["Hola", "Hola, Como puedo ayudarle?"],
+        ["Hola", "Un placer, en que le puedo ayudar?"],
+        ["Buenas tardes", "Que tal? Como le puedo ayudar"],
+        ["Buenos días", "Que tal? Como le puedo ayudar"],
+        ["¿Debe socializar mi cachorro?", "Si es de suma importancia compartir espacio con diferentes personas y animales en los espacios disponibles"],
+        ["¿Cuánto ejercicio necesita mi cachorro?", "Por lo general requieren actividad física moderada y juegos para mantenerse saludables y felices"],
+        ["¿Cómo le enseñó mi perro a hacer sus necesidades afuera?", "Establece un horario regular para sacarlo al exterior y recompensarlo cuando haga sus necesidades afuera"],
+        ["¿Cuál es la mejor alimentación para mi perro?", "Una dieta balanceada con las croketas correctas a su tamaño y peso."],
+        ["¿Cómo puedo prevenir las pulgas y garrapatas?", "Mediante el uso de productos antipulgas: Collares o sprites."],
+        ["¿Qué vacunas son necesarias para mi perro?", "Las vacunas básicas son contra la rabia, parvovirus y moquillo."],
+        ["¿Cuál es la mejor forma de entrenar a mi perro?", "A través de métodos de refuerzo positivo y la consistencia en las enseñanzas."],
+        ["¿Cómo puedo prevenir que mi perro mastique mi zapato?", "Comprale sus juguetes y pon un limite firme con las cosas que no quieres que mastique"],
+        ["¿Qué debo hacer si mi perro tiene sobrepeso?", "Consulta con un veterinario para establecer un plan de dieta y ejercicio adecuado (aquí puedes agendar tu cita)."],        
+        ["Tiene perros?", "Si tenemos coker y snauser"],
+        ["Muchas gracias", "Un placer atenderle"],
+        ["Gracias", "Un placer atenderle"],
+        ["Hasta luego", "Gracias por su visita vuelva pronto"],
+        ["Adios", "Gracias por su visita vuelva pronto"],
+        ["Si tengo más dudas, volveré","Será un gusto solucionar cualquier inquietud"]
+    ]
+}
