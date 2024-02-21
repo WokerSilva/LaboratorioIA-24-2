@@ -9,9 +9,16 @@ El labrinto tiene las siguientes especificaciones
 * S es la salida del laberinto
 """
 
+"""
+gym: Librería de Python desarrollada por OpenAI, nos permite implementar diferentes algoritmos de aprendizaje por refuerzo y simular la interacción entre agentes y entornos.
+"""
+
+"""
+spaces: Define el formato válido de los espacios de observación y acción para un entorno.
+"""
+
 import gym
 from gym import spaces
-import numpy as np
 
 # Representar el entorno del laberinto
 class Maze(gym.Env):
@@ -117,8 +124,8 @@ if __name__ == "__main__":
     maze = [
     ["E", 0, 1, 0, 0, 0, 0, 0],
     [0, 0, 1, 0, 1, 0, 1, 0],
-    [0, 0, 1, 0, 1, 0, 1, 0],
-    [0, 0, 0, 0, 1, 0, "S", 0],
+    [0, 0, 1, 0, 1, 0, 1, 1],
+    [0, 0, 0, 0, 1, 1, "S", 1],
     [1, 0, 1, 1, 1, 1, 1, 0],
     [0, 0, 0, 0, 0, 0, 1, 0],
     [0, 1, 1, 1, 1, 1, 1, 0],
