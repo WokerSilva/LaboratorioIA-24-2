@@ -1,7 +1,8 @@
 \documentclass[a4paper,12pt]{article} 
 \usepackage[utf8]{inputenc} % Acentos válidos sin problemas
 \usepackage[spanish]{babel} % Idioma
-
+\usepackage{algorithm}
+\usepackage{algorithmic}
 \usepackage[backend=biber, style=alphabetic, sorting=ynt]{biblatex}
 \bibliography{bibliografia.bib}
 \nocite{*} % Añade todas las referencias de bib sin cita
@@ -14,6 +15,142 @@
 \input{portada}
 
 \newpage
+% ------------------------------------------------------------------------------|
+% -----------------------------------------------------------------------------|
+% ----------------------------------------------------------------------------|
+\section{Backtracking}
+% Media Cuartilla de investigación sobre origen, uso y aplicaciones
+Backtracking es una técnica algorítmica para hacer una búsqueda exhaustiva y sistemática por todas 
+las configuraciones posibles del espacio de búsqueda del problema, para encontrar el resultado 
+definido por el problema. El término \textit{backtrack} fue acuñado por primera vez por el matemático 
+estadounidense D. H. Lehmer en la década de 1950. \\
+
+En general, la forma de actuar consiste en elegir una alternativa del conjunto de opciones en cada 
+etapa del proceso de resolución, y si esta elección no funciona (no nos lleva a ninguna solución), 
+la búsqueda vuelve al punto donde se realizó esa elección, e intenta con otro valor. Cuando se han 
+agotado todos los posibles valores en ese punto, la búsqueda vuelve a la anterior fase en la que se 
+hizo otra elección entre valores. Si no hay más puntos de elección, la búsqueda finaliza.\\
+
+Se suele aplicar en la resolución de un gran número de problemas, muy especialmente en los de decisión y optimización:
+\begin{itemize}
+    \item \textbf{Problemas de decisión:} Búsqueda de las soluciones que satisfacen ciertas restricciones.
+    
+    \textit{Ejemplo:} Problema de las N-Reinas.
+
+    \item \textbf{Problemas de optimización:} Búsqueda de la mejor solución en base a una función objetivo.
+
+    \textit{Ejemplo:} Problema de la mochila.
+\end{itemize}
+
+Sus ventajas y desventajas son:
+
+\begin{itemize}
+    \item \textbf{Ventajas:}
+    \begin{itemize}
+        \item Si existe una solución, la calcula.
+        \item Es un esquema sencillo de implementar.
+        \item Adaptable a las características especificas de cada problema.
+    \end{itemize}
+
+    \item \textbf{Desventajas:}
+    \begin{itemize}
+        \item Coste exponencial en la mayoría de los casos.
+        \item Si el espacio de búsqueda es infinito, la solución, aunque exista, no se encontrará nunca.
+        \item Por termino medio consume mucha memoria al tener que almacenar las llamadas recursivas.
+    \end{itemize}
+\end{itemize}
+
+
+
+% ------------------------------------------------------------------------------|
+% -----------------------------------------------------------------------------|
+% ----------------------------------------------------------------------------|
+\section{Algoritmos similares}
+% Media Cuartilla de investigación sobre la relación con otras soluciones
+Algunos algoritmos que utilizan estrategias similares a Backtracking son:
+
+\begin{itemize}
+    \item \textbf{Branch and Bound:} Este realiza un recorrido sistemático del árbol de 
+    estados de un problema, si bien ese recorrido no tiene por qué ser en profundidad, 
+    como sucedía en backtracking: usaremos una estrategia de ramificación. 
+    Aquí se utilizan técnicas de poda para poder eliminar aquellos nodos que no 
+    lleven a soluciones óptimas.
+    
+    \item \textbf{Depth-First Search (DFS):} Este es un algoritmo de búsqueda no 
+    informada, lo que hace primero es proporcionar los pasos para atravesar todos los 
+    nodos de un gráfico sin repetir ningún nodo.
+    
+    \item \textbf{Breadth-First Search (BFS):}Es un algoritmo para atravesar o buscar 
+    estructuras de datos de árboles. Comienza en la raíz del árbol (o algún nodo 
+    arbitrario, en ocasiones denominado como:clave de búsqueda) y explora primero 
+    los nodos vecinos antes de pasar a los vecinos del siguiente nivel.
+    
+    \item \textbf{A* (A estrella):} A* combina la búsqueda heurística con la búsqueda 
+    informada para encontrar la solución más eficiente en problemas de ruta. Aunque 
+    difiere del backtracking, comparten el objetivo de encontrar soluciones en un 
+    espacio de búsqueda.
+\end{itemize}
+
+
+% ------------------------------------------------------------------------------|
+% -----------------------------------------------------------------------------|
+% ----------------------------------------------------------------------------|
+\section{Pseudocódigo}
+\begin{algorithm}
+\caption{solve(env)}
+\begin{algorithmic}
+\STATE $actions \gets [(0, -1), (0, 1), (-1, 0), (1, 0)]$  \COMMENT{arriba, abajo, izquierda, derecha}
+
+\STATE \textbf{función} backtrack$(x, y, path):$
+\IF{$x < 0$ \textbf{or} $x \geq env.height$ \textbf{or} $y < 0$ \textbf{or} $y \geq env.width$ \textbf{or} $env.maze[x][y] == 1$ \textbf{or} $(x, y)$ in $path$}
+\RETURN \textbf{False}
+\ENDIF
+
+\STATE $path$.append$(x, y)$
+
+\IF{$env.maze[x][y] == "S"$}
+\STATE \textbf{print}("Encontré la salida :D")
+\RETURN \textbf{True}
+\ENDIF
+
+\FOR{$action$ \textbf{in} $range(env.action\_space.n):$}
+\IF{backtrack$(x + actions[action][0], y + actions[action][1], path)$}
+\RETURN \textbf{True}
+\ENDIF
+\ENDFOR
+
+\STATE $path$.pop()
+\RETURN \textbf{False}
+\ENDSTATE
+
+\STATE $start\_x, start\_y \gets env.find\_start()$
+\STATE $path \gets []$
+\IF{backtrack$(start\_x, start\_y, path)$}
+\STATE \textbf{print}("La ruta es:")
+\FOR{$i, pos$ \textbf{in} enumerate($path$):}
+\STATE $x, y \gets pos$
+\STATE $direction \gets ""$
+\IF{$i > 0$:}
+\STATE \COMMENT{Comparar la posición actual con la anterior para determinar la dirección}
+\STATE $prev\_pos \gets path[i - 1]$
+\IF{$x < prev\_pos[0]:$}
+\STATE $direction \gets "arriba"$
+\ELSIF{$x > prev\_pos[0]:$}
+\STATE $direction \gets "abajo"$
+\ELSIF{$y < prev\_pos[1]:$}
+\STATE $direction \gets "izquierda"$
+\ELSIF{$y > prev\_pos[1]:$}
+\STATE $direction \gets "derecha"$
+\ENDIF
+\ENDIF
+\STATE \textbf{print}(f"Posición: {pos}, Dirección: {dirección}")
+\ENDFOR
+\ELSE   
+\STATE \textbf{print}("¡No encontré la salida!")
+\ENDIF
+\end{algorithmic}
+\end{algorithm}
+
 
 % ------------------------------------------------------------------------------|
 % -----------------------------------------------------------------------------|
@@ -364,6 +501,9 @@ Como extra hemos añadido 5 laberintos para ejecutar nuestras pruebas
 Hemos realizado pruebas con dos entradas y dos salidas dentro del laberinto, los resultados son 
 que si hay solución nos devuelve el recorrido que encuentre primero, es decir, la entrada que 
 encuentre primero es la que toma así como la salida. 
+
+
+
 
 % ----------------------|
 % Referencias           |
