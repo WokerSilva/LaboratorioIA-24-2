@@ -1,20 +1,11 @@
-# -*- coding: utf-8 -*-
 """
 PRACTICA 02: Agentes Inteligentes
 
 El labrinto tiene las siguientes especificaciones
 * 0 es un espacio libre
-* 1 es un obstáculo
+* 1 es un obstáculo (unico)
 * E es la entrada del laberinto
 * S es la salida del laberinto
-"""
-
-"""
-gym: Librería de Python desarrollada por OpenAI, nos permite implementar diferentes algoritmos de aprendizaje por refuerzo y simular la interacción entre agentes y entornos.
-"""
-
-"""
-spaces: Define el formato válido de los espacios de observación y acción para un entorno.
 """
 
 import gym
@@ -31,18 +22,18 @@ class Maze(gym.Env):
         self.action_space = spaces.Discrete(4)  # Espacio de acción del agente: arriba, abajo, izquierda, derecha
         self.observation_space = spaces.Discrete(self.height * self.width)  # Espacio de observación (posibles estados que el agente puede observar del entorno)
         self.agent_pos = None  # Posición inicial 
-        self.done = False  # Indica si el episodio ha terminado (interacciones entre el agente y el entorno )
+        self.done = False  # Indica si el recorrido ha terminado (interacciones entre el agente y el entorno )
     
     # Reinicia el entorno a su estado inicial y devuelve la posición inicial del agente.
     def reset(self):
         self.agent_pos = self.find_start() # Se busca la posición de inicio en el laberinto
-        self.done = False  # Reinicia el estado de finalización del episodio
+        self.done = False  # Reinicia el estado de finalización del recorrido
         return self.agent_pos
 
     # Toma una acción y se mueve un paso en el entorno.
     def step(self, action):
         if self.done:
-            # Si el episodio ya ha terminado, regresamos a la posición actual
+            # Si el recorrido ya ha terminado, regresamos a la posición actual
             return self.agent_pos, 0, True, {}
 
         x, y = self.agent_pos
@@ -75,7 +66,7 @@ class Maze(gym.Env):
             for j in range(self.width):
                 if self.maze[i][j] == "E":
                     return (i, j)
-        raise ValueError("No se pudo encontrar el punto de inicio 'E' en el laberinto")
+        return None # Solucionando caso donde no encuentre la entrada
 
 # Encuentra la salida usando backtracking
 def solve(env):
@@ -116,21 +107,21 @@ def solve(env):
                     direction = "izquierda"
                 elif y > prev_pos[1]:
                     direction = "derecha"
-            print(f"Posición: {pos}, Dirección: {direction}")
+            print(f"Posición: {pos}, Dirección: {direction}")        
     else:
         print("iiiiii no encontré la salida")
 
 
 # Laberinto 01 CON SOLUCIÓN
 laberinto01 = [
-    ["E", 0, 1, 0,   0, 0, 0, 0],
-    [  0, 0, 1, 0,   1, 0, 1, 0],
-    [  0, 0, 1, 0, "S", 0, 1, 1],
-    [  0, 0, 0, 0,   1, 1, 0, 0],
-    [  1, 0, 1, 1,   1, 1, 1, 0],
-    [  0, 0, 0, 0,   0, 0, 1, 0],
-    [  0, 1, 1, 1,   1, 1, 1, 0],
-    [  0, 0, 0, 0,   0, 0, 0, 0]
+    [  1, 0, 0, 0,   0, 0,   0, 0],
+    [  0, 0, 1, 0,   1, 1,   0, 0],
+    [  0, 0, 1, 1, "S", 1,   0, 1],
+    [  0, 0, 0, 1,   0, 1,   0, 0],
+    [  1, 0, 1, 1,   0, 0,   0, 0],
+    [  0, 0, 0, 1,   1, 0,   0, 1],
+    [  0, 1, 1, 1,   1, 1,   1, 0],
+    [  0, 0, 0, 0,   0, 0, "E", 0]
 ]
 
 # Laberinto 02 CON SOLUCIÓN
@@ -178,18 +169,6 @@ laberinto05 = [
     [ 0, 0, 0, 0,   0, 0, 0, 0]
 ]
 
-# Laberinto 02 CON SOLUCION
-laberinto06 = [
-    ["E", 0, 0,   0, 0, 0, 0, 0],
-    [  0, 0, 1,   0, 1, 0, 1, 0],
-    [  0, 0, 1,   0, 1, 0, 1, 1],
-    [  0, 0, 0,   0, 1, 1, 1, 0],
-    [  1, 0, 1,   1, 1, 1, 1, 0],
-    [  0, 0, 0,   0, 0, 0, 0, 1],
-    [  0, 1, 1,   1, 0, 0, 0, 0],
-    [  0, 0, 2, "S", 0, 0, 1, 1]
-]
-
 # switch para elegir entre laberitos predefinidos
 def elegirLaberinto(nlaberinto):
     if nlaberinto == 1:
@@ -201,9 +180,7 @@ def elegirLaberinto(nlaberinto):
     elif nlaberinto == 4:
         return Maze(laberinto04)
     elif nlaberinto == 5:
-        return Maze(laberinto05)
-    elif nlaberinto == 6:
-        return Maze(laberinto06)
+        return Maze(laberinto05)    
     else:
         raise ValueError("Laberinto no válido")
 
@@ -211,9 +188,16 @@ def elegirLaberinto(nlaberinto):
 def main():
     while True:
         try:
-            nlaberinto = int(input("Seleccione un laberinto escribiendo el número [1, 2, 3, 4, 5, 6]:  "))
+            nlaberinto = int(input("Seleccione un laberinto escribiendo el número [1, 2, 3, 4, 5]:  "))
             env = elegirLaberinto(nlaberinto)
-            solve(env)
+
+             # Verifica si se encontró la entrada para el agente
+            agent_pos = env.find_start()
+
+            if agent_pos is None:
+                print("No se encontró la entrada del agente en el laberinto.")
+            else:
+                solve(env) # Ejecutamos la solución al laberinto
             break
 
         except ValueError:

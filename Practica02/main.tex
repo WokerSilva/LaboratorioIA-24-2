@@ -59,17 +59,12 @@
 
 \subsubsection*{OpenAI gym}
 
-gym: Librería de Python desarrollada por OpenAI, nos permite implementar diferentes 
-algoritmos de aprendizaje por refuerzo y simular la interaccion entre agentes y entornos.
-
-spaces: Define el formato válido de los espacios de observación y accion para un entorno.
-
 Gym es una biblioteca Python de código abierto para desarrollar y comparar 
 algoritmos de aprendizaje por refuerzo al proporcionar una API estándar 
 para comunicarse entre algoritmos y entornos de aprendizaje, así como un 
 conjunto estándar de entornos compatibles con esa API. \cite{docGym} \\
 
-
+Spaces: Define el formato válido de los espacios de observación y accion para un entorno.\\
 
 Los problemas de aprendizaje por refuerzo consisten en el agente y 
 el entorno. El entorno proporciona retroalimentación al agente para 
@@ -272,13 +267,12 @@ False, no ha encontrado la salida y lo que hace es retroceder eliminando la posi
     \Large{Código extra}
 \end{center}
 
-Como extra hemos añadido 6 laberintos para ejecutar nuestras pruebas
-
+Como extra hemos añadido 5 laberintos para ejecutar nuestras pruebas
 
 \begin{minipage}[t]{8.2cm}
 \begin{lstlisting}[style=mystylepython, language=Python, caption= laberinto01]
     # Laberinto 01 CON SOLUCION
-laberinto01 = [
+    laberinto01 = [
     ["E", 0, 1, 0,   0, 0, 0, 0],
     [  0, 0, 1, 0,   1, 0, 1, 0],
     [  0, 0, 1, 0, "S", 0, 1, 1],
@@ -314,8 +308,7 @@ laberinto01 = [
     laberinto03 = [
         ["E", 1],
         [1, "S"]
-    ]
-    
+    ]    
 \end{lstlisting}
 \end{minipage}
 \hspace{9mm}
@@ -352,23 +345,25 @@ laberinto01 = [
     ]    
 \end{lstlisting}
 \end{minipage}
-\hspace{9mm}
-\begin{minipage}[t]{8.2cm}
-\begin{lstlisting}[style=mystylepython, language=Python, caption= laberinto06]
-    # Laberinto 02 CON SOLUCION
-    laberinto06 = [
-        ["E", 0, 0,   0, 0, 0, 0, 0],
-        [  0, 0, 1,   0, 1, 0, 1, 0],
-        [  0, 0, 1,   0, 1, 0, 1, 1],
-        [  0, 0, 0,   0, 1, 1, 1, 0],
-        [  1, 0, 1,   1, 1, 1, 1, 0],
-        [  0, 0, 0,   0, 0, 0, 0, 1],
-        [  0, 1, 1,   1, 0, 0, 0, 0],
-        [  0, 0, 2, "S", 0, 0, 1, 1]
-    ]
-\end{lstlisting}
-\end{minipage}
 
+\begin{center}
+    \Large{Pruebas en terminal}
+\end{center}
+
+\subsection*{Ejecución laberinto01}
+\begin{center}
+    \includegraphics[scale = .5]{IMA/ejecuciones1.png}
+\end{center}
+
+
+\subsection*{Ejecución laberinto02 - laberinto05}
+\begin{center}
+    \includegraphics[scale = .5]{IMA/ejecuciones25.png}
+\end{center}
+
+Hemos realizado pruebas con dos entradas y dos salidas dentro del laberinto, los resultados son 
+que si hay solución nos devuelve el recorrido que encuentre primero, es decir, la entrada que 
+encuentre primero es la que toma así como la salida. 
 
 % ----------------------|
 % Referencias           |
