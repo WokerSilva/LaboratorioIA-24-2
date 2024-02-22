@@ -14,7 +14,7 @@ Practica01/main.run.xml
 Practica01/src/venv
 Practica01/src/*.sqlite3
 
-## Ignorar los archivos generados por la compilación de LaTex en la Practica01
+## Ignorar los archivos generados por la compilación de LaTex en la Practica02
 Practica02/main.aux
 Practica02/main.bbl
 Practica02/main.bcf
@@ -22,3 +22,12 @@ Practica02/main.blg
 Practica02/main.log
 Practica02/main.out
 Practica02/main.run.xml
+
+## Ignorar los archivos generados por la compilación de LaTex en la Practica03
+Practica03/main.aux
+Practica03/main.bbl
+Practica03/main.bcf
+Practica03/main.blg
+Practica03/main.log
+Practica03/main.out
+Practica03/main.run.xml
