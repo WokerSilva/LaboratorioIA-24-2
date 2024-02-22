@@ -19,12 +19,18 @@
 % ----------------------------------------------------------------------------|
 \section{Backtracking}
 % Media Cuartilla de investigación sobre origen, uso y aplicaciones
-Backtracking es una técnica algorítmica para hacer una búsqueda exhaustiva y sistemática por todas las configuraciones posibles del espacio de búsqueda del problema, para encontrar el resultado definido por el problema.
-El término "backtrack" fue acuñado por primera vez por el matemático estadounidense D. H. Lehmer en la década de 1950.
+Backtracking es una técnica algorítmica para hacer una búsqueda exhaustiva y sistemática por todas 
+las configuraciones posibles del espacio de búsqueda del problema, para encontrar el resultado 
+definido por el problema. El término \textit{backtrack} fue acuñado por primera vez por el matemático 
+estadounidense D. H. Lehmer en la década de 1950. \\
 
-En general, la forma de actuar consiste en elegir una alternativa del conjunto de opciones en cada etapa del proceso de resolución, y si esta elección no funciona (no nos lleva a ninguna solución), la búsqueda vuelve al punto donde se realizó esa elección, e intenta con otro valor. Cuando se han agotado todos los posibles valores en ese punto, la búsqueda vuelve a la anterior fase en la que se hizo otra elección entre valores. Si no hay más puntos de elección, la búsqueda finaliza.
+En general, la forma de actuar consiste en elegir una alternativa del conjunto de opciones en cada 
+etapa del proceso de resolución, y si esta elección no funciona (no nos lleva a ninguna solución), 
+la búsqueda vuelve al punto donde se realizó esa elección, e intenta con otro valor. Cuando se han 
+agotado todos los posibles valores en ese punto, la búsqueda vuelve a la anterior fase en la que se 
+hizo otra elección entre valores. Si no hay más puntos de elección, la búsqueda finaliza.\\
 
-Se suele aplicar en la resolución de un gran número de problemas, muy especialmente en los de decisión y optimización.
+Se suele aplicar en la resolución de un gran número de problemas, muy especialmente en los de decisión y optimización:
 \begin{itemize}
     \item \textbf{Problemas de decisión:} Búsqueda de las soluciones que satisfacen ciertas restricciones.
     
@@ -63,17 +69,26 @@ Sus ventajas y desventajas son:
 Algunos algoritmos que utilizan estrategias similares a Backtracking son:
 
 \begin{itemize}
-    \item \textbf{Branch and Bound:} Este realiza un recorrido sistemático del árbol de estados de un problema, si bien ese recorrido no tiene por qué ser en profundidad, como sucedía en backtracking: usaremos una estrategia de ramificación. Aqui se utilizan tecnicas de poda para poder eliminar aquellos nodos que no lleven a solucines óptimas.
+    \item \textbf{Branch and Bound:} Este realiza un recorrido sistemático del árbol de 
+    estados de un problema, si bien ese recorrido no tiene por qué ser en profundidad, 
+    como sucedía en backtracking: usaremos una estrategia de ramificación. 
+    Aquí se utilizan técnicas de poda para poder eliminar aquellos nodos que no 
+    lleven a soluciones óptimas.
     
-    \item \textbf{Depth-First Search (DFS):} Este es un algoritmo de búsqueda no informada, lo que hace primero es proporcionar los pasos para atravesar todos los nodos de un gráfico sin repetir ningún nodo.
+    \item \textbf{Depth-First Search (DFS):} Este es un algoritmo de búsqueda no 
+    informada, lo que hace primero es proporcionar los pasos para atravesar todos los 
+    nodos de un gráfico sin repetir ningún nodo.
     
-    \item \textbf{Breadth-First Search (BFS):}Es un algoritmo para atravesar o buscar estructuras de datos de árboles. Comienza en la raíz del árbol (o algún nodo arbitrario, en ocasiones denominado como:clave de búsqueda) y explora primero los nodos vecinos antes de pasar a los vecinos del siguiente nivel.
+    \item \textbf{Breadth-First Search (BFS):}Es un algoritmo para atravesar o buscar 
+    estructuras de datos de árboles. Comienza en la raíz del árbol (o algún nodo 
+    arbitrario, en ocasiones denominado como:clave de búsqueda) y explora primero 
+    los nodos vecinos antes de pasar a los vecinos del siguiente nivel.
     
-    \item \textbf{A (A estrella):*} A* combina la búsqueda heurística con la búsqueda informada para encontrar la solución más eficiente en problemas de ruta. Aunque difiere del backtracking, comparten el objetivo de encontrar soluciones en un espacio de búsqueda.
+    \item \textbf{A* (A estrella):} A* combina la búsqueda heurística con la búsqueda 
+    informada para encontrar la solución más eficiente en problemas de ruta. Aunque 
+    difiere del backtracking, comparten el objetivo de encontrar soluciones en un 
+    espacio de búsqueda.
 \end{itemize}
-
-
-
 
 
 % ------------------------------------------------------------------------------|
