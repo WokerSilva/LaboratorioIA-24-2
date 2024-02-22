@@ -120,67 +120,104 @@ def solve(env):
     else:
         print("iiiiii no encontré la salida")
 
-if __name__ == "__main__":
-    maze = [
-    ["E", 0, 0, 0, 0, 0, 0, 0],
-    [1, 1, 1, 0, 1, 0, 1, 0],
-    [0, 0, 1, 0, 1, 0, 1, 1],
-    [0, 0, 0, 0, 0, 0, 1, 0],
-    [1, 0, 1, 1, 1, 0, 0, 0],
-    [0, 0, 0, 0, 0, 0, 0, 1],
-    [0, 1, 1, 1, 1, 1, 0, 0],
-    [0, 0, 0, "S", 1, 0, 1, 1]
+
+# Laberinto 01 CON SOLUCIÓN
+laberinto01 = [
+    ["E", 0, 1, 0,   0, 0, 0, 0],
+    [  0, 0, 1, 0,   1, 0, 1, 0],
+    [  0, 0, 1, 0, "S", 0, 1, 1],
+    [  0, 0, 0, 0,   1, 1, 0, 0],
+    [  1, 0, 1, 1,   1, 1, 1, 0],
+    [  0, 0, 0, 0,   0, 0, 1, 0],
+    [  0, 1, 1, 1,   1, 1, 1, 0],
+    [  0, 0, 0, 0,   0, 0, 0, 0]
 ]
 
-    env = Maze(maze)
-    solve(env)
-
-
-# Ejemplos
-"""
-    maze = [
-    ["E", 0, 1, 0, 0, 0, 0, 0],
-    [0, 0, 1, 0, 1, 0, 1, 0],
-    [0, 0, 1, 0, 1, 0, 1, 1],
-    [0, 0, 0, 0, 1, 1, "S", 0],
-    [1, 0, 1, 1, 1, 1, 1, 0],
-    [0, 0, 0, 0, 0, 0, 1, 0],
-    [0, 1, 1, 1, 1, 1, 1, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0]
+# Laberinto 02 CON SOLUCIÓN
+laberinto02 = [
+    ["E", 0, 0,   0, 0, 0, 0, 0],
+    [  0, 0, 1,   0, 1, 0, 1, 0],
+    [  0, 0, 1,   0, 1, 0, 1, 1],
+    [  0, 0, 0,   0, 1, 1, 1, 0],
+    [  1, 0, 1,   1, 1, 1, 1, 0],
+    [  0, 0, 0,   0, 0, 0, 0, 1],
+    [  0, 1, 1,   1, 0, 0, 0, 0],
+    [  0, 0, 0, "S", 0, 0, 1, 1]
 ]
-"""
 
-"""
-    maze = [
-    ["E", 0, 0, 0, 0, 0, 0, 0],
-    [0, 0, 1, 0, 1, 0, 1, 0],
-    [0, 0, 1, 0, 1, 0, 1, 1],
-    [0, 0, 0, 0, 1, 1, 1, 0],
-    [1, 0, 1, 1, 1, 1, 1, 0],
-    [0, 0, 0, 0, 0, 0, 0, 1],
-    [0, 1, 1, 1, 0, 0, 0, 0],
-    [0, 0, 0, "S", 0, 0, 1, 1]
-]
-"""
-
-"""
-    maze = [
-    ["E", 0, 1, 0, 0, 0, 0, 0],
-    [0, 0, 1, 0, 1, 0, 1, 0],
-    [0, 0, 1, 0, "S", 0, 1, 1],
-    [0, 0, 0, 0, 1, 1, 0, 0],
-    [1, 0, 1, 1, 1, 1, 1, 0],
-    [0, 0, 0, 0, 0, 0, 1, 0],
-    [0, 1, 1, 1, 1, 1, 1, 0],
-    [0, 0, 0, 0, 0, 0, 0, 0]
-]
-"""
-
-"""
-    maze = [
+# Laberinto 03 SIN SOLUCIÓN
+# No hay camino
+laberinto03 = [
     ["E", 1],
     [1, "S"]
 ]
-"""
 
+# Laberinto 04 SIN SOLUCIÓN
+# No hay salida
+laberinto04 = [
+    ["E", 0, 0, 0, 0, 0, 0, 0],
+    [  0, 0, 1, 0, 1, 0, 1, 0],
+    [  0, 0, 1, 0, 1, 0, 1, 1],
+    [  0, 0, 0, 0, 1, 1, 1, 0],
+    [  1, 0, 1, 1, 1, 1, 1, 0],
+    [  0, 0, 0, 0, 0, 0, 0, 1],
+    [  0, 1, 1, 1, 0, 0, 0, 0],
+    [  0, 0, 0, 1, 0, 0, 1, 1]
+]
 
+# Laberinto 05 SIN SOLUCIÓN
+# No hay entrada
+laberinto05 = [
+    [ 1, 0, 1, 0,   0, 0, 0, 0],
+    [ 0, 0, 1, 0,   1, 0, 1, 0],
+    [ 0, 0, 1, 0, "S", 0, 1, 1],
+    [ 0, 0, 0, 0,   1, 1, 0, 0],
+    [ 1, 0, 1, 1,   1, 1, 1, 0],
+    [ 0, 0, 0, 0,   0, 0, 1, 0],
+    [ 0, 1, 1, 1,   1, 1, 1, 0],
+    [ 0, 0, 0, 0,   0, 0, 0, 0]
+]
+
+# Laberinto 02 CON SOLUCION
+laberinto06 = [
+    ["E", 0, 0,   0, 0, 0, 0, 0],
+    [  0, 0, 1,   0, 1, 0, 1, 0],
+    [  0, 0, 1,   0, 1, 0, 1, 1],
+    [  0, 0, 0,   0, 1, 1, 1, 0],
+    [  1, 0, 1,   1, 1, 1, 1, 0],
+    [  0, 0, 0,   0, 0, 0, 0, 1],
+    [  0, 1, 1,   1, 0, 0, 0, 0],
+    [  0, 0, 2, "S", 0, 0, 1, 1]
+]
+
+# switch para elegir entre laberitos predefinidos
+def elegirLaberinto(nlaberinto):
+    if nlaberinto == 1:
+        return Maze(laberinto01)
+    elif nlaberinto == 2:
+        return Maze(laberinto02)
+    elif nlaberinto == 3:
+        return Maze(laberinto03)
+    elif nlaberinto == 4:
+        return Maze(laberinto04)
+    elif nlaberinto == 5:
+        return Maze(laberinto05)
+    elif nlaberinto == 6:
+        return Maze(laberinto06)
+    else:
+        raise ValueError("Laberinto no válido")
+
+# Main del programa
+def main():
+    while True:
+        try:
+            nlaberinto = int(input("Seleccione un laberinto escribiendo el número [1, 2, 3, 4, 5, 6]:  "))
+            env = elegirLaberinto(nlaberinto)
+            solve(env)
+            break
+
+        except ValueError:
+            print("Por favor, ingrese una opción válida:")
+
+if __name__ == "__main__":
+    main()

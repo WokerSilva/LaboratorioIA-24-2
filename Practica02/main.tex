@@ -220,7 +220,7 @@ Recursivamente llamamos a \texttt{backtrack} para iterar sobre todos los movimie
 la posición actual. Busca los caminos y si no llega a la salida retrocede con el \texttt{path.pop()}. Y como 
 antes lo explicábamos en el método buscamos la poción inicial, la usamos para encontrar la $x$ y $y$ y se las
 pasamos al método \texttt{backtrack}, de esta forma de itera para ir imprimiendo la ruta que siguió el 
-agente o si no hay solución nos lo hace saber el programa. 
+agente o si no hay SOLUCION nos lo hace saber el programa. 
 
 \begin{lstlisting}[style=mystylepython, language=Python, caption= algoritmo backtracking]
             if env.maze[x][y] == "S":
@@ -266,6 +266,109 @@ False, no ha encontrado la salida y lo que hace es retroceder eliminando la posi
 \begin{lstlisting}[style=mystylepython, language=Python, caption= algoritmo backtracking]
     if backtrack(x + actions[action][0], y + actions[action][1], path):
 \end{lstlisting}
+
+
+\begin{center}
+    \Large{Código extra}
+\end{center}
+
+Como extra hemos añadido 6 laberintos para ejecutar nuestras pruebas
+
+
+\begin{minipage}[t]{8.2cm}
+\begin{lstlisting}[style=mystylepython, language=Python, caption= laberinto01]
+    # Laberinto 01 CON SOLUCION
+laberinto01 = [
+    ["E", 0, 1, 0,   0, 0, 0, 0],
+    [  0, 0, 1, 0,   1, 0, 1, 0],
+    [  0, 0, 1, 0, "S", 0, 1, 1],
+    [  0, 0, 0, 0,   1, 1, 0, 0],
+    [  1, 0, 1, 1,   1, 1, 1, 0],
+    [  0, 0, 0, 0,   0, 0, 1, 0],
+    [  0, 1, 1, 1,   1, 1, 1, 0],
+    [  0, 0, 0, 0,   0, 0, 0, 0]
+]
+\end{lstlisting}
+\end{minipage}
+\hspace{9mm}
+\begin{minipage}[t]{8.2cm}
+\begin{lstlisting}[style=mystylepython, language=Python, caption= laberinto02]
+    # Laberinto 02 CON SOLUCION
+    laberinto02 = [
+        ["E", 0, 0,   0, 0, 0, 0, 0],
+        [  0, 0, 1,   0, 1, 0, 1, 0],
+        [  0, 0, 1,   0, 1, 0, 1, 1],
+        [  0, 0, 0,   0, 1, 1, 1, 0],
+        [  1, 0, 1,   1, 1, 1, 1, 0],
+        [  0, 0, 0,   0, 0, 0, 0, 1],
+        [  0, 1, 1,   1, 0, 0, 0, 0],
+        [  0, 0, 0, "S", 0, 0, 1, 1]
+    ]
+\end{lstlisting}
+\end{minipage} \\
+
+\begin{minipage}[t]{8.2cm}
+\begin{lstlisting}[style=mystylepython, language=Python, caption= laberinto03]
+    # Laberinto 03 SIN SOLUCION
+    # No hay camino
+    laberinto03 = [
+        ["E", 1],
+        [1, "S"]
+    ]
+    
+\end{lstlisting}
+\end{minipage}
+\hspace{9mm}
+\begin{minipage}[t]{8.2cm}
+\begin{lstlisting}[style=mystylepython, language=Python, caption= laberinto04]
+    # Laberinto 04 SIN SOLUCION
+    # No hay salida
+    laberinto04 = [
+        ["E", 0, 0, 0, 0, 0, 0, 0],
+        [  0, 0, 1, 0, 1, 0, 1, 0],
+        [  0, 0, 1, 0, 1, 0, 1, 1],
+        [  0, 0, 0, 0, 1, 1, 1, 0],
+        [  1, 0, 1, 1, 1, 1, 1, 0],
+        [  0, 0, 0, 0, 0, 0, 0, 1],
+        [  0, 1, 1, 1, 0, 0, 0, 0],
+        [  0, 0, 0, 1, 0, 0, 1, 1]
+    ]
+\end{lstlisting}
+\end{minipage} \\ 
+
+\begin{minipage}[t]{8.2cm}
+\begin{lstlisting}[style=mystylepython, language=Python, caption= laberinto05]
+    # Laberinto 05 SIN SOLUCION
+    # No hay entrada
+    laberinto05 = [
+        [ 1, 0, 1, 0,   0, 0, 0, 0],
+        [ 0, 0, 1, 0,   1, 0, 1, 0],
+        [ 0, 0, 1, 0, "S", 0, 1, 1],
+        [ 0, 0, 0, 0,   1, 1, 0, 0],
+        [ 1, 0, 1, 1,   1, 1, 1, 0],
+        [ 0, 0, 0, 0,   0, 0, 1, 0],
+        [ 0, 1, 1, 1,   1, 1, 1, 0],
+        [ 0, 0, 0, 0,   0, 0, 0, 0]
+    ]    
+\end{lstlisting}
+\end{minipage}
+\hspace{9mm}
+\begin{minipage}[t]{8.2cm}
+\begin{lstlisting}[style=mystylepython, language=Python, caption= laberinto06]
+    # Laberinto 02 CON SOLUCION
+    laberinto06 = [
+        ["E", 0, 0,   0, 0, 0, 0, 0],
+        [  0, 0, 1,   0, 1, 0, 1, 0],
+        [  0, 0, 1,   0, 1, 0, 1, 1],
+        [  0, 0, 0,   0, 1, 1, 1, 0],
+        [  1, 0, 1,   1, 1, 1, 1, 0],
+        [  0, 0, 0,   0, 0, 0, 0, 1],
+        [  0, 1, 1,   1, 0, 0, 0, 0],
+        [  0, 0, 2, "S", 0, 0, 1, 1]
+    ]
+\end{lstlisting}
+\end{minipage}
+
 
 % ----------------------|
 % Referencias           |
