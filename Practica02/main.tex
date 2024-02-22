@@ -1,7 +1,8 @@
 \documentclass[a4paper,12pt]{article} 
 \usepackage[utf8]{inputenc} % Acentos válidos sin problemas
 \usepackage[spanish]{babel} % Idioma
-
+\usepackage{algorithm}
+\usepackage{algorithmic}
 \usepackage[backend=biber, style=alphabetic, sorting=ynt]{biblatex}
 \bibliography{bibliografia.bib}
 \nocite{*} % Añade todas las referencias de bib sin cita
@@ -95,21 +96,60 @@ Algunos algoritmos que utilizan estrategias similares a Backtracking son:
 % -----------------------------------------------------------------------------|
 % ----------------------------------------------------------------------------|
 \section{Pseudocódigo}
-% Agregar un pseudocódigo sobre el algoritmo
-% ----------------------------------------------------------------------------\
-% -----------------------------------------------------------------------------\
-% ------------------------------------------------------------------------------\
+\begin{algorithm}
+\caption{solve(env)}
+\begin{algorithmic}
+\STATE $actions \gets [(0, -1), (0, 1), (-1, 0), (1, 0)]$  \COMMENT{arriba, abajo, izquierda, derecha}
 
-\begin{verbatim}
-    # aquí va el código 
-\end{verbatim}
+\STATE \textbf{función} backtrack$(x, y, path):$
+\IF{$x < 0$ \textbf{or} $x \geq env.height$ \textbf{or} $y < 0$ \textbf{or} $y \geq env.width$ \textbf{or} $env.maze[x][y] == 1$ \textbf{or} $(x, y)$ in $path$}
+\RETURN \textbf{False}
+\ENDIF
 
+\STATE $path$.append$(x, y)$
 
+\IF{$env.maze[x][y] == "S"$}
+\STATE \textbf{print}("Encontré la salida :D")
+\RETURN \textbf{True}
+\ENDIF
 
+\FOR{$action$ \textbf{in} $range(env.action\_space.n):$}
+\IF{backtrack$(x + actions[action][0], y + actions[action][1], path)$}
+\RETURN \textbf{True}
+\ENDIF
+\ENDFOR
 
+\STATE $path$.pop()
+\RETURN \textbf{False}
+\ENDSTATE
 
-
-
+\STATE $start\_x, start\_y \gets env.find\_start()$
+\STATE $path \gets []$
+\IF{backtrack$(start\_x, start\_y, path)$}
+\STATE \textbf{print}("La ruta es:")
+\FOR{$i, pos$ \textbf{in} enumerate($path$):}
+\STATE $x, y \gets pos$
+\STATE $direction \gets ""$
+\IF{$i > 0$:}
+\STATE \COMMENT{Comparar la posición actual con la anterior para determinar la dirección}
+\STATE $prev\_pos \gets path[i - 1]$
+\IF{$x < prev\_pos[0]:$}
+\STATE $direction \gets "arriba"$
+\ELSIF{$x > prev\_pos[0]:$}
+\STATE $direction \gets "abajo"$
+\ELSIF{$y < prev\_pos[1]:$}
+\STATE $direction \gets "izquierda"$
+\ELSIF{$y > prev\_pos[1]:$}
+\STATE $direction \gets "derecha"$
+\ENDIF
+\ENDIF
+\STATE \textbf{print}(f"Posición: {pos}, Dirección: {dirección}")
+\ENDFOR
+\ELSE   
+\STATE \textbf{print}("¡No encontré la salida!")
+\ENDIF
+\end{algorithmic}
+\end{algorithm}
 
 
 % ------------------------------------------------------------------------------|
