@@ -31,3 +31,12 @@ Practica03/main.blg
 Practica03/main.log
 Practica03/main.out
 Practica03/main.run.xml
+
+## Ignorar los archivos generados por la compilación de LaTex en la Practica04
+Practica04/main.aux
+Practica04/main.bbl
+Practica04/main.bcf
+Practica04/main.blg
+Practica04/main.log
+Practica04/main.out
+Practica04/main.run.xml
