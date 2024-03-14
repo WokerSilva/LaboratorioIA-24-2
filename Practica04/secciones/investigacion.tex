@@ -5,44 +5,49 @@
 \subsection*{Introducción}
 % -------------------------------------------------------------\
 % --------------------------------------------------------------\
-
+El algoritmo $A^{*}$, concebido en 1968 por Peter Hart, Nils Nilsson, y Bertram Raphael, se erige como un pilar en la búsqueda de caminos dentro del vasto dominio de la inteligencia artificial. Este algoritmo trasciende la simpleza de métodos tradicionales, como la Búsqueda en Anchura (BFS) y la Búsqueda en Profundidad (DFS), mediante la incorporación de una función heurística. Esta heurística orienta la exploración hacia el objetivo de manera eficiente, optimizando el trayecto en términos de coste y distancia. Su versatilidad le permite adaptarse a una amplia gama de aplicaciones, desde la conducción autónoma y la robótica hasta la generación de rutas en videojuegos y aplicaciones de mapeo geográfico.
 % --------------------------------------------------------------\
 % -------------------------------------------------------------\
 \subsection*{Algoritmo $A^{*}$ vs BFS}
 % -------------------------------------------------------------\
 % --------------------------------------------------------------\
-
-
+A diferencia de la Búsqueda en Anchura (BFS), que adopta un enfoque no ponderado y equitativo en su exploración —expandiendo todos los nodos vecinos con igual prioridad—, el algoritmo $A^{*}$ introduce una estrategia de búsqueda ponderada. Esta estrategia se centra en minimizar una función de coste \(f(n) = g(n) + h(n)\), donde \(g(n)\) representa el coste exacto desde el nodo inicial hasta el nodo \(n\), y \(h(n)\) es la heurística que estima el coste mínimo desde \(n\) hasta el objetivo. Esta dualidad permite a $A^{*}$ explorar de forma selectiva aquellos caminos que parecen más prometedores, reduciendo significativamente el volumen de cálculo y garantizando la identificación del trayecto óptimo.
 % --------------------------------------------------------------\
 % -------------------------------------------------------------\
 \subsection{Ventajas}
 % -------------------------------------------------------------\
 % --------------------------------------------------------------\
-
+\begin{itemize}
+    \item \textbf{Optimalidad y Complejidad:} $A^{*}$ garantiza encontrar la ruta más corta hacia el objetivo, siempre que la heurística empleada sea admisible y consistente. Esta característica lo distingue como un algoritmo de búsqueda óptima.
+    \item \textbf{Eficiencia:} Al priorizar nodos basándose en el coste total estimado \(f(n)\), $A^{*}$ es capaz de descartar rutas menos prometedoras de manera precoz, agilizando la consecución de su meta.
+    \item \textbf{Flexibilidad Heurística:} La posibilidad de adaptar la heurística \(h(n)\) según las particularidades del problema permite una optimización específica del rendimiento de búsqueda.
+\end{itemize}
 % --------------------------------------------------------------\
 % -------------------------------------------------------------\
 \subsection{Desventajas}
 % -------------------------------------------------------------\
 % --------------------------------------------------------------\
-
-
-
+\begin{itemize}
+    \item \textbf{Dependencia Heurística:} La eficacia del algoritmo está intrínsecamente ligada a la calidad de la heurística \(h(n)\). Una heurística pobre puede resultar en una exploración ineficiente y un mayor consumo de recursos.
+    \item \textbf{Requerimientos de Memoria:} El mantenimiento de las listas abierta y cerrada, especialmente en espacios de búsqueda vastos, puede conducir a un elevado consumo de memoria, superando en ocasiones a alternativas más simples como BFS.
+\end{itemize}
 % --------------------------------------------------------------\
 % -------------------------------------------------------------\
 \section{Distancia Manhattan}
 % -------------------------------------------------------------\
 % --------------------------------------------------------------\
-
+La elección de la distancia Manhattan como heurística en la implementación de $A^{*}$ se fundamenta en su capacidad para estimar costes de manera coherente y admisible en entornos cuadriculados, donde los movimientos están restringidos a las direcciones cardinales. Esta simplicidad y eficacia la convierten en una heurística ideal para muchos escenarios de búsqueda en laberintos y grillas.
 % --------------------------------------------------------------\
 % -------------------------------------------------------------\
 \subsection*{Pseudocódigo}
 % -------------------------------------------------------------\
 % --------------------------------------------------------------\
-
-
-
-
-
+\begin{verbatim}
+    función distancia_manhattan(nodo_actual, nodo_objetivo):
+        diferencia_x = abs(nodo_actual.x - nodo_objetivo.x)
+        diferencia_y = abs(nodo_actual.y - nodo_objetivo.y)
+        return diferencia_x + diferencia_y
+    \end{verbatim}
 % --------------------------------------------------------------\
 % ------------------------------SINO SE HACE ELIMINAR ESTA PARTE\
 \section{Posible otra heuristica}
