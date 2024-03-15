@@ -1,2 +1,68 @@
 \section{Documentación}
 
+\subsection*{Pseudocódigo}
+
+\textbf{Es importante mencionar que el algoritmo que la ayudante Tania presentó en su clase grabada fue el que utilizamos para implementar el algoritmo.}
+
+\textbf{En pseudocódigo se vería de la siguiente forma:}
+\\
+\textbf{Entrada:} Posición inicial, posición objetivo
+
+\textbf{Salida:} Camino desde la posición inicial hasta la posición objetivo
+
+\textbf{Variables:}
+
+\begin{itemize}
+    \item \texttt{lista\_cerrada}: Lista de nodos ya examinados
+    \item \texttt{lista\_abierta}: Lista de nodos por examinar
+    \item \texttt{nodo\_actual}: Nodo actual que se está evaluando
+    \item \texttt{vecino}: Cada uno de los vecinos del nodo actual
+\end{itemize}
+
+\textbf{Algoritmo:}
+
+\begin{enumerate}
+    \item \textbf{Inicializar:}
+        \begin{itemize}
+            \item \texttt{lista\_cerrada} vacía
+            \item Agregar nodo inicial a \texttt{lista\_abierta}
+        \end{itemize}
+        
+    \item \textbf{Mientras} \texttt{lista\_abierta} no esté vacía:
+        \begin{enumerate}
+            \item \textbf{Obtener} \textit{nodo\_actual} con el menor valor de $f$ de \texttt{lista\_abierta}
+            \item \textbf{Eliminar} \texttt{nodo\_actual} de \texttt{lista\_abierta}
+            \item \textbf{Agregar} \texttt{nodo\_actual} a \texttt{lista\_cerrada}
+            \item \textbf{Obtener vecinos} de \texttt{nodo\_actual}
+            \item \textbf{Para cada vecino:}
+                \begin{itemize}
+                    \item \textbf{Si} vecino es la posición objetivo:
+                    
+                        \begin{itemize}
+                            \item \textbf{Retornar camino} desde \texttt{nodo\_actual}
+                        \end{itemize}
+                    \item \textbf{Calcular} $g$ del vecino
+                    \item \textbf{Calcular} $h$ del vecino
+                    \item \textbf{Calcular} $f$ del vecino
+                    \item \textbf{Si} vecino ya está en \texttt{lista\_abierta} y $f$ del vecino en \texttt{lista\_abierta} es mayor:
+                        \begin{itemize}
+                            \item \textbf{Actualizar} $f$ del vecino en \texttt{lista\_abierta}
+                            \item \textbf{Actualizar} padre del vecino en \texttt{lista\_abierta}
+                        \end{itemize}
+                    \item \textbf{Si} vecino ya está en \texttt{lista\_cerrada} y $f$ del vecino en \texttt{lista\_cerrada} es mayor:
+                        \begin{itemize}
+                            \item \textbf{Eliminar} vecino de \texttt{lista\_cerrada}
+                            \item \textbf{Agregar} vecino a \texttt{lista\_abierta}
+                            \item \textbf{Actualizar} padre del vecino
+                        \end{itemize}
+                    \item \textbf{Si} vecino no está en ninguna lista:
+                        \begin{itemize}
+                            \item \textbf{Agregar} vecino a \texttt{lista\_abierta}
+                            \item \textbf{Actualizar} padre del vecino
+                        \end{itemize}
+                \end{itemize}
+        \end{enumerate}
+
+\end{enumerate}
+
+\textbf{Fin del algoritmo}
