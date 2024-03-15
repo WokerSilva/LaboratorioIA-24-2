@@ -114,51 +114,18 @@ reduciendo significativamente el volumen de cálculo y garantizando la identific
 % -------------------------------------------------------------\
 % --------------------------------------------------------------\
 
-La \textit{distancia de Manhattan} es una métrica que mide la distancia entre dos puntos en un espacio 
-euclidiano multidimensional, y esta basada en líneas paralelas a los ejes de coordenadas en lugar de 
-una línea recta, como puede ser un plano cartesiano, se emplea en inteligencia artificial y diversos 
-campos (que incluyen la teoría de grafos, geometría computacional y optimización).\\ 
+La \textit{distancia Manhattan} mide la distancia entre dos puntos en un espacio euclidiano multidimensional, y esta basada en líneas paralelas a los ejes de coordenadas en lugar de una línea recta, como puede ser un plano cartesiano, se emplea en inteligencia artificial y  en diversos campos que incluyen la teoría de grafos, geometría computacional y optimización.\\ 
+
+A esta distancia se le llama \textit{Manhattan} porque en una cuadrícula de calles  de ciudades como Manhattan, para ir de un punto a otro hay que moverse siguiendo las manzanas delimitadas por las calles horizontales y verticales en ángulos rectos.\\
+
+En el ámbito de la inteligencia artificial, se usa con frecuencia en algoritmos heurísticos como $A^{*}$ para resolver problemas de búsqueda de caminos, su uso principal es en situaciones donde el desplazamiento entre dos ubicaciones se limita a movimientos verticales u horizontales, como sucede en la planificación de rutas.\\
+
+Se puede usar en una app de mapas para hallar la ruta más corta desde donde estás hasta un punto específico en 
+una ciudad con calles que se cruzan formando cuadras. La \textit{distancia Manhattan} puede servir 
+como una guía para calcular la distancia que queda hasta llegar a tu destino, por ejemplo imagina que estás manejando en tu carro y tienes que ir desde un cruce $A$ hasta otro cruce $B$ en una ciudad con calles dispuestas en forma de cuadrícula. ¿Puedes determinar la \textit{distancia de Manhattan} entre $A$ y $B$ sumando el número de cuadras que necesitas recorrer en dirección horizontal y vertical para llegar de $A$ a $B$, sin considerar los obstáculos como edificios o restricciones de tráfico?\\ 
 
 
-En el ámbito de la inteligencia artificial, se usa con frecuencia en algoritmos heurísticos como $A^{*}$ 
-(A-estrella) para resolver problemas de búsqueda de caminos. El uso principal de esta medida es en 
-situaciones donde el desplazamiento entre dos ubicaciones se limita a movimientos verticales u 
-horizontales, como sucede en la planificación de rutas.\\ 
-
-
-La razón por la que se llama \textit{Manhattan} a esta distancia es porque, en una cuadrícula de calles 
-de ciudades como Manhattan, para ir de un punto a otro hay que moverse siguiendo las manzanas 
-delimitadas por las calles horizontales y verticales en ángulos rectos. Entonces la distancia de 
-\textit{Manhattan} es una medida básica en inteligencia artificial, especialmente para resolver 
-problemas de búsqueda de rutas y planificación, gracias a su simpleza y eficacia en escenarios con 
-movimientos restringidos a líneas rectas horizontales y verticales.\\ 
-
-
-Planear rutas en entornos urbanos, especialmente en ciudades con calles ortogonales como Nueva York,
-es un ejemplo de uso real de la distancia de Manhattan como heurística. Por ejemplo: Se puede usar 
-en una app de mapas para hallar la ruta más corta desde donde estás hasta un punto específico en 
-una ciudad con calles que se cruzan formando cuadras. \textit{distancia de Manhattan} puede servir 
-como una guía para calcular la distancia que queda hasta llegar a tu destino.\\ 
-
-
-O imagina que estás manejando en tu carro y tienes que ir desde un cruce $A$ hasta otro cruce $B$ 
-en una ciudad con calles dispuestas en forma de cuadrícula. ¿Puedes determinar la 
-\textit{distancia de Manhattan} entre $A$ y $B$ sumando el número de cuadras que necesitas recorrer 
-en dirección horizontal y vertical para llegar de $A$ a $B$, sin considerar los obstáculos como 
-edificios o restricciones de tráfico?\\ 
-
-
-La distancia de Manhattan proporciona una estimación precisa del recorrido necesario en automóvil,
-ya que las rutas siguen generalmente un patrón de calles y avenidas en ángulos rectos. A pesar de
-que en la práctica puedan existir variaciones debido a las limitaciones del tráfico o la disposición
-exacta de las calles, la distancia de Manhattan aún es una buena aproximación y puede ayudar a los 
-sistemas de mapas para calcular rutas eficientes. \\ 
-
-Así que, la distancia de Manhattan es empleada en aplicaciones de mapas y navegación como una 
-heurística para estimar el tiempo y la distancia restante hasta un destino en entornos urbanos 
-donde las calles siguen una disposición de cuadrícula ortogonal. Ayuda a los conductores a tomar 
-decisiones informadas sobre sus rutas y permite que las aplicaciones de navegación calculen rutas 
-óptimas de manera más eficiente.\\ 
+La distancia Manhattan proporciona una estimación precisa del recorrido necesario en automóvil, ya que las rutas siguen generalmente un patrón de calles y avenidas en ángulos rectos. A pesar de que en la práctica puedan existir variaciones debido a las limitaciones del tráfico o la disposición exacta de las calles, aún es una buena aproximación y puede ayudar a los sistemas de mapas para calcular rutas eficientes y ayuda a los conductores a tomar decisiones informadas sobre sus rutas.\\
 
 
 La fórmula para calcular la distancia de Manhattan entre dos puntos $A(x_1, y_1)$ y $B(x_2,y_2)$,
