@@ -5,70 +5,143 @@
 \subsection*{Introducción}
 % -------------------------------------------------------------\
 % --------------------------------------------------------------\
-El algoritmo $A^{*}$, concebido en 1968 por Peter Hart, Nils Nilsson, y Bertram Raphael, se erige como un pilar en la búsqueda de caminos dentro del vasto dominio de la inteligencia artificial. Este algoritmo trasciende la simpleza de métodos tradicionales, como la Búsqueda en Anchura (BFS) y la Búsqueda en Profundidad (DFS), mediante la incorporación de una función heurística. Esta heurística orienta la exploración hacia el objetivo de manera eficiente, optimizando el trayecto en términos de coste y distancia. Su versatilidad le permite adaptarse a una amplia gama de aplicaciones, desde la conducción autónoma y la robótica hasta la generación de rutas en videojuegos y aplicaciones de mapeo geográfico.
+
+El algoritmo $A^{*}$, concebido en 1968 por Peter Hart, Nils Nilsson, y Bertram Raphael, se erige como 
+un pilar en la búsqueda de caminos dentro del vasto dominio de la inteligencia artificial. Este 
+algoritmo trasciende la simpleza de métodos tradicionales, como la Búsqueda en Anchura (BFS) y la 
+Búsqueda en Profundidad (DFS), mediante la incorporación de una función heurística. Esta heurística 
+orienta la exploración hacia el objetivo de manera eficiente, optimizando el trayecto en términos de 
+coste y distancia. Su versatilidad le permite adaptarse a una amplia gama de aplicaciones, desde la 
+conducción autónoma y la robótica hasta la generación de rutas en videojuegos y aplicaciones de mapeo 
+geográfico.
+
+% --------------------------------------------------------------\
+% -------------------------------------------------------------\
+\subsection*{¿Cómo funciona?}
+% -------------------------------------------------------------\
+% --------------------------------------------------------------\
+
+
+
+
 % --------------------------------------------------------------\
 % -------------------------------------------------------------\
 \subsection*{Algoritmo $A^{*}$ vs BFS}
 % -------------------------------------------------------------\
 % --------------------------------------------------------------\
-A diferencia de la Búsqueda en Anchura (BFS), que adopta un enfoque no ponderado y equitativo en su exploración —expandiendo todos los nodos vecinos con igual prioridad—, el algoritmo $A^{*}$ introduce una estrategia de búsqueda ponderada. Esta estrategia se centra en minimizar una función de coste \(f(n) = g(n) + h(n)\), donde \(g(n)\) representa el coste exacto desde el nodo inicial hasta el nodo \(n\), y \(h(n)\) es la heurística que estima el coste mínimo desde \(n\) hasta el objetivo. Esta dualidad permite a $A^{*}$ explorar de forma selectiva aquellos caminos que parecen más prometedores, reduciendo significativamente el volumen de cálculo y garantizando la identificación del trayecto óptimo.
+
+A diferencia de la Búsqueda en Anchura (BFS), que adopta un enfoque no ponderado y equitativo en su 
+exploración expandiendo todos los nodos vecinos con igual prioridad, el algoritmo $A^{*}$ introduce 
+una estrategia de búsqueda ponderada. Esta estrategia se centra en minimizar una función de coste 
+\(f(n) = g(n) + h(n)\), donde \(g(n)\) representa el coste exacto desde el nodo inicial hasta el nodo 
+\(n\), y \(h(n)\) es la heurística que estima el coste mínimo desde \(n\) hasta el objetivo. Esta 
+dualidad permite a $A^{*}$ explorar de forma selectiva aquellos caminos que parecen más prometedores, 
+reduciendo significativamente el volumen de cálculo y garantizando la identificación del trayecto óptimo.
+
 % --------------------------------------------------------------\
 % -------------------------------------------------------------\
-\subsection{Ventajas}
-% -------------------------------------------------------------\
-% --------------------------------------------------------------\
-\begin{itemize}
-    \item \textbf{Optimalidad y Complejidad:} $A^{*}$ garantiza encontrar la ruta más corta hacia el objetivo, siempre que la heurística empleada sea admisible y consistente. Esta característica lo distingue como un algoritmo de búsqueda óptima.
-    \item \textbf{Eficiencia:} Al priorizar nodos basándose en el coste total estimado \(f(n)\), $A^{*}$ es capaz de descartar rutas menos prometedoras de manera precoz, agilizando la consecución de su meta.
-    \item \textbf{Flexibilidad Heurística:} La posibilidad de adaptar la heurística \(h(n)\) según las particularidades del problema permite una optimización específica del rendimiento de búsqueda.
-\end{itemize}
-% --------------------------------------------------------------\
-% -------------------------------------------------------------\
-\subsection{Desventajas}
+\subsection*{Ventajas}
 % -------------------------------------------------------------\
 % --------------------------------------------------------------\
 \begin{itemize}
-    \item \textbf{Dependencia Heurística:} La eficacia del algoritmo está intrínsecamente ligada a la calidad de la heurística \(h(n)\). Una heurística pobre puede resultar en una exploración ineficiente y un mayor consumo de recursos.
-    \item \textbf{Requerimientos de Memoria:} El mantenimiento de las listas abierta y cerrada, especialmente en espacios de búsqueda vastos, puede conducir a un elevado consumo de memoria, superando en ocasiones a alternativas más simples como BFS.
+    \item \textbf{Optimalidad y Complejidad:} $A^{*}$ garantiza encontrar la ruta más corta hacia el 
+                objetivo, siempre que la heurística empleada sea admisible y consistente. Esta 
+                característica lo distingue como un algoritmo de búsqueda óptima.
+    \item \textbf{Eficiencia:} Al priorizar nodos basándose en el coste total estimado \(f(n)\), $A^{*}$ 
+                es capaz de descartar rutas menos prometedoras de manera precoz, agilizando la 
+                consecución de su meta.
+    \item \textbf{Flexibilidad Heurística:} La posibilidad de adaptar la heurística \(h(n)\) según 
+                las particularidades del problema permite una optimización específica del 
+                rendimiento de búsqueda.
 \end{itemize}
+% --------------------------------------------------------------\
+% -------------------------------------------------------------\
+\subsection*{Desventajas}
+% -------------------------------------------------------------\
+% --------------------------------------------------------------\
+\begin{itemize}
+    \item \textbf{Dependencia Heurística:} La eficacia del algoritmo está intrínsecamente ligada 
+                a la calidad de la heurística \(h(n)\). Una heurística pobre puede resultar en 
+                una exploración ineficiente y un mayor consumo de recursos.
+    \item \textbf{Requerimientos de Memoria:} El mantenimiento de las listas abierta y cerrada,
+                especialmente en espacios de búsqueda vastos, puede conducir a un elevado 
+                consumo de memoria, superando en ocasiones a alternativas más simples como BFS.
+\end{itemize}
+
 % --------------------------------------------------------------\
 % -------------------------------------------------------------\
 \section{Distancia Manhattan}
 % -------------------------------------------------------------\
 % --------------------------------------------------------------\
 
-La "distancia de Manhattan" es una métrica que mide la distancia entre dos puntos en un espacio euclidiano multidimensional, y esta basada en líneas paralelas a los ejes de coordenadas en lugar de una línea recta, como puede ser un plano cartesiano, se emplea en inteligencia artificial y diversos campos (que incluyen la teoría de grafos, geometría computacional y optimización).
-
-En el ámbito de la inteligencia artificial, se usa con frecuencia en algoritmos heurísticos como A* (A-estrella) para resolver problemas de búsqueda de caminos. El uso principal de esta medida es en situaciones donde el desplazamiento entre dos ubicaciones se limita a movimientos verticales u horizontales, como sucede en la planificación de rutas.
-
-La razón por la que se llama "de Manhattan" a esta distancia es porque, en una cuadrícula de calles de ciudades como Manhattan, para ir de un punto a otro hay que moverse siguiendo las manzanas delimitadas por las calles horizontales y verticales en ángulos rectos.
-
-Entonces la distancia de Manhattan es una medida básica en inteligencia artificial, especialmente para resolver problemas de búsqueda de rutas y planificación, gracias a su simpleza y eficacia en escenarios con movimientos restringidos a líneas rectas horizontales y verticales.
-
-Planear rutas en entornos urbanos, especialmente en ciudades con calles ortogonales como Nueva York, es un ejemplo de uso real de la distancia de Manhattan como heurística.
-
-Por ejemplo: Se puede usar en una app de mapas para hallar la ruta más corta desde donde estás hasta un punto específico en una ciudad con calles que se cruzan formando cuadras. La distancia de Manhattan puede servir como una guía para calcular la distancia que queda hasta llegar a tu destino.
-
-O imagina que estás manejando en tu carro y tienes que ir desde un cruce A hasta otro cruce B en una ciudad con calles dispuestas en forma de cuadrícula. ¿Puedes determinar la distancia de Manhattan entre A y B sumando el número de cuadras que necesitas recorrer en dirección horizontal y vertical para llegar de A a B, sin considerar los obstáculos como edificios o restricciones de tráfico?
-
-La distancia de Manhattan proporciona una estimación precisa del recorrido necesario en automóvil, ya que las rutas siguen generalmente un patrón de calles y avenidas en ángulos rectos. A pesar de que en la práctica puedan existir variaciones debido a las limitaciones del tráfico o la disposición exacta de las calles, la distancia de Manhattan aún es una buena aproximación y puede ayudar a los sistemas de mapas para calcular rutas eficientes.
-
-Así que, la distancia de Manhattan es empleada en aplicaciones de mapas y navegación como una heurística para estimar el tiempo y la distancia restante hasta un destino en entornos urbanos donde las calles siguen una disposición de cuadrícula ortogonal. Ayuda a los conductores a tomar decisiones informadas sobre sus rutas y permite que las aplicaciones de navegación calculen rutas óptimas de manera más eficiente.
+La \textit{distancia de Manhattan} es una métrica que mide la distancia entre dos puntos en un espacio 
+euclidiano multidimensional, y esta basada en líneas paralelas a los ejes de coordenadas en lugar de 
+una línea recta, como puede ser un plano cartesiano, se emplea en inteligencia artificial y diversos 
+campos (que incluyen la teoría de grafos, geometría computacional y optimización).\\ 
 
 
-La fórmula para calcular la distancia de Manhattan entre dos puntos $A(x_1, y_1)$ y $B(x_2,y_2)$, en un espacio bidimensional es:
+En el ámbito de la inteligencia artificial, se usa con frecuencia en algoritmos heurísticos como $A^{*}$ 
+(A-estrella) para resolver problemas de búsqueda de caminos. El uso principal de esta medida es en 
+situaciones donde el desplazamiento entre dos ubicaciones se limita a movimientos verticales u 
+horizontales, como sucede en la planificación de rutas.\\ 
+
+
+La razón por la que se llama \textit{Manhattan} a esta distancia es porque, en una cuadrícula de calles 
+de ciudades como Manhattan, para ir de un punto a otro hay que moverse siguiendo las manzanas 
+delimitadas por las calles horizontales y verticales en ángulos rectos. Entonces la distancia de 
+\textit{Manhattan} es una medida básica en inteligencia artificial, especialmente para resolver 
+problemas de búsqueda de rutas y planificación, gracias a su simpleza y eficacia en escenarios con 
+movimientos restringidos a líneas rectas horizontales y verticales.\\ 
+
+
+Planear rutas en entornos urbanos, especialmente en ciudades con calles ortogonales como Nueva York,
+es un ejemplo de uso real de la distancia de Manhattan como heurística. Por ejemplo: Se puede usar 
+en una app de mapas para hallar la ruta más corta desde donde estás hasta un punto específico en 
+una ciudad con calles que se cruzan formando cuadras. \textit{distancia de Manhattan} puede servir 
+como una guía para calcular la distancia que queda hasta llegar a tu destino.\\ 
+
+
+O imagina que estás manejando en tu carro y tienes que ir desde un cruce $A$ hasta otro cruce $B$ 
+en una ciudad con calles dispuestas en forma de cuadrícula. ¿Puedes determinar la 
+\textit{distancia de Manhattan} entre $A$ y $B$ sumando el número de cuadras que necesitas recorrer 
+en dirección horizontal y vertical para llegar de $A$ a $B$, sin considerar los obstáculos como 
+edificios o restricciones de tráfico?\\ 
+
+
+La distancia de Manhattan proporciona una estimación precisa del recorrido necesario en automóvil,
+ya que las rutas siguen generalmente un patrón de calles y avenidas en ángulos rectos. A pesar de
+que en la práctica puedan existir variaciones debido a las limitaciones del tráfico o la disposición
+exacta de las calles, la distancia de Manhattan aún es una buena aproximación y puede ayudar a los 
+sistemas de mapas para calcular rutas eficientes. \\ 
+
+Así que, la distancia de Manhattan es empleada en aplicaciones de mapas y navegación como una 
+heurística para estimar el tiempo y la distancia restante hasta un destino en entornos urbanos 
+donde las calles siguen una disposición de cuadrícula ortogonal. Ayuda a los conductores a tomar 
+decisiones informadas sobre sus rutas y permite que las aplicaciones de navegación calculen rutas 
+óptimas de manera más eficiente.\\ 
+
+
+La fórmula para calcular la distancia de Manhattan entre dos puntos $A(x_1, y_1)$ y $B(x_2,y_2)$,
+en un espacio bidimensional es:
 \begin{center}
     D = $|x_1 - x_2| + |y_1 - y_2|$
 \end{center}
 
-Donde $|x_1 - x_2|$ representa la diferencia en la coordenada x entre los dos puntos y  $|y_1 - y_2|$ representa la diferencia en la coordenada 
-y entre los dos puntos.
+Donde $|x_1 - x_2|$ representa la diferencia en la coordenada x entre los dos puntos y  
+$|y_1 - y_2|$ representa la diferencia en la coordenada y entre los dos puntos.\\ 
 
-En pocas palabras la elección de la distancia Manhattan como heurística en la implementación de $A^{*}$ se fundamenta en su capacidad para estimar costes de manera coherente y admisible en entornos cuadriculados, donde los movimientos están restringidos a las direcciones cardinales. Esta simplicidad y eficacia la convierten en una heurística ideal para muchos escenarios de búsqueda en laberintos y grillas.
+
+En pocas palabras la elección de la distancia Manhattan como heurística en la implementación de 
+$A^{*}$ se fundamenta en su capacidad para estimar costes de manera coherente y admisible en entornos 
+cuadriculados, donde los movimientos están restringidos a las direcciones cardinales. 
+Esta simplicidad y eficacia la convierten en una heurística ideal para muchos escenarios de búsqueda 
+en laberintos y grillas.
+
 % --------------------------------------------------------------\
 % -------------------------------------------------------------\
 \subsection*{Pseudocódigo}
 % --------------------------------------------------------------\
+% -------------------------------------------------------------\
 
 \begin{verbatim}
     función distancia_manhattan(nodo_actual, nodo_objetivo):
@@ -76,40 +149,46 @@ En pocas palabras la elección de la distancia Manhattan como heurística en la 
         diferencia_y = abs(nodo_actual.y - nodo_objetivo.y)
         return diferencia_x + diferencia_y
     \end{verbatim}
+
 % -------------------------------------------------------------\
 % --------------------------------------------------------------\
-% ------------------------------SINO SE HACE ELIMINAR ESTA PARTE\
-\section{Posible otra heuristica}
+\section{Otras heurísticas}
 % -------------------------------------------------------------\
 % --------------------------------------------------------------\
-Otros dos ejemplos de heurísticas que se pueden usar en el algoritmo A* son:
+
+Otros dos ejemplos de heurísticas que se pueden usar en el algoritmo $A^{*}$ son:
 
 \begin{itemize}
     \item Distancia Euclidiana:
+        Se utiliza como métrica para calcular la separación entre puntos en un espacio euclidiano, 
+        ya sea en el plano o en el espacio tridimensional. Se utiliza el teorema de Pitágoras para 
+        calcular la longitud del segmento de línea recta que une los dos puntos. La distancia 
+        euclidiana es una heurística admisible, no obstante, puede no ser uniforme en todos los 
+        casos, especialmente en ambientes con obstáculos donde la ruta más directa puede no ser 
+        una línea recta.
 
-Se utiliza como métrica para calcular la separación entre puntos en un espacio euclidiano, ya sea en el plano o en el espacio tridimensional. Se utiliza el teorema de Pitágoras para calcular la longitud del segmento de línea recta que une los dos puntos. La distancia euclidiana es una heurística admisible, no obstante, puede no ser uniforme en todos los casos, especialmente en ambientes con obstáculos donde la ruta más directa puede no ser una línea recta.
+        La fórmula para la distancia euclidiana entre dos puntos $A(x_1, y_1)$ y $B(x_2,y_2)$, 
+        en un espacio bidimensional es:
+        \begin{center}
+            D = $\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$
+        \end{center}
 
-La fórmula para la distancia euclidiana entre dos puntos $A(x_1, y_1)$ y $B(x_2,y_2)$, en un espacio bidimensional es:
-\begin{center}
-    D = $\sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}$
-\end{center}
-
-  \item  Distancia de Chebyshev:
-  
-La distancia de Chebyshev se usa como métrica para calcular la distancia entre dos puntos en un espacio de rejilla, donde el movimiento está permitido en todas las direcciones (horizontal, vertical y diagonal).
-La distancia de Chebyshev en entornos de rejilla es una heurística que cumple con la propiedad de consistencia, lo que la hace admisible.
-Estas reglas proporcionan estimaciones del costo restante para alcanzar el objetivo desde cualquier nodo dado en un grafo de búsqueda, lo que asiste al algoritmo A* a dirigir su búsqueda hacia el objetivo de forma más eficaz. Depende del problema específico y de las características del espacio de búsqueda la elección de la heurística.
-
-La fórmula para la distancia euclidiana entre dos puntos $A(x_1, y_1)$ y $B(x_2,y_2)$, en un espacio bidimensional se calcula como la máxima de las diferencias absolutas en las coordenadas \textit{x} y \textit{y}
-\begin{center}
-    D = $max(|x_2 - x_1|,|y_2 - y_1|)$
-\end{center}
-
+    \item  Distancia de Chebyshev:
+        \begin{itemize}
+            \item La distancia de Chebyshev se usa como métrica para calcular la distancia entre 
+                    dos puntos en un espacio de rejilla, donde el movimiento está permitido en todas 
+                    las direcciones (horizontal, vertical y diagonal).
+            \item La distancia de Chebyshev en entornos de rejilla es una heurística que cumple 
+                    con la propiedad de consistencia, lo que la hace admisible.
+            \item Estas reglas proporcionan estimaciones del costo restante para alcanzar el 
+                    objetivo desde cualquier nodo dado en un grafo de búsqueda, lo que asiste 
+                    al algoritmo $A^{*}$ a dirigir su búsqueda hacia el objetivo de forma más 
+                    eficaz. Depende del problema específico y de las características del 
+                    espacio de búsqueda la elección de la heurística.
+        \end{itemize}
+        
+        La fórmula para la distancia euclidiana entre dos puntos $A(x_1, y_1)$ y $B(x_2,y_2)$, en un espacio bidimensional se calcula como la máxima de las diferencias absolutas en las coordenadas \textit{x} y \textit{y}
+        \begin{center}
+            D = $max(|x_2 - x_1|,|y_2 - y_1|)$
+        \end{center}
 \end{itemize}
-
-% --------------------------------------------------------------\
-% -------------------------------------------------------------\
-% \subsection*{Pseudocódigo} \
-% -------------------------------------------------------------\
-% --------------------------------------------------------------\
-
