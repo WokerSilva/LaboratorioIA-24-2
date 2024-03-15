@@ -21,9 +21,49 @@ geográfico.
 % -------------------------------------------------------------\
 % --------------------------------------------------------------\
 
+El propósito del algoritmo \(A^*\) es encontrar el camino más corto desde un punto de inicio hasta un 
+punto objetivo en un mapa con diferentes caminos y obstáculos con la aplicación de una estrategia de 
+búsqueda informada, optimizando el recorrido basado en el costo y una estimación heurística. 
+
+Aquí hay algunos pasos clave que sigue el algoritmo:
+
+\begin{itemize}
+\item \textbf{Evaluación de funciones:} El algoritmo evalúa tres funciones principales. 
+La primera función, \(g(n)\), calcula el costo real desde el punto de inicio hasta el punto actual 
+en el que nos encontramos. La segunda función, \(h(n)\), es una estimación del costo más bajo desde el punto actual 
+hasta el objetivo. Y la tercera función, \(f(n) = g(n) + h(n)\), representa el costo total estimado de la ruta de menor 
+costo que pasa por el punto actual.
+
+\item \textbf{Listas abierta y cerrada:} El algoritmo mantiene dos listas. La lista abierta contiene los nodos que aún no 
+hemos explorado, mientras que la lista cerrada contiene los nodos que ya hemos evaluado.La función heurística \(h(n)\) que
+estima el costo más bajo desde \(n\) hasta el objetivo, y la función \(f(n) = g(n) + h(n)\) que representa el costo total
+estimado de la ruta más barata pasando por \(n\).
+
+\item \textbf{ Selección del siguiente nodo:} En cada paso, el algoritmo selecciona el nodo de la lista abierta con el 
+valor más bajo de \(f(n)\). Es como si estuviéramos eligiendo el siguiente paso más prometedor en el laberinto.
+
+\item \textbf{Llegar al objetivo:} Si el nodo seleccionado es el objetivo, ¡lo encontramos! El algoritmo termina y 
+podemos reconstruir el camino óptimo desde el objetivo hasta el punto de inicio.
+
+\item \textbf{Explorar vecinos:} Si el nodo seleccionado no es el objetivo, lo movemos de la lista abierta a la lista 
+cerrada y examinamos todos sus vecinos. Para cada vecino, el algoritmo calcula \(g(n)\) y \(f(n)\). Si el vecino ya está 
+en la lista abierta con un costo más alto, se actualiza con el nuevo valor más bajo. Si el vecino no está en ninguna lista 
+o está en la lista cerrada con un costo más alto, se agrega o se mueve a la lista abierta con el nuevo costo y se guarda 
+un puntero al nodo actual como su padre.
+
+Este proceso se repite hasta que encontremos el objetivo o hasta que la lista abierta esté vacía, lo que significa que no 
+hay camino disponible.
+
+\end{itemize}
 
 
+La clave para que el algoritmo \(A^*\) funcione de manera eficiente es la función heurística \(h(n)\). Para que sea 
+óptima, \(h(n)\) no debe sobreestimar el costo real para llegar al objetivo. Hay diferentes formas de calcular \(h(n)\), 
+como la distancia Manhattan, que se utiliza en mapas cuadriculados donde solo se pueden mover en línea recta, 
+o la distancia euclidiana, que se prefiere cuando se pueden hacer movimientos diagonales.
 
+En resumen, el algoritmo \(A^*\) es una herramienta muy útil para encontrar el camino más corto en un mapa complicado. 
+Nos ayuda a tomar decisiones inteligentes y a ahorrar tiempo y esfuerzo al encontrar la mejor ruta posible.
 % --------------------------------------------------------------\
 % -------------------------------------------------------------\
 \subsection*{Algoritmo $A^{*}$ vs BFS}
