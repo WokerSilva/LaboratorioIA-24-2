@@ -4,7 +4,7 @@ En este apartado, observaremos el comportamiento de diferentes técnicas
 empleadas por un agente para encontrar el camino en un laberinto representado 
 mediante una matriz. En esta representación, cada celda de la matriz indica
 el estado de una posición en el laberinto, donde 0 representa un camino libre,
-1 es un muro, "E" denota la entrada y "S" representa la salida. Además,
+1 es un muro, $E$ denota la entrada y $S$ representa la salida. Además,
 el agente intenta encontrar una salida siguiendo un orden predefinido: 
 arriba, abajo, izquierda, derecha.
 
@@ -15,10 +15,13 @@ arriba, abajo, izquierda, derecha.
 \end{figure}
 
 \subsection*{Ejemplos usados}
-Como primer ejemplo, se usara un laberinto de 7x7 con la característica de un solo camino en forma
+
+\subsubsection*{Primer ejemplo}
+
+Se usara un laberinto de 7x7 con la característica de un solo camino en forma
 de espiral, en una esquina se encuentra la entrada y en el centro de la matriz se encuentra la salida.
-Esto con el fin de dar un ejemplar sencillo para el agente, donde se pueda observar el comportamiento apartir
-del algoritmo A*.
+Esto con el fin de dar un ejemplar sencillo para el agente, donde se pueda observar el comportamiento 
+a partir del algoritmo $A^{*}$.
 
 \begin{figure}[H]
     \centering
@@ -27,10 +30,11 @@ del algoritmo A*.
     \label{fig:ejemplo} 
 \end{figure}
 
-En la siguiente imagen se muestra el resultado obtenido por el agente, donde se puede observar que el agente
-encuentra el camino más corto para llegar a la salida y las celdas que recorre para llegar a su destino.
-Con \textbf{X} se marcan las celdas que recorre el agente para llegar a la salida, con los \textbf{cuadrados} se marcan los muros y con
-los \textbf{guion} se marcan las celdas que no recorre el agente.
+En la siguiente imagen se muestra el resultado obtenido por el agente, donde se puede observar 
+que el agente encuentra el camino más corto para llegar a la salida y las celdas que recorre 
+para llegar a su destino. Con \textbf{X} se marcan las celdas que recorre el agente para llegar 
+a la salida, con los \textbf{cuadrados} se marcan los muros y con los \textbf{guion} se marcan 
+las celdas que no recorre el agente.
 
 \begin{figure}[H]
     \centering
@@ -39,7 +43,10 @@ los \textbf{guion} se marcan las celdas que no recorre el agente.
     \label{fig:ejemplo} 
 \end{figure}
 
-Como segundo ejemplo, se usara un laberinto de 7x7 con la característica que sea simetrico,
+
+\subsubsection*{Segundo ejemplo}
+
+Se usara un laberinto de 7x7 con la característica que sea simétrico,
 es decir, que la entrada y la salida se encuentran en la misma columna y con muros simétricos.
 
 \begin{figure}[H]
@@ -50,28 +57,29 @@ es decir, que la entrada y la salida se encuentran en la misma columna y con mur
 \end{figure}
 
 Notemos que es posible que el agente encuentre múltiples soluciones viables y evalúe
-diferentes caminos hacia la salida. Sin embargo, el algoritmo A* no tiene una lógica
+diferentes caminos hacia la salida. Sin embargo, el algoritmo $A^{*}$ no tiene una lógica
 para elegir entre caminos equivalentes cuando varios caminos tienen la misma longitud.
 En tales casos, la selección del camino puede depender de la lógica de prioridad implementada 
 en el algoritmo.
 
 \begin{figure}[H]
     \centering
-    \begin{minipage}[b]{0.2\textwidth}
-      \includegraphics[width=\textwidth]{IMA/RLaberinto2_1.png}
-      \caption{Solucion camino por la izquierda}
+    \begin{minipage}[b]{4cm}
+      \includegraphics[scale = .6]{IMA/RLaberinto2_1.png}
+      \caption{Solución camino por la izquierda}
     \end{minipage}
-    \hfill
-    \begin{minipage}[b]{0.2\textwidth}
-      \includegraphics[width=\textwidth]{IMA/RLaberinto2_2.png}
-      \caption{Solucion camino por la derecha}
+    \hspace{60mm}
+    \begin{minipage}[b]{4cm}
+      \includegraphics[scale = .6]{IMA/RLaberinto2_2.png}
+      \caption{Solución camino por la derecha}
     \end{minipage}
   \end{figure}
 
-El agente encuentra el camino más corto en ambos casos, pero es el orden de la heurística la que establece
-la prioridad de los caminos. En esta parte del código, se establece que el agente siempre buscara
-primero arriva, abajo, izquierda y derecha, por lo que asiendo el cambio colocando derecha antes que izquierda, el agente
-encontrara el camino más corto por la derecha.
+El agente encuentra el camino más corto en ambos casos, pero es el orden de la heurística 
+la que establece la prioridad de los caminos. En esta parte del código, se establece que 
+el agente siempre buscara primero arriba, abajo, izquierda y derecha, por lo que asiendo 
+el cambio colocando derecha antes que izquierda, el agente encontrara el camino más 
+corto por la derecha.
 
 \begin{figure}[H]
     \centering
@@ -80,7 +88,9 @@ encontrara el camino más corto por la derecha.
     \label{fig:ejemplo} 
 \end{figure}
 
-Por ultimo, consideremos un laberinto de 7x7 con la característica de que la salida del laberinto no 
+\subsubsection*{Tercer ejemplo}
+
+Consideremos un laberinto de 7x7 con la característica de que la salida del laberinto no 
 se encuentra accesible debido a que se encuentra rodeada de muros, es decir, no existe un camino para llegar a la salida.
 
 \begin{figure}[H]
@@ -99,10 +109,16 @@ En este caso, el agente no encontrara un camino para llegar a la salida, por lo 
     \label{fig:ejemplo} 
 \end{figure}
 
-Con fines academicos (esta visualizacion no refleja la implementacion, solo es ilustativo de la pagina \url{https://qiao.github.io/PathFinding.js/visual/} ), la siguiente imagen muestra el comportamiento del agente con el algoritmo A* en el laberinto, desde el inicio de la ejecución, 
-el agente descarta a los vecinos de arriba y abajo por ser casillas más lejanas a la salida y se dirige a la derecha ya que es casilla que se encuentra más cerca de la salida.
-Posteriormente sigue buscando casillas vecinas más a la derecha, hasta que encuentra muros, por lo que el agente opta por ir rodeando el muro hasta encontrar la salida.
-Cuando finalmente encuentra una posible entrada al muro que rodea la salida, se da cuenta que no es posible llegar a la salida, por lo que el agente termina la ejecución.
+Con fines académicos (esta visualización no refleja la implementación, solo es ilustrativo de la 
+pagina \url{https://qiao.github.io/PathFinding.js/visual/} ), la siguiente imagen muestra el comportamiento 
+del agente con el algoritmo $A^{*}$ en el laberinto, desde el inicio de la ejecución, el agente descarta a 
+los vecinos de arriba y abajo por ser casillas más lejanas a la salida y se dirige a la derecha ya que es 
+casilla que se encuentra más cerca de la salida.\\ 
+
+Posteriormente sigue buscando casillas vecinas más a la derecha, hasta que encuentra muros, por lo que 
+el agente opta por ir rodeando el muro hasta encontrar la salida. Cuando finalmente encuentra una posible
+entrada al muro que rodea la salida, se da cuenta que no es posible llegar a la salida, por lo que el 
+agente termina la ejecución.
 
 \begin{figure}[H]
     \centering
@@ -113,18 +129,18 @@ Cuando finalmente encuentra una posible entrada al muro que rodea la salida, se 
 
 \subsection*{Versiones del codigo}
 
-En seguida haremos notar los cambios que se hicieron entre dos versiones de implementacion y el por que de estos cambios.
+En seguida haremos notar los cambios que se hicieron entre dos versiones de implementación y el por que de estos cambios.
 
-\begin{lstlisting}[language=Python, caption=Version 1: reconstruir_camino]
+\begin{lstlisting}[language=Python, caption=Version 1: reconstruircamino]
     def reconstruir_camino(casilla_actual):
     """
-    Esta función reconstruye el camino desde la casilla actual hasta la posición inicial del agente.
+    Esta funcion reconstruye el camino desde la casilla actual hasta la posicion inicial del agente.
 
     recibe:
         casilla_actual (Agente): La casilla actual.
 
     devuelve:
-        list: Una lista que representa el camino desde la casilla actual hasta la posición inicial del agente.
+        list: Una lista que representa el camino desde la casilla actual hasta la posicion inicial del agente.
     """
     camino = []
     while casilla_actual:
@@ -134,16 +150,16 @@ En seguida haremos notar los cambios que se hicieron entre dos versiones de impl
     return list(reversed(camino))
 \end{lstlisting}
 
-\begin{lstlisting}[language=Python, caption=Version 2: reconstruir_camino]
+\begin{lstlisting}[language=Python, caption=Version 2: reconstruircamino]
     def reconstruir_camino(casilla_actual):
     """
-    Esta función reconstruye el camino desde la casilla actual hasta la posición inicial del agente.
+    Esta funcion reconstruye el camino desde la casilla actual hasta la posicion inicial del agente.
 
     recibe:
         casilla_actual (Agente): La casilla actual.
 
     devuelve:
-        list: Una lista que representa el camino desde la casilla actual hasta la posición inicial del agente.
+        list: Una lista que representa el camino desde la casilla actual hasta la posicion inicial del agente.
     """
     camino = []
     while casilla_actual:
@@ -154,7 +170,7 @@ En seguida haremos notar los cambios que se hicieron entre dos versiones de impl
     print("Ruta seguida:")
     for posicion in camino:
         print(f"[{posicion[0]}, {posicion[1]}]")
-    print("Se encontró la salida :D")  
+    print("Se encontro la salida :D")  
 
     print("\nCamino encontrado:")
     for i in range(len(laberinto)):
@@ -169,9 +185,15 @@ En seguida haremos notar los cambios que se hicieron entre dos versiones de impl
     return camino
 \end{lstlisting}
 
-{\tt Notemos que en la version 2 el cambio es mas que nada la salida por pantalla, es decir la ruta que el agente tomo para encontrar la salida, y ademas mosyramos el camino seguido por el agente, aquí iteramos sobre el laberinto y determinamos la posición del agente, si se encuentra dicha posición colocamos una \textbf(X), en caso contrario solo coloacamos una guion \textbf(-). Este cambio lo consideramos importante ya que como bien se dijo anteriormente hace que se mas visible, clara y permite que se pueda entender mejor como se llego a la salida.}
+Notemos que en la version 2 el cambio es mas que nada la salida por pantalla, 
+es decir la ruta que el agente tomo para encontrar la salida, y además mostramos 
+el camino seguido por el agente, aquí iteramos sobre el laberinto y determinamos 
+la posición del agente, si se encuentra dicha posición colocamos una \textbf(X), 
+en caso contrario solo colocamos una guion \textbf(-). Este cambio lo consideramos 
+importante ya que como bien se dijo anteriormente hace que se mas visible, clara y 
+permite que se pueda entender mejor como se llego a la salida.
 
-\begin{lstlisting}[language=Python, caption=Version 1: distancia_manhattan]
+\begin{lstlisting}[language=Python, caption=Version 1: distanciamanhattan]
     def distancia_manhattan(nodo_actual, nodo_objetivo):
     """
     Calcula la distancia de Manhattan entre dos nodos.
@@ -189,7 +211,7 @@ En seguida haremos notar los cambios que se hicieron entre dos versiones de impl
     return distancia
 \end{lstlisting}
 
-\begin{lstlisting}[language=Python, caption=Version 2: distancia_manhattan]
+\begin{lstlisting}[language=Python, caption=Version 2: distanciamanhattan]
     def distancia_manhattan(laberinto):
     """
     Calcula la distancia de Manhattan entre dos nodos.
@@ -210,21 +232,33 @@ En seguida haremos notar los cambios que se hicieron entre dos versiones de impl
     return distancia
 \end{lstlisting}
 
-Este cambio tambien es importante ya que notemos primero en la version 1 dependemos mucho de la posicion actual del agente(\textbf{nodo_actual}) y la posición de la salida(\textbf{nodo_obejtivo}) como parametros en cambio en la version 2, al eliminar esto hacemos uso de dos funciones \textbf{punto_de_partida} con esta obtenemos las coordenadas de la posición inical del agente y \textbf{salida_laberinto} con esta obtenemos las coordenadas de la salida del laberinto (si la hay), y notemos que al hacer este cambio hacemos que la funcion de distancia Manhattan sea mas versatil, es decir, podemos usarla en diferentes laberintos, pasando como parametro algún laberinto, y asi no modificar la funcion, con esto tambien añadimos que mejora la modularidad del codigo, haciendo que el codigo pueda ser usado en un futuro, y sea mas facil de comprender.
+Este cambio también es importante ya que notemos primero en la version 1 dependemos mucho de la 
+posicion actual del agente(\textbf{nodo actual}) y la posición de la salida(\textbf{nodo objetivo}) 
+como parámetros en cambio en la version 2, al eliminar esto hacemos uso de dos funciones 
+\textbf{punto de partida} con esta obtenemos las coordenadas de la posición inicial del agente y 
+\textbf{salida laberinto} con esta obtenemos las coordenadas de la salida del laberinto (si la hay),
+y notemos que al hacer este cambio hacemos que la funcion de distancia Manhattan sea más versátil, 
+es decir, podemos usarla en diferentes laberintos, pasando como parámetro algún laberinto, y así 
+no modificar la funcion, con esto también añadimos que mejora la modularidad del codigo, 
+haciendo que el codigo pueda ser usado en un futuro, y sea mas facil de comprender. \\ 
 
-Las siguiente funciones son metodos auxiliares que nos ayudan a encontrar la posición inicial del agente y la salida del laberitno respectivamente.
-Se realizo este añadido con la finalidad de que sea más fácil de entender y comprender como estamos buscando las coordenadas de la entrada y salida del laberinto, además de hacer que nuestro código sea mas flexible
+Las siguiente funciones son métodos auxiliares que nos ayudan a encontrar la posición inicial del 
+agente y la salida del laberinto respectivamente.\\ 
 
-\begin{lstlisting}[language=Python, caption=Función auxiliar: punto_de_partida]
+Se realizo este añadido con la finalidad de que sea más fácil de entender y comprender como estamos 
+buscando las coordenadas de la entrada y salida del laberinto, además de hacer que nuestro 
+código sea mas flexible
+
+\begin{lstlisting}[language=Python, caption=Función auxiliar: puntodepartida]
     def punto_de_partida(laberinto):
     """
-    Encuentra la posición inical del agente en el laberinto
+    Encuentra la posicion inicial del agente en el laberinto
 
     Recibe:
         laberinto (list): El laberinto representado como una matriz.
 
     Devuelve:
-        tupla: La posición(coordenadas) inicial del agente
+        tupla: La posicion(coordenadas) inicial del agente
     """
     try:
         for i in range(len(laberinto)):
@@ -232,19 +266,19 @@ Se realizo este añadido con la finalidad de que sea más fácil de entender y c
                 if laberinto[i][j] == "E":  # Comprobamos si encontramos la entrada
                     return (i, j)  # Devolvemos las coordenadas 
     except ValueError:
-        print("No se encontró la salida del laberinto.")
+        print("No se encontro la salida del laberinto.")
 \end{lstlisting}
 
-\begin{lstlisting}[language=Python, caption=Función auxiliar: salida_laberinto]
+\begin{lstlisting}[language=Python, caption=Función auxiliar: salidalaberinto]
     def salida_laberinto(laberinto):
     """
-    Encuentra la posición de la salida del laberinto
+    Encuentra la posicion de la salida del laberinto
 
     Recibe:
         laberinto (list): El laberinto representado como una matriz.
 
     Devuelve:
-        tupla: La posición(coordenadas) de la salida del laberinto.
+        tupla: La posicion(coordenadas) de la salida del laberinto.
     """
     try:
         for i in range(len(laberinto)):
@@ -252,16 +286,17 @@ Se realizo este añadido con la finalidad de que sea más fácil de entender y c
                 if laberinto[i][j] == "S":  # Comprobamos si encontramos la salida
                     return (i, j)  # Devolvemos las coordenadas 
     except ValueError:
-        print("No se encontró la salida del laberinto.")
+        print("No se encontro la salida del laberinto.")
 \end{lstlisting}
 
-Otros pequeños cambios que se hicieron fue que en lugar se usar una condición para ejecutar el algoritmo, eso se hizo simpelemnete por comodidad y que sea mas claro.
+Otros pequeños cambios que se hicieron fue que en lugar se usar una condición para ejecutar 
+el algoritmo, eso se hizo simplemente por comodidad y que sea mas claro.
 
 \begin{lstlisting}[language=Python, caption=Versión 1: ejecución algoritmo]
 	if camino:
     	print("Camino encontrado:", camino)
 	else:
-    	print("No se encontró un camino válido.")
+    	print("No se encontro un camino valido.")
 \end{lstlisting}
 
 \begin{lstlisting}[language=Python, caption=Versión 2: ejecución algoritmo]
