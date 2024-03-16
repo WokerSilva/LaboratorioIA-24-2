@@ -3,3 +3,163 @@
 \subsection*{Ejemplos usados}
 
 \subsection*{Observaciones}
+
+
+\subsection*{Versiones del codigo}
+
+En seguida haremos notar los cambios que se hicieron entre dos versiones de implementacion y el por que de estos cambios.
+
+\begin{lstlisting}[language=Python, caption=Version 1: reconstruir_camino]
+    def reconstruir_camino(casilla_actual):
+    """
+    Esta función reconstruye el camino desde la casilla actual hasta la posición inicial del agente.
+
+    recibe:
+        casilla_actual (Agente): La casilla actual.
+
+    devuelve:
+        list: Una lista que representa el camino desde la casilla actual hasta la posición inicial del agente.
+    """
+    camino = []
+    while casilla_actual:
+        camino.append(casilla_actual.posicion)
+        casilla_actual = casilla_actual.padre
+
+    return list(reversed(camino))
+\end{lstlisting}
+
+\begin{lstlisting}[language=Python, caption=Version 2: reconstruir_camino]
+    def reconstruir_camino(casilla_actual):
+    """
+    Esta función reconstruye el camino desde la casilla actual hasta la posición inicial del agente.
+
+    recibe:
+        casilla_actual (Agente): La casilla actual.
+
+    devuelve:
+        list: Una lista que representa el camino desde la casilla actual hasta la posición inicial del agente.
+    """
+    camino = []
+    while casilla_actual:
+        camino.append(casilla_actual.posicion)
+        casilla_actual = casilla_actual.padre
+
+    camino = list(reversed(camino))
+    print("Ruta seguida:")
+    for posicion in camino:
+        print(f"[{posicion[0]}, {posicion[1]}]")
+    print("Se encontró la salida :D")  
+
+    print("\nCamino encontrado:")
+    for i in range(len(laberinto)):
+        fila = ""
+        for j in range(len(laberinto[0])):
+            if [i, j] in camino:
+                fila += "X "
+            else:
+                fila += "- "
+        print(fila)
+
+    return camino
+\end{lstlisting}
+
+{\tt Notemos que en la version 2 el cambio es mas que nada la salida por pantalla, es decir la ruta que el agente tomo para encontrar la salida, y ademas mosyramos el camino seguido por el agente, aquí iteramos sobre el laberinto y determinamos la posición del agente, si se encuentra dicha posición colocamos una \textbf(X), en caso contrario solo coloacamos una guion \textbf(-). Este cambio lo consideramos importante ya que como bien se dijo anteriormente hace que se mas visible, clara y permite que se pueda entender mejor como se llego a la salida.}
+
+\begin{lstlisting}[language=Python, caption=Version 1: distancia_manhattan]
+    def distancia_manhattan(nodo_actual, nodo_objetivo):
+    """
+    Calcula la distancia de Manhattan entre dos nodos.
+
+    recibe:
+        nodo_actual (Agente): El nodo actual.
+        nodo_objetivo (Agente): El nodo objetivo.
+
+    devuelve:
+        int: La distancia de Manhattan entre los dos nodos.
+    """
+    diferencia_x = nodo_actual.posicion[0] - nodo_objetivo.posicion[0]
+    diferencia_y = nodo_actual.posicion[1] - nodo_objetivo.posicion[1]
+    distancia = abs(diferencia_x) + abs(diferencia_y)
+    return distancia
+\end{lstlisting}
+
+\begin{lstlisting}[language=Python, caption=Version 2: distancia_manhattan]
+    def distancia_manhattan(laberinto):
+    """
+    Calcula la distancia de Manhattan entre dos nodos.
+
+    recibe:
+        laberinto (list): El laberinto representado como una matriz
+
+    devuelve:
+        int: La distancia de Manhattan entre los dos nodos.
+    """
+    nodo_actual = punto_de_partida(laberinto) #Buscamos la posicion inicial del agente
+    nodo_objetivo = salida_laberinto(laberinto) #Buscamos la salida del laberinto
+
+    x, y = nodo_actual 
+    w, z = nodo_objetivo
+    
+    distancia = abs(x - w) + abs(y - z) #Calculamos la distancia Manhattan dados dos puntos
+    return distancia
+\end{lstlisting}
+
+Este cambio tambien es importante ya que notemos primero en la version 1 dependemos mucho de la posicion actual del agente(\textbf{nodo_actual}) y la posición de la salida(\textbf{nodo_obejtivo}) como parametros en cambio en la version 2, al eliminar esto hacemos uso de dos funciones \textbf{punto_de_partida} con esta obtenemos las coordenadas de la posición inical del agente y \textbf{salida_laberinto} con esta obtenemos las coordenadas de la salida del laberinto (si la hay), y notemos que al hacer este cambio hacemos que la funcion de distancia Manhattan sea mas versatil, es decir, podemos usarla en diferentes laberintos, pasando como parametro algún laberinto, y asi no modificar la funcion, con esto tambien añadimos que mejora la modularidad del codigo, haciendo que el codigo pueda ser usado en un futuro, y sea mas facil de comprender.
+
+Las siguiente funciones son metodos auxiliares que nos ayudan a encontrar la posición inicial del agente y la salida del laberitno respectivamente.
+Se realizo este añadido con la finalidad de que sea más fácil de entender y comprender como estamos buscando las coordenadas de la entrada y salida del laberinto, además de hacer que nuestro código sea mas flexible
+
+\begin{lstlisting}[language=Python, caption=Función auxiliar: punto_de_partida]
+    def punto_de_partida(laberinto):
+    """
+    Encuentra la posición inical del agente en el laberinto
+
+    Recibe:
+        laberinto (list): El laberinto representado como una matriz.
+
+    Devuelve:
+        tupla: La posición(coordenadas) inicial del agente
+    """
+    try:
+        for i in range(len(laberinto)):
+            for j in range(len(laberinto[0])):
+                if laberinto[i][j] == "E":  # Comprobamos si encontramos la entrada
+                    return (i, j)  # Devolvemos las coordenadas 
+    except ValueError:
+        print("No se encontró la salida del laberinto.")
+\end{lstlisting}
+
+\begin{lstlisting}[language=Python, caption=Función auxiliar: salida_laberinto]
+    def salida_laberinto(laberinto):
+    """
+    Encuentra la posición de la salida del laberinto
+
+    Recibe:
+        laberinto (list): El laberinto representado como una matriz.
+
+    Devuelve:
+        tupla: La posición(coordenadas) de la salida del laberinto.
+    """
+    try:
+        for i in range(len(laberinto)):
+            for j in range(len(laberinto[0])):
+                if laberinto[i][j] == "S":  # Comprobamos si encontramos la salida
+                    return (i, j)  # Devolvemos las coordenadas 
+    except ValueError:
+        print("No se encontró la salida del laberinto.")
+\end{lstlisting}
+
+Otros pequeños cambios que se hicieron fue que en lugar se usar una condición para ejecutar el algoritmo, eso se hizo simpelemnete por comodidad y que sea mas claro.
+
+\begin{lstlisting}[language=Python, caption=Versión 1: ejecución algoritmo]
+	if camino:
+    	print("Camino encontrado:", camino)
+	else:
+    	print("No se encontró un camino válido.")
+\end{lstlisting}
+
+\begin{lstlisting}[language=Python, caption=Versión 2: ejecución algoritmo]
+	agente = Agente([0, 0])
+	buscar_camino_A_estrella(agente, laberinto)
+\end{lstlisting}
+
