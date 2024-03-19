@@ -1,0 +1,223 @@
+%-----------------------------------INICIO DE PACKETES-------------------/
+%-----------------------------------------------------------------------/
+\usepackage{amsmath}   % Matemáticas: Comandos extras(cajas ecuaciones) |
+\usepackage{amsthm}
+\usepackage{amssymb}   % Matemáticas: Símbolos matemáticos              |
+\usepackage{datetime}  % Agregar fechas                                 |
+\usepackage{graphicx}  % Insertar Imágenes                              |
+%\usepackage{biblatex} % Bibliografía                                   |
+\usepackage{multicol}  % Creación de tablas                             |
+\usepackage{longtable} % Tablas más largas                              |
+\usepackage{xcolor}    % Permite cambiar colores del texto              |
+\usepackage{tcolorbox} % Cajas de color                                 |
+\usepackage{setspace}  % Usar espacios                                  |
+\usepackage{fancyhdr}  % Para agregar encabezado y pie de página        |
+\usepackage{lastpage}  %                                                 |
+\usepackage{float}     % Flotantes                                      |
+\usepackage{soul}      % "Efectos" en palabras                          |
+\usepackage{hyperref}  % Para usar hipervínculos                        |
+\usepackage{caption}   % Utilizar las referencias                       |
+\usepackage{subcaption} % Poder usar subfiguras                         |
+\usepackage{multirow}  % Nos permite modificar tablas                   |
+\usepackage{array}     % Permite utilizar los valores para multicolumn  |
+\usepackage{booktabs}  % Permite modificar tablas                       |
+\usepackage{diagbox}   % Diagonales para las tablas                     |
+\usepackage{colortbl}  % Color para tablas                              |
+\usepackage{listings}  % Escribir código                               |
+\usepackage{mathtools} % SIMBOLO :=                                     |
+\usepackage{enumitem}  % Modificar items de Listas                      |
+\usepackage{tikz}      %                                                |
+\usepackage{lipsum}    % for auto generating text                       |
+\usepackage{afterpage} % for "\afterpage"s                              |
+\usepackage{pagecolor} % With option pagecolor={somecolor or none}|     |
+\usepackage{xpatch}    % Color de lineas C & F
+%\usepackage{glossaries} %                                              |
+\usepackage{lastpage}    %                                              |   
+\usepackage{csquotes}    %                                              |
+%-----------------------------------------------------------------------\
+%-----------------------------------FIN--- DE PACKETES-------------------\
+
+\usepackage{pgfplots}     %                                             |
+\pgfplotsset{compat=1.18} %           
+\usepackage{etoolbox}
+\usepackage{tikz,times}
+\usepackage{verbatim}
+\usetikzlibrary{mindmap,trees,backgrounds}
+%--------------------------------/
+%-------------------------------/
+\usepackage[                 %   |
+  headheight=15pt,  %            |
+  letterpaper,  % Tipo de pag.   |
+  left =1.5cm,  %  < 1 >         |
+  right =1.5cm, %  < 1 >         | MARGENES DE LA PAGINA
+  top =2cm,     %  < 1.5 >       |
+  bottom =1.5cm %  < 1.5 >       |
+]{geometry}     %                |
+%-------------------------------\
+%--------------------------------\
+
+%----------------------------------------------------------------------/
+%-------------------Encabezado y Pie de Pagina-----------------------/ |
+%--------------------------------------------------------------------\ |
+%\fancyhf{}
+%\pagestyle{fancy}
+
+\fancypagestyle{firstpage}{  
+    \fancyhead[L]{}
+    \fancyhead[R]{}     
+    \fancyfoot[L]{}
+    \fancyfoot[C]{}
+    \fancyfoot[R]{\thepage\ de \pageref*{LastPage}}    
+    \renewcommand{\headrulewidth}{0pt} 
+    \xpretocmd\headrule{}{}{\PatchFailed}
+}
+
+\fancypagestyle{fancy}{  
+    \fancyhead[L]{\textbf{Semestre: 2024-2}}
+    \fancyhead[C]{}     
+    \fancyhead[R]{}     
+
+    \fancyfoot[L]{\texttt{Skynet Scribes}}
+    \fancyfoot[C]{\texttt{IA}}
+    \fancyfoot[R]{\thepage\ de \pageref*{LastPage}}
+
+    \renewcommand{\headrulewidth}{1pt} 
+    \xpretocmd\headrule{}{}{\PatchFailed}
+    \renewcommand{\footrulewidth}{1.5pt} 
+    \xpretocmd\footrule{}{}{\PatchFailed}
+}
+
+\fancypagestyle{fancyref}{  
+    \fancyhead[L]{}
+    \fancyhead[R]{}     
+    \fancyfoot[L]{\texttt{Skynet Scribes}}
+    \fancyfoot[C]{\texttt{IA}}
+    \fancyfoot[R]{\thepage\ de \pageref*{LastPage}}    
+    \renewcommand{\headrulewidth}{0pt} 
+    \xpretocmd\headrule{}{}{\PatchFailed}
+}
+%--------------------------------------------------------------------\ |
+%-------------------Encabezado y Pie de Pagina-----------------------/ |
+%------------------------------------------------------------FIN----/
+
+
+%--------------------------------------------------------------------/
+%------------------- LISTA DE COLORES ------------------------------/ 
+\definecolor{ProcessBlue}{RGB}{0,176,240}
+\definecolor{NavyBlue}{RGB}{0,110,184}
+\definecolor{Cyan}{RGB}{0,174,239}
+\definecolor{MidnightBlue}{RGB}{0,103,49}
+\definecolor{ForestGreen}{RGB}{0,155,85}
+\definecolor{Goldenrod}{RGB}{255,223,66}
+\definecolor{YellowGreen}{RGB}{152,204,112}
+\definecolor{Sepia}{RGB}{103,24,0}
+\definecolor{Peach}{RGB}{247,150,90}
+\definecolor{CarnationPink}{RGB}{242,130,180}
+\definecolor{Fuchsia}{RGB}{140,54,140}
+\definecolor{WildStrawberry}{RGB}{238,41,103}
+\definecolor{blueRY}{RGB}{13,164,245}
+
+\definecolor{Grass}{RGB}{41,238,53}
+\definecolor{Meadow}{RGB}{6,243,67}
+\definecolor{jellyfish}{RGB}{109,14,130}
+\definecolor{rubber}{RGB}{229,27,232}
+\definecolor{bullet}{RGB}{225,31,90}
+\definecolor{midnight}{RGB}{31,90,225}
+\definecolor{sun}{RGB}{241,152,7}
+\definecolor{water}{RGB}{16,229,183}
+
+%------------------- COLORES CÓDIGO ---------------------- |
+%------------------- COLORES JAVA ---------------------- |
+\definecolor{backcolour}{RGB}{6,6,6} 
+%\definecolor{backcolour}{RGB}{181,181,181} 
+\definecolor{codeclassjava}{RGB}{246,113,59}
+\definecolor{codegreen}{RGB}{17,225,48}
+\definecolor{codenumizq}{RGB}{17,17,17}
+\definecolor{codestringjava}{RGB}{51,240,234}
+\definecolor{codesymboljava}{RGB}{255,5,0} 
+\definecolor{yellowpoint}{RGB}{244,235,100} 
+%------------------- COLORES JAVA ---------------------- |
+%------------------- COLORES PYTHON -------------------- |
+\definecolor{backcolourPY}{RGB}{6,6,6} 
+%\definecolor{backcolour}{RGB}{181,181,181} 
+\definecolor{codegreenPY}{RGB}{17,225,48}
+\definecolor{codeclassPY}{RGB}{246,113,59}
+\definecolor{codenumizq}{RGB}{17,17,17}
+\definecolor{codestringPY}{RGB}{90,128,220}
+\definecolor{codesymboljava}{RGB}{255,5,0} 
+%------------------- COLORES PYTHON -------------------- |
+%------------------- COLORES TERMINAL-------------------- |
+\definecolor{backcolourTerminal}{rgb}{0.0, 0.0, 0.0} % Negro
+\definecolor{codeclassTerminal}{rgb}{1.0, 1.0, 1.0} % Blanco
+\definecolor{codestringTerminal}{rgb}{0.0, 0.6, 0.0} % Verde
+\definecolor{codecommentTerminal}{rgb}{0.5, 0.5, 0.5} % Gris
+\definecolor{codenumizqTerminal}{rgb}{0.0, 0.0, 1.0} % Azul
+\definecolor{codeoptionTerminal}{rgb}{0.4, 0.4, 1.0} % Azul claro para opciones
+\definecolor{yellowTerminal}{RGB}{238,200,62}
+%------------------- COLORES TERMINAL-------------------- |
+%------------------- COLORES CÓDIGO ---------------------- |
+
+
+
+%------------------- LISTA DE COLORES -------------------------------\
+%---------------------------------------------------------------------\
+
+%-------------- ESTILO de Código PYTHON -----------------------------|
+\lstdefinestyle{mystylepython}{
+    backgroundcolor=\color{backcolourPY},
+    commentstyle=\color{codecommentTerminal},
+    keywordstyle=\color{blueRY},
+    numberstyle=\tiny\color{codenumizq},
+    stringstyle=\color{YellowGreen},
+    basicstyle=\footnotesize\ttfamily\color{white},
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    escapechar=\&,
+    literate=                
+        {;}{{\textcolor{yellowpoint}{;}}}1
+        {+}{{\textcolor{yellowpoint}{+}}}1
+        {-}{{\textcolor{yellowpoint}{-}}}1
+        {\{}{{\textcolor{yellowpoint}{\{}}}1
+        {\}}{{\textcolor{yellowpoint}{\}}}}1
+        {[}{{\textcolor{yellowpoint}{[}}}1
+        {]}{{\textcolor{yellowpoint}{]}}}1
+        {=}{{\textcolor{yellowpoint}{=}}}1
+        {:}{{\textcolor{yellowpoint}{:}}}1
+        {<}{{\textcolor{yellowpoint}{<}}}1
+        {>}{{\textcolor{yellowpoint}{>}}}1
+}
+%-------------- ESTILO de Código PYTHON -----------------------------|
+%-------------- ESTILO de Código TERMINAL ---------------------------|
+\lstdefinestyle{mystyleTerminal}{
+    backgroundcolor=\color{backcolourTerminal},
+    commentstyle=\color{codecommentTerminal},
+    keywordstyle=\color{codeclassTerminal},
+    numberstyle=\tiny\color{backcolourTerminal},
+    stringstyle=\color{codestringTerminal},
+    basicstyle=\footnotesize\ttfamily\color{codeclassTerminal},
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=4,    
+    escapechar=\&,
+    literate = 
+            {--}{{\textcolor{codecommentTerminal}{--}}}2            
+}
+% Usar el estilo de código
+\lstset{style=mystyleTerminal}
+
+%-------------- ESTILO de Código TERMINAL ---------------------------|
