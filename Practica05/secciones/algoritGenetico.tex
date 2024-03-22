@@ -6,18 +6,11 @@
 % ---------------------------------------------------------------------------------------\
 % --------------------------------------------------------------------------------------\
 
-\textbf{Problema a resolver:} Scheduling \\ 
-
-
-\textbf{Objetivo:} Desarrollar e implementar un algoritmo genético para resolver 
-el problema de asignación de horarios a profesores, asegurando que:
-
-\begin{itemize}
-    \item Los alumnos no tengan horas libres entre clases
-    \item Los profesores no puedan tener dos clases al mismo tiempo
-    \item Los salones no se asignen a dos grupos simultáneamente
-    \item Los alumnos no tengan dos clases al mismo tiempo
-\end{itemize}
+\begin{enumerate}
+    \item Implementación básica del Juego de la Vida
+    \item Introducción a los Algoritmos Genéticos
+    \item Implementación de Algoritmos Genéticos en el Juego de la Vida
+\end{enumerate}
 
 % ----------------------------------------------------------------------------------------\
 % ---------------------------------------------------------------------------------------\
@@ -45,89 +38,3 @@ una nueva reproducción y \textbf{mutación}, finalmente comprobar o evaluar su 
 \begin{center}
     \includegraphics[scale = .4]{IMA/algo genetico.png}
 \end{center}
-
-\subsubsection*{Métodos de representación}
-
-La definición de \texttt{(AG)} requiere de una función para codificar las soluciones 
-potenciales del problema, de forma que el propio algoritmo pueda procesarlas aplicando las 
-operaciones formales que le permiten evolucionar (\textbf{selección, reproducción y 
-mutación}). Un enfoque común es codificar las soluciones como cadenas binarias: secuencias de 
-$1's$ y $0's$, donde el dígito de cada posición representa la presencia/ausencia de algún 
-aspecto de la solución.\cite{almosgenos} Algunas otras son:\\ 
-
-\begin{itemize}
-    \item \textbf{Representación Entera:} Los cromosomas son representados como secuencias 
-    de enteros. Cada gen en el cromosoma representa un número entero que puede ser 
-    interpretado como una característica, índice o valor en el espacio de búsqueda del problema
-
-    \item \textbf{Representación Alfabética:} Los cromosomas son representados como secuencias 
-    de elementos de un alfabeto prefijado. Aunque es equivalente a la representación entera, 
-    es tan común que conviene identificarla como un método propio. Realmente, el resto de 
-    representaciones se pueden interpretar como casos particulares de este, donde usaríamos 
-    el alfabeto binario $(\{0,1\}), \text{entero} (\mathbb{Z}), \text{real} (\mathbb{R})$, etc.
-
-    \item \textbf{Representación Permutacional:} Los cromosomas son representados como 
-    permutaciones de un conjunto de elementos. Esta representación es útil para problemas en los 
-    que la secuencia o el orden de los elementos son importantes, como en el problema del 
-    agente viajero, donde el orden de las ciudades a visitar es crucial.
-
-    \item \textbf{Representación Híbrida:} En algunos casos, se pueden utilizar múltiples tipos de 
-    representaciones en un solo cromosoma. Por ejemplo, una parte del cromosoma puede ser binaria y 
-    otra parte puede ser entera. Esto se hace para manejar diferentes tipos de variables en un problema 
-    de optimización.
-\end{itemize}
-
-\subsubsection*{Métodos de selección}
-
-\begin{itemize}
-    \item \textbf{Selección elitista:} se garantiza la selección de los miembros más aptos de 
-    cada generación.
-
-    \item \textbf{Selección por rueda de ruleta:} una forma de selección proporcional a la aptitud 
-    en la que la probabilidad de que un individuo sea seleccionado es proporcional a la diferencia 
-    entre su aptitud y la de sus competidores.
-
-    \item \textbf{Selección por torneo:} se eligen subgrupos de individuos de la población, y los 
-    miembros de cada subgrupo compiten entre ellos. Sólo se elige a un individuo de cada subgrupo 
-    para la reproducción.
-
-    \item \textbf{Selección jerárquica:} los individuos atraviesan múltiples rondas de selección en 
-    cada generación. Las evaluaciones de los primeros niveles son más rápidas y menos 
-    discriminatorias, mientras que los que sobreviven hasta niveles más altos son evaluados 
-    más rigurosamente. La ventaja de este método es que reduce el tiempo total de cálculo al 
-    utilizar una evaluación más rápida y menos selectiva para eliminar a la mayoría de los 
-    individuos que se muestran poco o nada prometedores, y sometiendo a una evaluación de aptitud 
-    más rigurosa y computacionalmente más costosa solo a los que sobreviven a esta prueba inicial.
-\end{itemize}
-
-\subsubsection*{Métodos de reproducción}
-
-Una vez que la selección ha elegido a los individuos aptos, estos deben mezclarse con el objetivo de 
-conseguir nuevas soluciones, el método más habitual se basa en lo que se llama cruzamiento, y 
-consiste en seleccionar a dos individuos para que intercambien segmentos de su código genético\\ 
-
-
-Este proceso pretende simular el proceso análogo de la recombinación que se da en los cromosomas 
-durante la reproducción sexual. Las formas comunes de cruzamiento incluyen:
-\begin{itemize}
-    \item Cruzamiento de un punto, en el que se establece un punto de intercambio en un lugar aleatorio 
-    del genoma de los dos individuos, y uno de los individuos contribuye todo su código anterior a 
-    ese punto y el otro individuo contribuye todo su código a partir de ese punto para producir 
-    una descendencia.
-
-    \item Cruzamiento en dos puntos, en el que se intercambian los genes que aparecen en el 
-    intervalo de genes delimitados por dos puntos.
-
-    \item Cruzamiento uniforme, en el que el valor de una posición dada en el genoma de la 
-    descendencia corresponde al valor en esa posición del genoma de uno de los padres o al valor en 
-    esa posición del genoma del otro padre, elegido con un $50\%$ de probabilidad.
-\end{itemize}
-
-
-\subsubsection*{Métodos de mutación}
-
-Los métodos de mutación normalmente introducen cambios aleatorios en los individuos es un 
-proceso que decide qué gen cambiará y qué valor tendrá tras la mutación esto con la 
-esperanza de mejorar su aptitud para la siguiente generación. Al igual que las mutaciones 
-en seres vivos causan cambios genéticos aleatorios, las mutaciones en algoritmos genéticos 
-también provocan pequeñas alteraciones aleatorias en los cromosomas de los individuos.
