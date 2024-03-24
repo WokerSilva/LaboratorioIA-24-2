@@ -27,3 +27,55 @@
 \subsection{Implementación de Algoritmos Genéticos en el Juego de la Vida}
 % ----------------------------------------------------------------------------------------\
 % ---------------------------------------------------------------------------------------\
+
+Recordemos las reglas iniciales del juego:
+\begin{enumerate}
+    \item Si una célula está viva y tiene dos o tres vecinas vivas, sobrevive.
+    \item Si una célula está muerta y tiene tres vecinas vivas, nace.
+    \item Si una célula está viva y tiene más de tres vecinas vivas, muere.
+    
+    La disposición o patrón inicial de células se llama \textit{semilla}. La siguiente 
+    generación nace de aplicar las reglas del juego a todas las células de manera 
+    simultánea. Este proceso se puede ejecutar de manera indefinida.
+\end{enumerate}
+
+\subsubsection*{Modificación de las Reglas}
+
+Para modificar la simulación del Juego por los cromosomas de una población podemos crear
+una \textbf{representación cromosómica:} donde cada cromosoma será una cadena binaria 
+donde cada bit representa el estado de una célula en el tablero (vivo o muerto).\\ 
+
+Así las nuevas reglas para el \textit{Juego de la Vida} que estamos proponiendo es para 
+buscar crear más vida con menos generaciones, las células  podrán vivir con más vecinos 
+si se alcanza un cierto número de cromosomas en la población:
+
+\begin{itemize}
+    \item Nacimientos: Una célula muerta con exactamente tres vecinos vivos se convierte 
+    en una célula viva.
+    \item Muerte uno: Una célula viva con uno o menos vecinos vivos muere.
+    \item Muerte dos: Una célula viva con más de tres vecinos vivos muere, a menos que se 
+    cumpla la condición especial.
+    \item Condición Especial de Supervivencia: Si la población de cromosomas alcanza o 
+    supera un $n$ especifica (80), las células vivas pueden soportar hasta cuatro 
+    vecinos vivos sin morir.
+    \item Supervivencia Normal: Si no se cumple la condición especial, una célula viva con 
+    dos o tres vecinos vivos sobrevive.
+    \item Muerte tres: Si en $n$ generaciones no se alcanza el objetivo el juego termina. (80)
+\end{itemize}
+
+Este cambio significa querer a los mejores individuos que logren alcanzar el objetivo creando 
+nuestra función \textbf{fitness} con mucho cuidado ya que por medio de esta  haremos que 
+nuestra población no muera.\\ 
+
+
+\subsubsection*{Pasos del algoritmo}
+
+
+\begin{itemize}
+    \item Inicialización de la Población: Generamos una población inicial de cromosomas de manera aleatoria
+    \item Evaluación de la Aptitud: DEFINIR
+    \item Selección: Utilizamos un método de selección por torneo
+    \item Reproducción: Cruzamiento en dos puntos, en el que se intercambian los genes que aparecen en el intervalo de genes delimitados por dos puntos.
+    \item Mutación: Cambiar aleatoriamente el estado de algunas células
+    \item Remplazo: Una vez realizada la mutación y aplicar una evaluación fitness (más tranquila que la evaluación de la aptitud) se hace el remplazo
+\end{itemize}
