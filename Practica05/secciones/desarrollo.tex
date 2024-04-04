@@ -58,16 +58,17 @@ si se alcanza un cierto número de cromosomas en la población:
     \item Muerte dos: Una célula viva con más de tres vecinos vivos muere, a menos que se 
     cumpla la condición especial.
     \item Condición Especial de Supervivencia: Si la población de cromosomas alcanza o 
-    supera un $n$ especifica (80), las células vivas pueden soportar hasta cuatro 
+    supera un $n$ especifica, las células vivas pueden soportar hasta cuatro 
     vecinos vivos sin morir.
     \item Supervivencia Normal: Si no se cumple la condición especial, una célula viva con 
     dos o tres vecinos vivos sobrevive.
-    \item Muerte tres: Si en $n$ generaciones no se alcanza el objetivo el juego termina. (80)
+    \item Muerte tres: Si en $n$ generaciones no se alcanza el objetivo el juego termina.
 \end{itemize}
 
-Este cambio significa querer a los mejores individuos que logren alcanzar el objetivo creando 
-nuestra función \textbf{fitness} con mucho cuidado ya que por medio de esta haremos que 
-nuestra población no muera.\\ 
+El objetivo que queremos lograr con este cambio es encontrar un conjunto de células más eficiente
+en el menor tiempo de generaciones, para este caso definiremos que sea cumplido tras un 
+70 porciento del total de generaciones (aproximadamente 160 generaciones), es decir, buscamos 
+las células que se mantengan como población estable y amplia cumpliendo los criterios de aptitud.
 
 % ----------------------------------------------------------------------------------------\
 \subsubsection*{Pasos del algoritmo}
@@ -104,11 +105,11 @@ y nunca cambian, patrones recurrentes o \textit{osciladores} que evolucionan a t
 diversos estados pero vuelven a su forma inicial y patrones que se trasladan por el tablero
 llamados \textit{spaceships}.\\ 
 
-Las astronaves \cite{spaceships} son patrones que se caracterizan 
-por desplazarse a través del tablero a lo largo del tiempo, bien sea de forma diagonal 
-o de forma horizontal o vertical. La velocidad de desplazamiento es variable, dependiendo 
-del patrón que se trate. y esta capacidad para moverse eficientemente es un indicador 
-de su robustez y estabilidad dentro del juego\\ 
+Las astronaves \cite{spaceships} son patrones que se caracterizan por desplazarse a través 
+del tablero a lo largo del tiempo, bien sea de forma diagonal o de forma horizontal o 
+vertical. La velocidad de desplazamiento es variable, dependiendo del patrón que se trate.
+y esta capacidad para moverse eficientemente es un indicador de su robustez y estabilidad 
+dentro del juego\\ 
 
 \noindent La fórmula de velocidad para las \textit{spaceships}:
 
@@ -129,7 +130,10 @@ tablero. Los patrones que se mueven más rápido (mayor valor de ($v$)) serían 
 más \textit{aptos} mientras que con velocidades más bajas nos dice que esos patrones son menos
 eficientes (lentos) o que mueren rápidamente, de manera que calificaran con aptitud menor.\\    
 
-Considerando la distancia máxima recorrida en cualquier dirección y el número de generaciones 
-necesarias para dicho desplazamiento, la ventaja de usar la velocidad como medida de aptitud 
-es que favorece patrones que pueden sobrevivir y moverse a lo largo de las generaciones, 
-como si fuera una evolución natural.
+
+Entonces estamos considerando la distancia máxima recorrida en cualquier dirección y el 
+número de generaciones necesarias para dicho desplazamiento, la ventaja de usar la velocidad
+para hacer la evaluación es que favorece patrones que pueden sobrevivir y moverse a lo largo de 
+las generaciones, como si fuera una evolución natural sin embargo se añadió otro criterio el 
+cual consiste en sumar puntos si es que los patrones no chocan demasiado con los bordes, ya que 
+células vivas en bordes podrían tener menos vecinos para sobrevivir. 
