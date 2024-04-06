@@ -129,9 +129,38 @@ for i in range(num_iteraciones):
 % ----------------------------------------------------------------------------------------\
 % ---------------------------------------------------------------------------------------\
 \subsection{Introducción a los Algoritmos Genéticos}
-% ----------------------------------------------------------------------------------------\
-% ---------------------------------------------------------------------------------------\
 
+\textbf{Dar una breve explicación sobre la selección natural, cromosomas,
+genes, mutaciones y cruzamientos.}
+
+
+Los algoritmos genéticos son una técnica de optimización y búsqueda basada en principios evolutivos inspirados en la selección natural y la genética. Utilizan un proceso de selección, reproducción y mutación para encontrar soluciones óptimas o cercanas a óptimas para problemas complejos.
+
+La selección natural es un proceso en el cual los individuos con características genéticas más favorables para su entorno tienen una mayor probabilidad de sobrevivir y reproducirse. Esto conduce a la propagación de esos rasgos en la población a lo largo del tiempo.
+
+\begin{itemize}
+    \item \textbf{Cromosomas}: Son estructuras formadas por ADN que contienen los genes, que a su vez son segmentos de ADN que codifican características específicas.
+  
+    \item \textbf{Genes}: Unidades básicas de herencia que determinan características específicas de un organismo.
+  
+    \item \textbf{Mutaciones}: Cambios aleatorios en los genes que pueden generar variabilidad genética en una población.
+  
+    \item \textbf{Cruzamientos}: Proceso mediante el cual se intercambian segmentos de cromosomas durante la reproducción sexual, generando combinaciones genéticas únicas en la descendencia.
+\end{itemize}
+
+\textbf{Definir una representación cromosómica (por ejemplo, una secuencia de bits) que pueda influir en las reglas del Juego de la Vida o en la configuración inicial de la matriz.}
+
+Para comenzar debemos saber que una representación cromosómica podría ser una secuencia de bits donde cada bit representa el estado de una célula en una posición específica de la matriz. Por ejemplo, un "1" podría indicar que una célula está viva y un "0" que está muerta.
+
+\textbf{Crear una población inicial de estos cromosomas de manera aleatoria.}
+
+Para iniciar un algoritmo genético, se crea una población inicial de cromosomas de manera aleatoria. Esto implica generar una serie de cromosomas con valores aleatorios que representan posibles soluciones al problema que se está abordando.
+
+\textbf{Describir cómo se seleccionarán los cromosomas para la reproducción y cómo se aplicarán las mutaciones.}
+
+Durante el proceso de selección, se evalúa la aptitud de cada cromosoma en la población en función de su capacidad para resolver el problema en cuestión. Los cromosomas con una mayor aptitud tienen una mayor probabilidad de ser seleccionados para la reproducción, donde sus genes se combinan para formar descendencia.
+
+Las mutaciones se aplican aleatoriamente a algunos cromosomas seleccionados, introduciendo variabilidad genética en la población. Estos cambios aleatorios pueden ayudar a evitar la convergencia prematura hacia una solución subóptima y explorar un espacio de búsqueda más amplio.
 
 
 
