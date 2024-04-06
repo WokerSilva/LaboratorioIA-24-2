@@ -10,16 +10,81 @@
 
 % ----------------------------------------------------------------------------------------\
 % ---------------------------------------------------------------------------------------\
-\subsection{Implementación básica del Juego de la Vida}
+\subsection{Juego de la Vida sin algoritmo genético}
 % ----------------------------------------------------------------------------------------\
 % ---------------------------------------------------------------------------------------\
 
+A continuación se presentan dos casos diferentes de estados iniciales y se visualiza su 
+evolución a través de 5 turnos.
 
+\begin{itemize}
+    \item Estado inicial aleatorio\\
+
+\begin{lstlisting}
+# Numero de iteraciones/turnos para visualizar
+num_iteraciones = 5
+n = 10  # Tamano de la matriz
+
+# Generar el estado inicial del juego
+estado_actual = crear_matriz_inicial(n)
+
+# Visualizar el estado inicial
+visualizar_estado(estado_actual, "Estado Inicial")
+
+# Bucle para actualizar y visualizar el juego en cada turno
+for i in range(num_iteraciones):
+    # Aplicar las reglas del Juego de la Vida para obtener el nuevo estado
+    estado_actual = aplicar_reglas(estado_actual)
+    # Visualizar el estado actual despues de aplicar las reglas
+    visualizar_estado(estado_actual, titulo=f"Estado despues de {i + 1} turno(s)")
+\end{lstlisting}
+
+Los estados se muestran de la siguiente forma:
+    \begin{center}
+        \includegraphics[scale=0.4]{IMA/ejemplosJuegoVida/ejemplo 1.1.png}
+        \includegraphics[scale=0.4]{IMA/ejemplosJuegoVida/ejemplo 1.2.png}
+        \includegraphics[scale=0.4]{IMA/ejemplosJuegoVida/ejemplo 1.3.png}
+        \includegraphics[scale=0.4]{IMA/ejemplosJuegoVida/ejemplo 1.4.png}
+        \includegraphics[scale=0.4]{IMA/ejemplosJuegoVida/ejemplo 1.5.png}
+        \includegraphics[scale=0.4]{IMA/ejemplosJuegoVida/ejemplo 1.6.png}
+    \end{center}
+
+    \item Estado inicial formado
+
+\begin{lstlisting}
+# Estado inicial formando un bloque estable
+estado_actual = np.array([[0, 0, 0, 0, 0],
+                           [0, 0, 1, 0, 0],
+                           [0, 0, 1, 0, 0],
+                           [0, 0, 1, 0, 0],
+                           [0, 0, 0, 0, 0]]) 
+
+
+# Visualizar el estado inicial
+visualizar_estado(estado_actual, "Estado Inicial")
+
+# Bucle para actualizar y visualizar el juego en cada turno
+for i in range(num_iteraciones):
+    # Aplicar las reglas del Juego de la Vida para obtener el nuevo estado
+    estado_actual = aplicar_reglas(estado_actual)
+    # Visualizar el estado actual despues de aplicar las reglas
+    visualizar_estado(estado_actual, titulo=f"Estado despues de {i + 1} turno(s)")
+\end{lstlisting}
+    Los estados se muestran de la siguiente forma:
+    \begin{center}
+        \includegraphics[scale=0.4]{IMA/ejemplosJuegoVida/ejemplo 2.1.png}
+        \includegraphics[scale=0.4]{IMA/ejemplosJuegoVida/ejemplo 2.2.png}
+        \includegraphics[scale=0.4]{IMA/ejemplosJuegoVida/ejemplo 2.3.png}
+        \includegraphics[scale=0.4]{IMA/ejemplosJuegoVida/ejemplo 2.4.png}
+        \includegraphics[scale=0.4]{IMA/ejemplosJuegoVida/ejemplo 2.5.png}
+        \includegraphics[scale=0.4]{IMA/ejemplosJuegoVida/ejemplo 2.6.png}
+    \end{center}    
+\end{itemize}
 
 
 % ----------------------------------------------------------------------------------------\
 % ---------------------------------------------------------------------------------------\
-\subsection{Implementación de Algoritmos Genéticos en el Juego de la Vida}
+\subsection{Juego de la Vida con algoritmo genético}
 % ----------------------------------------------------------------------------------------\
 % ---------------------------------------------------------------------------------------\
 
