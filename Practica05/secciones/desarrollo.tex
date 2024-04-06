@@ -150,19 +150,48 @@ La selección natural es un proceso en el cual los individuos con característic
 
 \textbf{Definir una representación cromosómica (por ejemplo, una secuencia de bits) que pueda influir en las reglas del Juego de la Vida o en la configuración inicial de la matriz.}
 
-Para comenzar debemos saber que una representación cromosómica podría ser una secuencia de bits donde cada bit representa el estado de una célula en una posición específica de la matriz. Por ejemplo, un "1" podría indicar que una célula está viva y un "0" que está muerta.
+ En el Juego de la Vida, una matriz bidimensional representa el mundo del juego, donde cada celda puede estar viva o muerta en cada generación. Por lo tanto, una secuencia de bits puede representar el estado de cada celda en la matriz.
+
+Por ejemplo, si consideramos una matriz de tamaño 3x3, podríamos representarla mediante una secuencia de 9 bits. Cada bit representaría el estado de una celda en la matriz, donde "1" indica que la celda está viva y "0" que está muerta. Así, una posible representación cromosómica podría ser:
+
+\[
+\begin{matrix}
+    0 & 1 & 0 \\
+    1 & 1 & 0 \\
+    0 & 0 & 1 \\
+    \end{matrix}
+\]
+
+En este caso, la primera fila tendría una célula viva en la segunda posición, la segunda fila tendría dos células vivas y la tercera fila tendría una célula viva en la última posición.
+
 
 \textbf{Crear una población inicial de estos cromosomas de manera aleatoria.}
 
-Para iniciar un algoritmo genético, se crea una población inicial de cromosomas de manera aleatoria. Esto implica generar una serie de cromosomas con valores aleatorios que representan posibles soluciones al problema que se está abordando.
+Para crear una población inicial de manera aleatoria, primero determinamos el tamaño de la población y el tamaño de cada cromosoma (es decir, el número de bits en la secuencia). Luego, generamos una serie de cromosomas con valores aleatorios.
+
+Por ejemplo, si queremos crear una población inicial de 10 cromosomas para una matriz de tamaño 3x3, cada cromosoma tendría una secuencia de 9 bits. Cada bit se elegiría aleatoriamente para representar el estado de una celda en la matriz, donde "1" indica que la celda está viva y "0" que está muerta.
+
+Por lo tanto, cada cromosoma tendría una representación similar a esta:
+
+\[
+\begin{matrix}
+0 & 1 & 0 \\
+1 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{matrix}
+\]
+
+Estas secuencias de bits se generarían aleatoriamente para cada uno de los 10 cromosomas en la población inicial.
 
 \textbf{Describir cómo se seleccionarán los cromosomas para la reproducción y cómo se aplicarán las mutaciones.}
 
-Durante el proceso de selección, se evalúa la aptitud de cada cromosoma en la población en función de su capacidad para resolver el problema en cuestión. Los cromosomas con una mayor aptitud tienen una mayor probabilidad de ser seleccionados para la reproducción, donde sus genes se combinan para formar descendencia.
+Durante el proceso de selección para la reproducción en un algoritmo genético, se evalúa la aptitud de cada cromosoma en la población. La aptitud puede determinarse según algún criterio específico relacionado con el problema que se está abordando. En el Juego de la Vida, la aptitud podría basarse en la cantidad de células vivas en cada generación, la estabilidad de la configuración de la matriz o cualquier otro criterio.
 
-Las mutaciones se aplican aleatoriamente a algunos cromosomas seleccionados, introduciendo variabilidad genética en la población. Estos cambios aleatorios pueden ayudar a evitar la convergencia prematura hacia una solución subóptima y explorar un espacio de búsqueda más amplio.
+Una vez evaluada la aptitud, los cromosomas con una mayor aptitud tienen una mayor probabilidad de ser seleccionados para la reproducción. Esto puede lograrse mediante técnicas de selección como la ruleta, el torneo o la selección por ranking, entre otras. Estas técnicas permiten elegir cromosomas de manera proporcional a su aptitud, favoreciendo a los individuos más aptos para la reproducción.
 
+Las mutaciones se aplican aleatoriamente a algunos cromosomas seleccionados de la población. Las mutaciones introducen cambios aleatorios en los genes de los cromosomas, lo que puede generar variabilidad genética en la población y evitar la convergencia prematura hacia soluciones subóptimas. 
 
+Las mutaciones podrían implicar cambios en el estado de algunas células en la matriz. Por ejemplo, un bit "0" (célula muerta) podría mutar a un bit "1" (célula viva) o viceversa. La tasa de mutación, es decir, la probabilidad de que ocurra una mutación en un cromosoma dado, suele ser un parámetro ajustable del algoritmo genético y puede variar según el problema y las características de la población.
 
 
 
