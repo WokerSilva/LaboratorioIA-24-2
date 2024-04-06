@@ -129,28 +129,108 @@ for i in range(num_iteraciones):
 % ----------------------------------------------------------------------------------------\
 % ---------------------------------------------------------------------------------------\
 \subsection{Introducción a los Algoritmos Genéticos}
+% ----------------------------------------------------------------------------------------\
+% ---------------------------------------------------------------------------------------\
 
-\textbf{Dar una breve explicación sobre la selección natural, cromosomas, genes, mutaciones y cruzamientos.}
+Antes de empezar a escribir código genetico, primero debemos entender las bases y la forma 
+de trabajo que tiene la misma naturaleza en la cual esta inspirado este algoritmo. Para 
+ello tomaremos las definiciones tal cual estan ya escritas y comenzaremos a ver como es 
+que se unen para ayudarnos a resolver problemas. \\ 
 
-Los algoritmos genéticos son una técnica de optimización y búsqueda basada en principios evolutivos inspirados en la selección natural y la genética. Utilizan un proceso de selección, reproducción y mutación para encontrar soluciones óptimas o cercanas a óptimas para problemas complejos.
+La \textbf{Selección natural:} es la base de todo el cambio evolutivo. proceso en el cual 
+los individuos con características genéticas más favorables para su entorno tienen una mayor 
+probabilidad de sobrevivir y reproducirse. Esto conduce a la propagación de esos rasgos en 
+la población a lo largo de las generaciones\\
 
-La selección natural es un proceso en el cual los individuos con características genéticas más favorables para su entorno tienen una mayor probabilidad de sobrevivir y reproducirse. Esto conduce a la propagación de esos rasgos en la población a lo largo del tiempo.
+\textbf{Cromosoma:} filamento condensado de ácido desoxirribonucleico, visible en el núcleo 
+de las células durante la mitosis y cuyo número es constante para las células de cada 
+especie animal o vegetal.\\ 
+
+Un \textbf{Gen:} es una unidad básica de información en el ADN que codifica un producto génico, 
+ya sea proteínas o ARN. Es la unidad molecular de la herencia genética, pues almacena la 
+información genética y permite transmitirla a la descendencia. Los genes están en los cromosomas, 
+un cromosoma contiene de cientos a miles de genes.\\
+
+\textbf{Mutación:} es un cambio en la secuencia de ADN de un organismo. Las mutaciones pueden 
+producirse a partir de errores en la replicación del ADN durante la división celular, la 
+exposición a mutágenos o una infección viral \\
+
+\textbf{Cruzamiento:} proceso mediante el cual se intercambian segmentos de cromosomas durante 
+la reproducción sexual, generando combinaciones genéticas únicas en la descendencia.\\
+
+Vamos a ver un ejemplo cotidiando: hacer galletas, para terminar de relacionar estos 
+conceptos y entender el mecanismo y funcionamiento en cada parte y así poder aplicarlo en 
+el juego de la vida. 
 
 \begin{itemize}
-    \item \textbf{Cromosomas}: Son estructuras formadas por ADN que contienen los genes, que a su vez son segmentos de ADN que codifican características específicas.
-  
-    \item \textbf{Genes}: Unidades básicas de herencia que determinan características específicas de un organismo.
-  
-    \item \textbf{Mutaciones}: Cambios aleatorios en los genes que pueden generar variabilidad genética en una población.
-  
-    \item \textbf{Cruzamientos}: Proceso mediante el cual se intercambian segmentos de cromosomas durante la reproducción sexual, generando combinaciones genéticas únicas en la descendencia.
+    \item[$\rightarrow$] \textbf{Selección natural}
+    
+    En un algoritmo genético, la selección natural se simula seleccionando los cromosomas 
+    más aptos para reproducirse y generar descendencia. En nuestro ejemplo de la cocina, podemos
+    evaluar cada \textbf{receta} como un \textbf{cromosoma} en función de que tan deliciosas 
+    son las galletas que produce. Las recetas \textbf{(cromosomas)} más deliciosas tienen 
+    más probabilidades de ser seleccionadas para la reproducción, mientras que las menos 
+    deliciosas tienen menos probabilidades.
+
+    \item[$\rightarrow$] \textbf{Gen}
+    
+    Cada \textbf{gen} en un cromosoma representa una característica específica de la receta, 
+    como la cantidad de un ingrediente. Por ejemplo, el \textbf{gen} \textit{Harina} podría tener 
+    valores como $100g$, $200g$, $300g$, etc, así para cada uno de los ingredientes \textbf{(gen)}
+
+    \item[$\rightarrow$] \textbf{Cromosoma}
+
+    En nuestro ejemplo, un cromosoma sería una cadena de genes que \textbf{representan los 
+    ingredientes} y sus cantidades en la receta de galletas. Por ejemplo, un cromosoma podría ser 
+
+    \begin{minipage}{0.4\textwidth}
+        \begin{itemize}
+            \item Harina: $200g$
+            \item Azúcar: $100g$
+            \item Mantequilla: $150g$        
+        \end{itemize}    
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushright}
+            \begin{itemize}                
+                \item Huevos: 2
+                \item Chocolate: $150g$
+            \end{itemize}
+        \end{flushright}
+    \end{minipage}
+    
+    \item[$\rightarrow$] \textbf{Cruzamiento}
+
+    El cruzamiento implica combinar genes de dos cromosomas diferentes para crear uno nuevo. 
+    Para nuestros \textbf{(cromosomas)}, recetas creadas debemos tomar cada gen de dos recetas 
+    diferentes y combinarlos para crear una nueva receta que herede características de ambas, 
+    como la cantidad de harina de una receta y la cantidad de chocolate de otra.
+
+    \item[$\rightarrow$] \textbf{Mutación}
+    
+    Recordemos que una mutación es \textit{cambio en la secuencia de ADN} estos cambios los 
+    representamos de manera aleatoria en los genes de un cromosoma durante la reproducción.
+    Entonces dentro de nuestras recetas una mutación podría cambiar la cantidad de un ingrediente 
+    en una receta, como aumentar o disminuir la cantidad en tanto porcentaja de gramaje. 
+
+    \item[$\rightarrow$] \textbf{Función de aptitud}
+    
+    Finalmente ¿Cómo sabremos que receta es la mejor o que hemos llegado a ella?, de esta parte 
+    se encarga nuestra función de aptitud: que tan deliciosas son las galletas de la receta y es 
+    así como evaluamos a los cromosomas \textbf{(recetas)}. 
 \end{itemize}
 
-\textbf{Definir una representación cromosómica (por ejemplo, una secuencia de bits) que pueda influir en las reglas del Juego de la Vida o en la configuración inicial de la matriz.}
+% ----------------------------------------------------------------------------------------\
+\subsubsection*{Representación cromosómica}
+% ----------------------------------------------------------------------------------------\
 
- En el Juego de la Vida, una matriz bidimensional representa el mundo del juego, donde cada celda puede estar viva o muerta en cada generación. Por lo tanto, una secuencia de bits puede representar el estado de cada celda en la matriz.
+En el Juego de la Vida, una matriz bidimensional representa el mundo del juego, donde cada celda 
+puede estar viva o muerta en cada generación. Por lo tanto, una secuencia de bits puede representar 
+el estado de cada celda en la matriz.\\ 
 
-Por ejemplo, si consideramos una matriz de tamaño 3x3, podríamos representarla mediante una secuencia de 9 bits. Cada bit representaría el estado de una celda en la matriz, donde "1" indica que la celda está viva y "0" que está muerta. Así, una posible representación cromosómica podría ser:
+Por ejemplo, si consideramos una matriz de tamaño 3$\times$3, podríamos representarla mediante una 
+secuencia de 9 bits. Cada bit representaría el estado de una celda en la matriz, donde $1$ indica 
+que la celda está viva y $0$ que está muerta. Así, una posible representación cromosómica podría ser:
 
 \[
 \begin{matrix}
@@ -160,15 +240,22 @@ Por ejemplo, si consideramos una matriz de tamaño 3x3, podríamos representarla
     \end{matrix}
 \]
 
-En este caso, la primera fila tendría una célula viva en la segunda posición, la segunda fila tendría dos células vivas y la tercera fila tendría una célula viva en la última posición.
+En este caso, la primera fila tendría una célula viva en la segunda posición, la segunda fila 
+tendría dos células vivas y la tercera fila tendría una célula viva en la última posición.
 
-\textbf{Crear una población inicial de estos cromosomas de manera aleatoria.}
 
-Para crear una población inicial de manera aleatoria, primero determinamos el tamaño de la población y el tamaño de cada cromosoma (es decir, el número de bits en la secuencia). Luego, generamos una serie de cromosomas con valores aleatorios.
+% ----------------------------------------------------------------------------------------\
+\subsubsection*{Población inicial}
+% ----------------------------------------------------------------------------------------\
 
-Por ejemplo, si queremos crear una población inicial de 10 cromosomas para una matriz de tamaño 3x3, cada cromosoma tendría una secuencia de 9 bits. Cada bit se elegiría aleatoriamente para representar el estado de una celda en la matriz, donde "1" indica que la celda está viva y "0" que está muerta.
+Para crear una población inicial de manera aleatoria, primero determinamos el tamaño de la población
+y el tamaño de cada cromosoma (es decir, el número de bits en la secuencia). Luego, generamos una 
+serie de cromosomas con valores aleatorios.\\ 
 
-Por lo tanto, cada cromosoma tendría una representación similar a esta:
+Por ejemplo, si queremos crear una población inicial de 10 cromosomas para una matriz de tamaño 
+3$\times$3, cada cromosoma tendría una secuencia de 9 bits. Cada bit se elegiría aleatoriamente para 
+representar el estado de una celda en la matriz, donde $1$ indica que la celda está viva y 
+$0$ que está muerta. Por lo tanto, cada cromosoma tendría una representación similar a esta:\\ 
 
 \[
 \begin{matrix}
@@ -178,17 +265,33 @@ Por lo tanto, cada cromosoma tendría una representación similar a esta:
 \end{matrix}
 \]
 
-Estas secuencias de bits se generarían aleatoriamente para cada uno de los 10 cromosomas en la población inicial.
+Estas secuencias de bits se generarían aleatoriamente para cada uno de los 10 cromosomas en 
+la población inicial.
 
-\textbf{Describir cómo se seleccionarán los cromosomas para la reproducción y cómo se aplicarán las mutaciones.}
+% ----------------------------------------------------------------------------------------\
+\subsubsection*{Selección, reproducción y mutación}
+% ----------------------------------------------------------------------------------------\
 
-Durante el proceso de selección para la reproducción en un algoritmo genético, se evalúa la aptitud de cada cromosoma en la población. La aptitud puede determinarse según algún criterio específico relacionado con el problema que se está abordando. En el Juego de la Vida, la aptitud podría basarse en la cantidad de células vivas en cada generación, la estabilidad de la configuración de la matriz o cualquier otro criterio.
 
-Una vez evaluada la aptitud, los cromosomas con una mayor aptitud tienen una mayor probabilidad de ser seleccionados para la reproducción. Esto puede lograrse mediante técnicas de selección como la ruleta, el torneo o la selección por ranking, entre otras. Estas técnicas permiten elegir cromosomas de manera proporcional a su aptitud, favoreciendo a los individuos más aptos para la reproducción.
+Durante el proceso de selección para la reproducción en un algoritmo genético, se evalúa la aptitud de 
+cada cromosoma en la población. La aptitud puede determinarse según algún criterio específico 
+relacionado con el problema que se está abordando. En el Juego de la Vida, la aptitud podría basarse 
+en la cantidad de células vivas en cada generación, la estabilidad de la configuración de la matriz 
+o cualquier otro criterio. \\ 
 
-Las mutaciones se aplican aleatoriamente a algunos cromosomas seleccionados de la población. Las mutaciones introducen cambios aleatorios en los genes de los cromosomas, lo que puede generar variabilidad genética en la población y evitar la convergencia prematura hacia soluciones subóptimas. 
+Una vez evaluada la aptitud, los cromosomas con una mayor aptitud tienen una mayor probabilidad de ser 
+seleccionados para la reproducción. Esto puede lograrse mediante técnicas de selección como la ruleta, 
+el torneo o la selección por ranking, entre otras. Estas técnicas permiten elegir cromosomas de 
+manera proporcional a su aptitud, favoreciendo a los individuos más aptos para la reproducción.\\ 
 
-Las mutaciones podrían implicar cambios en el estado de algunas células en la matriz. Por ejemplo, un bit "0" (célula muerta) podría mutar a un bit "1" (célula viva) o viceversa. La tasa de mutación, es decir, la probabilidad de que ocurra una mutación en un cromosoma dado, suele ser un parámetro ajustable del algoritmo genético y puede variar según el problema y las características de la población.
+Las mutaciones se aplican aleatoriamente a algunos cromosomas seleccionados de la población. Las 
+mutaciones introducen cambios aleatorios en los genes de los cromosomas, lo que puede generar 
+variabilidad genética en la población y evitar la convergencia prematura hacia soluciones subóptimas.\\ 
+
+Las mutaciones podrían implicar cambios en el estado de algunas células en la matriz. Por ejemplo, 
+un bit "0" (célula muerta) podría mutar a un bit "1" (célula viva) o viceversa. La tasa de mutación,
+ es decir, la probabilidad de que ocurra una mutación en un cromosoma dado, suele ser un parámetro 
+ ajustable del algoritmo genético y puede variar según el problema y las características de la población.
 
 
 % ----------------------------------------------------------------------------------------\
