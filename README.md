@@ -1,34 +1,24 @@
-# LaboratorioIA-24-2
-Practicas de la clase: Inteligencia Artificial en la carrera de Ciencias de la Computación impartida en la UNAM
+# Laboratorio de Inteligencia Artificial 2024-2
+Practicas de la clase en la carrera de Ciencias de la Computación impartida en la UNAM
 
-## Propuesta de trabajo 
+## Practicas 
 
-- Investigación
-    - Hacer la investigación correspondiente del pdf de la practica 
+### Practica 01: Chatbot
 
-- Propósito 
-    - El quipo discutirá el propósito del chatbot y la persona se encargara de buscar lo necesario para alimentar el chatbot, recordando que las funciones esenciales son: Mensaje de saludo, descripción de lo que hace y despedida.
+Desarrollamos un Chatbot usando ChatterBot.
 
-- Implementación
-    - Realiza la implementación del chatbot, añadiendo notas que la persona de documentación tomará para su trabajo
+### Practica 02: Agente inteligente
 
-- Documentación
-    - De las notas de la implementación e investigación hacer las justificaciones del código
+Usamos la tecnica del Backtraking para que nuestro agente encuentre la solución en un laberinto. 
 
-- Calidad
-    - Deberá revisar que todo este en orden en los pasos anteriores (durante todo el proceso) y buscar alguna forma de añadir un plus de funcionalidad al chatbot 
+### Practica 03: Agente inteligente
 
-## Manejo de Ramas
+Usamos DFS y BFS para que nuestro agente encuentre la solución en un laberinto. 
 
-El repositorio contendrá todas las practicas del curso por lo que se propone la siguiente administración 
+### Practica 04: Algoritmo A*
 
-Creación de rama-test por practica
-- P01-test
-- P02-test
-- etc
+Desarrollamos el algoritmo con distancia Manhattan para encuentrar la solución en un laberinto. 
 
-De la rama-test se derivan las ramas de trabajo, estas deben tener nombres con referencia a lo que se va a trabajar y hacer en lo posible únicamente ese cambio; de otra forma reportarlo en el commit. 
-- P01/conectandoBDatos
-- P01/creandoFuncionX
-- etc
+### Practica 04: Algoritmo Genético
 
+Se implemento el al algoritmo genético aplicado al juego de la vida buscando como función fitness poblar el tablero en el menor número de generaciones 
