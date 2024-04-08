@@ -19,6 +19,6 @@ Usamos DFS y BFS para que nuestro agente encuentre la solución en un laberinto.
 
 Desarrollamos el algoritmo con distancia Manhattan para encuentrar la solución en un laberinto. 
 
-### Practica 04: Algoritmo Genético
+### Practica 05: Algoritmo Genético
 
 Se implemento el al algoritmo genético aplicado al juego de la vida buscando como función fitness poblar el tablero en el menor número de generaciones 
