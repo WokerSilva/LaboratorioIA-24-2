@@ -11,7 +11,119 @@
 \subsection{Implementación básica del Juego de la Vida}
 % ----------------------------------------------------------------------------------------\
 % ---------------------------------------------------------------------------------------\
+    
+\subsubsection*{Descripción del código}
 
+El código implementa el Juego de la Vida, un autómata celular que simula el comportamiento de 
+un sistema de células vivas y muertas en una cuadrícula, el código consta de las siguientes 
+partes principales:
+
+\subsubsection*{Creación del estado inicial del juego}
+
+La función \textbf{crear\_matriz\_inicial} genera una matriz cuadrada de tamaño $n \times n$ con 
+valores aleatorios de 0 (célula muerta) y 1 (célula viva), esta matriz representa el estado 
+inicial del juego.
+
+\begin{lstlisting}
+def crear_matriz_inicial(n):
+    """
+    Genera una matriz n x n con celulas vivas o muertas aleatoriamente.
+    
+    Parametros:
+    - n: Tamano de la matriz (numero de filas y columnas).
+    
+    Retorna:
+    - Matriz n x n con valores aleatorios 0 (muerta) o 1 (viva).
+    """
+    return np.random.choice([0, 1], size=(n, n))
+\end{lstlisting}
+
+
+\subsubsection*{Aplicación de las reglas del Juego de la Vida}
+
+La función \textbf{aplicar\_reglas} toma el estado actual del juego como entrada y aplica las 
+reglas del Juego de la Vida para determinar el siguiente estado, las reglas son:
+
+\begin{itemize}
+    \item Una célula viva con dos o tres vecinas vivas sobrevive.
+    \item Una célula muerta con tres vecinas vivas nace.
+    \item En cualquier otro caso, la célula muere.
+\end{itemize}
+
+\begin{lstlisting}
+def aplicar_reglas(estado_actual):
+    """
+    Aplica las reglas del Juego de la Vida a cada celula de la matriz.
+    
+    Parametros:
+    - estado_actual: Matriz que representa el estado actual del juego.
+    
+    Retorna:
+    - Nuevo estado del juego despues de aplicar las reglas.
+    """
+    n = estado_actual.shape[0]
+    nuevo_estado = np.zeros((n, n))
+    
+    for i in range(n):
+        for j in range(n):
+            num_vecinos = np.sum(estado_actual[i-1:i+2, j-1:j+2]) - estado_actual[i, j]
+            
+            # Regla a) Si una celula esta viva y tiene dos o tres vecinas vivas, sobrevive.
+            if estado_actual[i, j] == 1 and num_vecinos in [2, 3]:
+                nuevo_estado[i, j] = 1
+                        
+            # Regla b) Si una celula esta muerta y tiene tres vecinas vivas, nace.
+            elif estado_actual[i, j] == 0 and num_vecinos == 3:
+                nuevo_estado[i, j] = 1
+            else:
+                nuevo_estado[i, j] = 0
+    
+    return nuevo_estado
+\end{lstlisting}
+
+\subsubsection*{Visualización del estado del juego}
+
+La función \textbf{visualizar\_estado} se utiliza para mostrar el estado actual del 
+juego mediante una imagen en escala de grises.
+
+\begin{lstlisting}
+def visualizar_estado(estado, titulo="Estado del Juego de la Vida"):
+    """
+    Visualiza el estado del juego.
+    
+    Parametros:
+    - estado: Matriz que representa el estado actual del juego.
+    - titulo: Titulo para la visualizacion.
+    """
+    plt.figure(figsize=(5, 5))
+    plt.imshow(estado, cmap='Greys', interpolation='nearest')
+    plt.title(titulo)
+    plt.show()
+\end{lstlisting}
+
+\subsubsection*{Actualización de la matriz y visualización a través de múltiples turnos}
+
+Esta sección del código implementa un bucle que actualiza la matriz basándose en las reglas y 
+visualiza el estado de la cuadrícula después de cada actualización.
+
+\begin{lstlisting}
+# Numero de iteraciones/turnos para visualizar
+num_iteraciones = 5
+n = 10  # Tamano de la matriz
+
+# Generar el estado inicial del juego
+estado_actual = crear_matriz_inicial(n)
+
+# Visualizar el estado inicial
+visualizar_estado(estado_actual, "Estado Inicial")
+
+# Bucle para actualizar y visualizar el juego en cada turno
+for i in range(num_iteraciones):
+    # Aplicar las reglas del Juego de la Vida para obtener el nuevo estado
+    estado_actual = aplicar_reglas(estado_actual)
+    # Visualizar el estado actual despues de aplicar las reglas
+    visualizar_estado(estado_actual, titulo=f"Estado despues de {i + 1} turno(s)")
+\end{lstlisting}
 
 
 % ----------------------------------------------------------------------------------------\
@@ -20,6 +132,166 @@
 % ----------------------------------------------------------------------------------------\
 % ---------------------------------------------------------------------------------------\
 
+Antes de empezar a escribir código genetico, primero debemos entender las bases y la forma 
+de trabajo que tiene la misma naturaleza en la cual esta inspirado este algoritmo. Para 
+ello tomaremos las definiciones tal cual estan ya escritas y comenzaremos a ver como es 
+que se unen para ayudarnos a resolver problemas. \\ 
+
+La \textbf{Selección natural:} es la base de todo el cambio evolutivo. proceso en el cual 
+los individuos con características genéticas más favorables para su entorno tienen una mayor 
+probabilidad de sobrevivir y reproducirse. Esto conduce a la propagación de esos rasgos en 
+la población a lo largo de las generaciones\\
+
+\textbf{Cromosoma:} filamento condensado de ácido desoxirribonucleico, visible en el núcleo 
+de las células durante la mitosis y cuyo número es constante para las células de cada 
+especie animal o vegetal.\\ 
+
+Un \textbf{Gen:} es una unidad básica de información en el ADN que codifica un producto génico, 
+ya sea proteínas o ARN. Es la unidad molecular de la herencia genética, pues almacena la 
+información genética y permite transmitirla a la descendencia. Los genes están en los cromosomas, 
+un cromosoma contiene de cientos a miles de genes.\\
+
+\textbf{Mutación:} es un cambio en la secuencia de ADN de un organismo. Las mutaciones pueden 
+producirse a partir de errores en la replicación del ADN durante la división celular, la 
+exposición a mutágenos o una infección viral \\
+
+\textbf{Cruzamiento:} proceso mediante el cual se intercambian segmentos de cromosomas durante 
+la reproducción sexual, generando combinaciones genéticas únicas en la descendencia.\\
+
+Vamos a ver un ejemplo cotidiando: hacer galletas, para terminar de relacionar estos 
+conceptos y entender el mecanismo y funcionamiento en cada parte y así poder aplicarlo en 
+el juego de la vida. 
+
+\begin{itemize}
+    \item[$\rightarrow$] \textbf{Selección natural}
+    
+    En un algoritmo genético, la selección natural se simula seleccionando los cromosomas 
+    más aptos para reproducirse y generar descendencia. En nuestro ejemplo de la cocina, podemos
+    evaluar cada \textbf{receta} como un \textbf{cromosoma} en función de que tan deliciosas 
+    son las galletas que produce. Las recetas \textbf{(cromosomas)} más deliciosas tienen 
+    más probabilidades de ser seleccionadas para la reproducción, mientras que las menos 
+    deliciosas tienen menos probabilidades.
+
+    \item[$\rightarrow$] \textbf{Gen}
+    
+    Cada \textbf{gen} en un cromosoma representa una característica específica de la receta, 
+    como la cantidad de un ingrediente. Por ejemplo, el \textbf{gen} \textit{Harina} podría tener 
+    valores como $100g$, $200g$, $300g$, etc, así para cada uno de los ingredientes \textbf{(gen)}
+
+    \item[$\rightarrow$] \textbf{Cromosoma}
+
+    En nuestro ejemplo, un cromosoma sería una cadena de genes que \textbf{representan los 
+    ingredientes} y sus cantidades en la receta de galletas. Por ejemplo, un cromosoma podría ser 
+
+    \begin{minipage}{0.4\textwidth}
+        \begin{itemize}
+            \item Harina: $200g$
+            \item Azúcar: $100g$
+            \item Mantequilla: $150g$        
+        \end{itemize}    
+    \end{minipage}
+    \begin{minipage}{0.4\textwidth}
+        \begin{flushright}
+            \begin{itemize}                
+                \item Huevos: 2
+                \item Chocolate: $150g$
+            \end{itemize}
+        \end{flushright}
+    \end{minipage}
+    
+    \item[$\rightarrow$] \textbf{Cruzamiento}
+
+    El cruzamiento implica combinar genes de dos cromosomas diferentes para crear uno nuevo. 
+    Para nuestros \textbf{(cromosomas)}, recetas creadas debemos tomar cada gen de dos recetas 
+    diferentes y combinarlos para crear una nueva receta que herede características de ambas, 
+    como la cantidad de harina de una receta y la cantidad de chocolate de otra.
+
+    \item[$\rightarrow$] \textbf{Mutación}
+    
+    Recordemos que una mutación es \textit{cambio en la secuencia de ADN} estos cambios los 
+    representamos de manera aleatoria en los genes de un cromosoma durante la reproducción.
+    Entonces dentro de nuestras recetas una mutación podría cambiar la cantidad de un ingrediente 
+    en una receta, como aumentar o disminuir la cantidad en tanto porcentaja de gramaje. 
+
+    \item[$\rightarrow$] \textbf{Función de aptitud}
+    
+    Finalmente ¿Cómo sabremos que receta es la mejor o que hemos llegado a ella?, de esta parte 
+    se encarga nuestra función de aptitud: que tan deliciosas son las galletas de la receta y es 
+    así como evaluamos a los cromosomas \textbf{(recetas)}. 
+\end{itemize}
+
+% ----------------------------------------------------------------------------------------\
+\subsubsection*{Representación cromosómica}
+% ----------------------------------------------------------------------------------------\
+
+En el Juego de la Vida, una matriz bidimensional representa el mundo del juego, donde cada celda 
+puede estar viva o muerta en cada generación. Por lo tanto, una secuencia de bits puede representar 
+el estado de cada celda en la matriz.\\ 
+
+Por ejemplo, si consideramos una matriz de tamaño 3$\times$3, podríamos representarla mediante una 
+secuencia de 9 bits. Cada bit representaría el estado de una celda en la matriz, donde $1$ indica 
+que la celda está viva y $0$ que está muerta. Así, una posible representación cromosómica podría ser:
+
+\[
+\begin{matrix}
+    0 & 1 & 0 \\
+    1 & 1 & 0 \\
+    0 & 0 & 1 \\
+    \end{matrix}
+\]
+
+En este caso, la primera fila tendría una célula viva en la segunda posición, la segunda fila 
+tendría dos células vivas y la tercera fila tendría una célula viva en la última posición.
+
+
+% ----------------------------------------------------------------------------------------\
+\subsubsection*{Población inicial}
+% ----------------------------------------------------------------------------------------\
+
+Para crear una población inicial de manera aleatoria, primero determinamos el tamaño de la población
+y el tamaño de cada cromosoma (es decir, el número de bits en la secuencia). Luego, generamos una 
+serie de cromosomas con valores aleatorios.\\ 
+
+Por ejemplo, si queremos crear una población inicial de 10 cromosomas para una matriz de tamaño 
+3$\times$3, cada cromosoma tendría una secuencia de 9 bits. Cada bit se elegiría aleatoriamente para 
+representar el estado de una celda en la matriz, donde $1$ indica que la celda está viva y 
+$0$ que está muerta. Por lo tanto, cada cromosoma tendría una representación similar a esta:\\ 
+
+\[
+\begin{matrix}
+0 & 1 & 0 \\
+1 & 1 & 0 \\
+0 & 0 & 1 \\
+\end{matrix}
+\]
+
+Estas secuencias de bits se generarían aleatoriamente para cada uno de los 10 cromosomas en 
+la población inicial.
+
+% ----------------------------------------------------------------------------------------\
+\subsubsection*{Selección, reproducción y mutación}
+% ----------------------------------------------------------------------------------------\
+
+
+Durante el proceso de selección para la reproducción en un algoritmo genético, se evalúa la aptitud de 
+cada cromosoma en la población. La aptitud puede determinarse según algún criterio específico 
+relacionado con el problema que se está abordando. En el Juego de la Vida, la aptitud podría basarse 
+en la cantidad de células vivas en cada generación, la estabilidad de la configuración de la matriz 
+o cualquier otro criterio. \\ 
+
+Una vez evaluada la aptitud, los cromosomas con una mayor aptitud tienen una mayor probabilidad de ser 
+seleccionados para la reproducción. Esto puede lograrse mediante técnicas de selección como la ruleta, 
+el torneo o la selección por ranking, entre otras. Estas técnicas permiten elegir cromosomas de 
+manera proporcional a su aptitud, favoreciendo a los individuos más aptos para la reproducción.\\ 
+
+Las mutaciones se aplican aleatoriamente a algunos cromosomas seleccionados de la población. Las 
+mutaciones introducen cambios aleatorios en los genes de los cromosomas, lo que puede generar 
+variabilidad genética en la población y evitar la convergencia prematura hacia soluciones subóptimas.\\ 
+
+Las mutaciones podrían implicar cambios en el estado de algunas células en la matriz. Por ejemplo, 
+un bit "0" (célula muerta) podría mutar a un bit "1" (célula viva) o viceversa. La tasa de mutación,
+ es decir, la probabilidad de que ocurra una mutación en un cromosoma dado, suele ser un parámetro 
+ ajustable del algoritmo genético y puede variar según el problema y las características de la población.
 
 
 % ----------------------------------------------------------------------------------------\
@@ -27,3 +299,113 @@
 \subsection{Implementación de Algoritmos Genéticos en el Juego de la Vida}
 % ----------------------------------------------------------------------------------------\
 % ---------------------------------------------------------------------------------------\
+
+Recordemos las reglas iniciales del juego:
+\begin{enumerate}
+    \item Si una célula está viva y tiene dos o tres vecinas vivas, sobrevive.
+    \item Si una célula está muerta y tiene tres vecinas vivas, nace.
+    \item Si una célula está viva y tiene más de tres vecinas vivas, muere.
+    
+    La disposición o patrón inicial de células se llama \textit{semilla}. La siguiente 
+    generación nace de aplicar las reglas del juego a todas las células de manera 
+    simultánea. Este proceso se puede ejecutar de manera indefinida.
+\end{enumerate}
+
+% ----------------------------------------------------------------------------------------\
+\subsubsection*{Modificación de las Reglas}
+% ----------------------------------------------------------------------------------------\
+
+Para modificar la simulación del Juego por los cromosomas de una población podemos crear
+una \textbf{representación cromosómica:} donde cada cromosoma será una cadena binaria 
+donde cada bit representa el estado de una célula en el tablero (vivo o muerto).\\ 
+
+Así las nuevas reglas para el \textit{Juego de la Vida} que estamos proponiendo es para 
+buscar crear más vida con menos generaciones, las células  podrán vivir con más vecinos 
+si se alcanza un cierto número de cromosomas en la población:
+
+\begin{itemize}
+    \item Nacimientos: Una célula muerta con exactamente tres vecinos vivos se convierte 
+    en una célula viva.
+    \item Muerte uno: Una célula viva con uno o menos vecinos vivos muere.
+    \item Muerte dos: Una célula viva con más de tres vecinos vivos muere, a menos que se 
+    cumpla la condición especial.
+    \item Condición Especial de Supervivencia: Si la población de cromosomas alcanza o 
+    supera un $n$ especifica, las células vivas pueden soportar hasta cuatro 
+    vecinos vivos sin morir.
+    \item Supervivencia Normal: Si no se cumple la condición especial, una célula viva con 
+    dos o tres vecinos vivos sobrevive.
+    \item Muerte tres: Si en $n$ generaciones no se alcanza el objetivo el juego termina.
+\end{itemize}
+
+El objetivo que queremos lograr con este cambio es encontrar un conjunto de células más eficiente
+en el menor tiempo de generaciones, para este caso definiremos que sea cumplido tras un 
+70 porciento del total de generaciones (aproximadamente 160 generaciones), es decir, buscamos 
+las células que se mantengan como población estable y amplia cumpliendo los criterios de aptitud.
+
+% ----------------------------------------------------------------------------------------\
+\subsubsection*{Pasos del algoritmo}
+% ----------------------------------------------------------------------------------------\
+
+\begin{itemize}
+    \item Inicialización de la Población: Generamos una población inicial de cromosomas de 
+    manera aleatoria
+    \item Evaluación de la Aptitud: astronaves
+    \item Selección: Utilizamos un método de selección por torneo
+    \item Reproducción: Cruzamiento en dos puntos, en el que se intercambian los genes que 
+    aparecen en el intervalo de genes delimitados por dos puntos.
+    \item Mutación: Cambiar aleatoriamente el estado de algunas células
+    \item Remplazo: Una vez realizada la mutación y aplicar una evaluación fitness (más 
+    tranquila que la evaluación de la aptitud) se hace el remplazo
+\end{itemize}
+
+
+% ----------------------------------------------------------------------------------------\
+\subsubsection*{Inicialización de la Población}
+% ----------------------------------------------------------------------------------------\
+
+Cada célula en el tablero de $n \times n$ tiene ocho vecinos, que incluyen las celdas 
+adyacentes horizontal, vertical y diagonalmente. Al comienzo del juego, la población inicial 
+se genera aleatoriamente, cada cromosoma es una secuencia binaria que representa un estado 
+completo del tablero, con 1s para las células vivas y 0s para las muertas.
+
+\subsubsection*{Función fitness}
+
+Para definir la función fitness necesitamos saber que existen patrones básicos dentro del 
+juego y estos son configuraciones de los vecinos para las células que determinan un 
+comportamiento concreto como patrones estáticos que no hay nacimientos ni fallecimientos,
+y nunca cambian, patrones recurrentes o \textit{osciladores} que evolucionan a través de 
+diversos estados pero vuelven a su forma inicial y patrones que se trasladan por el tablero
+llamados \textit{spaceships}.\\ 
+
+Las astronaves \cite{spaceships} son patrones que se caracterizan por desplazarse a través 
+del tablero a lo largo del tiempo, bien sea de forma diagonal o de forma horizontal o 
+vertical. La velocidad de desplazamiento es variable, dependiendo del patrón que se trate.
+y esta capacidad para moverse eficientemente es un indicador de su robustez y estabilidad 
+dentro del juego\\ 
+
+\noindent La fórmula de velocidad para las \textit{spaceships}:
+
+\begin{equation*}
+    v = \frac{max(|x|,|y|)}{n} \times c
+\end{equation*}
+
+\begin{itemize}
+    \item[] ($v$) es la velocidad de la astronave.
+    \item[] ($x$) y ($y$) son los desplazamientos en dos dimensiones (horizontal y vertical).
+    \item[] ($n$) es el número de generaciones que tarda la astronave en desplazarse.
+    \item[] ($c$) es una constante análoga a la velocidad de la luz, que en este contexto se 
+    puede considerar como 1 celda por generación.
+\end{itemize}
+
+Esta fórmula es útil para medir la eficiencia con la que un patrón se desplaza a través del 
+tablero. Los patrones que se mueven más rápido (mayor valor de ($v$)) serían considerados 
+más \textit{aptos} mientras que con velocidades más bajas nos dice que esos patrones son menos
+eficientes (lentos) o que mueren rápidamente, de manera que calificaran con aptitud menor.\\    
+
+
+Entonces estamos considerando la distancia máxima recorrida en cualquier dirección y el 
+número de generaciones necesarias para dicho desplazamiento, la ventaja de usar la velocidad
+para hacer la evaluación es que favorece patrones que pueden sobrevivir y moverse a lo largo de 
+las generaciones, como si fuera una evolución natural sin embargo se añadió otro criterio el 
+cual consiste en sumar puntos si es que los patrones no chocan demasiado con los bordes, ya que 
+células vivas en bordes podrían tener menos vecinos para sobrevivir. 
