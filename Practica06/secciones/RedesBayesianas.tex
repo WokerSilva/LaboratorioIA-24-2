@@ -18,7 +18,37 @@
 %  qué son las redes bayesianas y para qué se utilizan.
 \subsection*{Redes bayesianas}
 % ----------------------------------------------------------------------------------------\
+Una red Bayesiana se define como un par \( (G, \Theta) \), donde \( G \) es un grafo dirigido acíclico (DAG) y \( \Theta \) es un conjunto de tablas de probabilidad condicional (TPC). 
 
+El grafo \( G \) consiste en un conjunto de nodos \( V \) y un conjunto de arcos \( E \). Cada nodo representa una variable aleatoria y cada arco representa una dependencia probabilística entre las variables. Las tablas de probabilidad condicional \( \Theta \) especifican la probabilidad de cada valor posible de cada variable condicionado a los valores de sus nodos padres.
+
+Para representar la probabilidad conjunta de todas las variables en la red, utilizamos la regla del producto:
+
+\[
+P(\text{{variables}}) = \prod_{i=1}^{n} P(X_i \,|\, \text{{padres}}(X_i))
+\]
+
+donde \( X_i \) es la variable \( i \)-ésima en la red y \( \text{{padres}}(X_i) \) son los nodos padres de \( X_i \) en el grafo.
+
+Por ejemplo, supongamos que tenemos dos variables \( A \) y \( B \) en una red Bayesiana, donde \( B \) depende de \( A \). Podemos representar esto como:
+
+\[
+P(A, B) = P(A) \cdot P(B \,|\, A)
+\]
+
+Aquí, \( P(A) \) es la probabilidad marginal de \( A \) y \( P(B \,|\, A) \) es la probabilidad condicional de \( B \) dado \( A \). La probabilidad conjunta de \( A \) y \( B \) se calcula multiplicando la probabilidad de \( A \) por la probabilidad condicional de \( B \) dado \( A \).
+
+Las redes Bayesianas se utilizan en una amplia gama de aplicaciones. Por ejemplo:
+
+\begin{itemize}
+    \item  En medicina, Las redes Bayesianas pueden ayudar a los médicos a evaluar la probabilidad de que un paciente tenga cierta enfermedad en función de los síntomas observados y los factores de riesgo.
+    \item En finanzas, pueden utilizarse para evaluar riesgos y rendimientos en carteras de inversión.
+    \item En reconocimiento de patrones, pueden utilizarse para clasificar imágenes o datos sensoriales.
+
+    \item Predicción del tiempo: Pueden utilizarse para modelar la probabilidad de diferentes condiciones climáticas en función de variables como la temperatura, la presión atmosférica y la humedad.
+
+\end{itemize}
+En cada una de estas aplicaciones, las redes Bayesianas permiten modelar la incertidumbre y realizar inferencias probabilísticas sobre las variables de interés.
 
 % ----------------------------------------------------------------------------------------\
 % Explica la diferencia entre probabilidad condicional e independencia condicional, 
