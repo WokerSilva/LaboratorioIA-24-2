@@ -56,6 +56,26 @@ En cada una de estas aplicaciones, las redes Bayesianas permiten modelar la ince
 \subsection*{Probabilidad condicional e independencia condicional}
 % ----------------------------------------------------------------------------------------\
 
+\begin{enumerate}
+    \item Probabilidad Condicional:
+
+La probabilidad condicional se refiere a la probabilidad de que ocurra un evento dado que otro evento ya ha ocurrido. Se denota como \( P(A | B) \), que es la probabilidad de que el evento \( A \) ocurra dado que el evento \( B \) ha ocurrido. La fórmula para calcular la probabilidad condicional es:
+
+\[ P(A | B) = \frac{P(A \cap B)}{P(B)} \]
+
+Lo que significa que la probabilidad de \( A \) dado \( B \) es igual a la probabilidad de que ocurran ambos \( A \) y \( B \) dividida por la probabilidad de que ocurra \( B \).
+
+Un ejemplo es: supongamos que tenemos dos eventos \( A \) y \( B \), donde \( A \) representa sacar una carta roja de una baraja estándar de 52 cartas, y \( B \) representa sacar una carta de corazones. La probabilidad de sacar una carta roja dado que hemos sacado una carta de corazones se puede calcular utilizando la fórmula de probabilidad condicional:
+
+\[ P(A | B) = \frac{P(A \cap B)}{P(B)} \]
+
+Donde \( P(A \cap B) \) es la probabilidad de sacar una carta roja que también sea un corazón, y \( P(B) \) es la probabilidad de sacar una carta de corazones. Si la carta roja que hemos sacado también es un corazón, entonces la probabilidad de \( A \) dado \( B \) sería \( 1/13 \), ya que hay 13 cartas de corazones en total en una baraja de 52 cartas.
+
+\item Independencia Condicional:
+
+Es la situación en la que dos eventos son independientes dado un tercer evento. Formalmente, dos eventos \( A \) y \( B \) son independientes condicionalmente a un evento \( C \) si la probabilidad de \( A \) dado \( B \) no cambia incluso si sabemos que \( C \) ha ocurrido. Se denota como \( A \perp\!\!\!\perp B \,|\, C \).
+
+Por ejemplo, consideremos tres eventos \( A \), \( B \) y \( C \), donde \( A \) representa sacar una carta roja de una baraja de cartas, \( B \) representa sacar una carta de corazones y \( C \) representa sacar una carta alta (as, rey, reina o jota). Si los eventos \( A \) y \( B \) son independientes condicionalmente a \( C \), esto significa que la probabilidad de sacar una carta roja que también sea un corazón no cambia incluso si sabemos que hemos sacado una carta alta. En este caso, si \( A \) y \( B \) son independientes condicionalmente a \( C \), entonces la probabilidad de \( A \) dado \( B \) sigue siendo \( 1/13 \), incluso después de que hemos sacado una carta alta.
 
 % ----------------------------------------------------------------------------------------\
 % Describe cómo se representa matemáticamente una red bayesiana y
