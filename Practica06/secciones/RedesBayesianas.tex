@@ -18,25 +18,21 @@
 %  qué son las redes bayesianas y para qué se utilizan.
 \subsection*{Redes bayesianas}
 % ----------------------------------------------------------------------------------------\
-Una red Bayesiana se define como un par \( (G, \Theta) \), donde \( G \) es un grafo dirigido acíclico (DAG) y \( \Theta \) es un conjunto de tablas de probabilidad condicional (TPC). 
+Las redes bayesianas nos permiten modelar un sistema mediante un conjunto de variables y sus respectivas relaciones de dependencia, permitiendo llevarlo a inferencia bayesiana con la que podemos estimar la probabilidad de relacionarse con variables no conocidas, con base a las conocidas. Las redes bayesianas generalmente también incluirán un conjunto de tablas de probabilidad, indicando las probabilidades para los valores verdadero o falso de las variables. 
+El punto principal de las Redes Bayesianas es permitir que se realice una inferencia probabilística. Esto significa que la probabilidad de cada valor de un nodo en la red bayesiana se puede calcular cuando se conocen los valores de las otras variables.
 
-El grafo \( G \) consiste en un conjunto de nodos \( V \) y un conjunto de arcos \( E \). Cada nodo representa una variable aleatoria y cada arco representa una dependencia probabilística entre las variables. Las tablas de probabilidad condicional \( \Theta \) especifican la probabilidad de cada valor posible de cada variable condicionado a los valores de sus nodos padres.
+\\ 
 
-Para representar la probabilidad conjunta de todas las variables en la red, utilizamos la regla del producto:
+Una red Bayesiana consta de:
+\begin{itemize} 
+    \item \textbf{Cualitativa} que describe las relaciones entre las distintas variables
+    \item \textbf{Cuantitativa} que describe la fuerza de dichas relaciones mediante probabilidades condicionadas
+\end{itemize}
 
-\[
-P(\text{{variables}}) = \prod_{i=1}^{n} P(X_i \,|\, \text{{padres}}(X_i))
-\]
+\\
 
-donde \( X_i \) es la variable \( i \)-ésima en la red y \( \text{{padres}}(X_i) \) son los nodos padres de \( X_i \) en el grafo.
-
-Por ejemplo, supongamos que tenemos dos variables \( A \) y \( B \) en una red Bayesiana, donde \( B \) depende de \( A \). Podemos representar esto como:
-
-\[
-P(A, B) = P(A) \cdot P(B \,|\, A)
-\]
-
-Aquí, \( P(A) \) es la probabilidad marginal de \( A \) y \( P(B \,|\, A) \) es la probabilidad condicional de \( B \) dado \( A \). La probabilidad conjunta de \( A \) y \( B \) se calcula multiplicando la probabilidad de \( A \) por la probabilidad condicional de \( B \) dado \( A \).
+Estos modelos tienen amplios usos en la clasificación, predicción, diagnostico, que brindan información sobre como se relaciones las variables llevándolos a un enfoque de causa y efecto, donde los vértices de la gráfica representan variables llamados nodos. Los nodos se representan como círculos que contienen el nombre de la variable. Las conexiones entre los nodos se nombran aristas.
+\\
 
 Las redes Bayesianas se utilizan en una amplia gama de aplicaciones. Por ejemplo:
 
@@ -82,4 +78,93 @@ Por ejemplo, consideremos tres eventos \( A \), \( B \) y \( C \), donde \( A \)
 %  el significado de los nodos y aristas en cada representación.
 \subsection*{Representación Matematica}
 % ----------------------------------------------------------------------------------------\
+Una red Bayesiana se define como un par \( (G, \Theta) \), donde \( G \) es un grafo dirigido acíclico (DAG) y \( \Theta \) es un conjunto de tablas de probabilidad condicional (TPC). 
 
+El grafo \( G \) consiste en un conjunto de nodos \( V \) y un conjunto de arcos \( E \). Cada nodo representa una variable aleatoria y cada arco representa una dependencia probabilística entre las variables. Las tablas de probabilidad condicional \( \Theta \) especifican la probabilidad de cada valor posible de cada variable condicionado a los valores de sus nodos padres.
+
+Para representar la probabilidad conjunta de todas las variables en la red, utilizamos la regla del producto:
+
+\[
+P(\text{{variables}}) = \prod_{i=1}^{n} P(X_i \,|\, \text{{padres}}(X_i))
+\]
+
+donde \( X_i \) es la variable \( i \)-ésima en la red y \( \text{{padres}}(X_i) \) son los nodos padres de \( X_i \) en el grafo.
+
+Por ejemplo, supongamos que tenemos dos variables \( A \) y \( B \) en una red Bayesiana, donde \( B \) depende de \( A \). Podemos representar esto como:
+
+\[
+P(A, B) = P(A) \cdot P(B \,|\, A)
+\]
+
+Aquí, \( P(A) \) es la probabilidad marginal de \( A \) y \( P(B \,|\, A) \) es la probabilidad condicional de \( B \) dado \( A \). La probabilidad conjunta de \( A \) y \( B \) se calcula multiplicando la probabilidad de \( A \) por la probabilidad condicional de \( B \) dado \( A \).
+
+Ejemplo de una red Bayesiana y los significados de los nodos y aristas:
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.35\linewidth]{IMA/RedesBayes.png} 
+    \caption{Diagrama de una red Bayesiana} 
+\end{figure}
+
+Observemos estos elementos en la red Bayesiana:
+
+\begin{itemize}
+    \item Si hay un robo es más probable
+    suene la alarma, lo que hace más probable que que reciba una llamada.
+    
+    \item Si recibo una llamada se incrementa
+    la probabilidad de que haya sonado la alarma y por tanto de que me
+    hayan robado
+    
+    \item Si oigo en la radio que ha habido un
+    terremoto es más probable que éste haya ocurrido, lo que hace más
+    probable que que suene la alarma.
+    
+    \item Si suena la alarma se incrementa la
+    probabilidad de que haya ocurrido un terremoto y por tanto de que
+    oiga la noticia en la television.
+    
+    \item Si suena la alarma y ocurre una de
+    las causas (terremoto) , me creo menos que haya ocurrido el otro evento causante (robo)	
+    
+    \item Y viseversa, Sí suena la alarma y ocurre una de
+    las causas (robo) me creo menos que haya ocurrido el otro evento causante (terremoto)
+\end{itemize}
+
+Notemos como los nodos y aristas en la red Bayesiana representan las relaciones probabilísticas entre las variables y cómo se propagan las probabilidades a través de la red. Siendo una herramienta poderosa para modelar sistemas complejos y realizar inferencias probabilísticas.
+Dependiendo de nuestro enfoque de estudio, podemos utilizar las redes bayesianas para modelar sistemas complejos y realizar inferencias probabilísticas.
+
+Elementos de una red Bayesiana:
+\begin{itemize} 
+    \item Nodos: Cada nodo en el grafo representa una variable aleatoria. Que representan aspectos del sistema que estamos modelando.
+    \item Aristas: Las aristas representan las relaciones entre las variables. Una arista que va desde el nodo A al nodo B indica que el nodo B es dependiente del nodo A. Esto puede interpretarse como "el nodo A causa o influye en el nodo B".
+\end{itemize}
+
+Distribuciones de probabilidad condicional
+
+\begin{itemize}
+    \item Para cada nodo en la red, este tiene asociada una distribución de probabilidad condicional que describe la probabilidad de los posibles valores del nodo dado los valores de sus nodos padres.
+    \item Las Distribuciones de probabilidad condicional reflejan las relaciones causales entre las variables representadas por los nodos. Por ejemplo, en una red que modela el clima y la probabilidad de lluvia, la Distribuciones de probabilidad condicional del nodo "lluvia" podría depender de los nodos "humedad"\ y "neblina".
+\end{itemize}
+
+Ventajas y limitaciones de las redes bayesianas
+
+Las ventajas de las Redes Bayesianas son las siguientes:
+
+\begin{enumerate} 
+    \item Las Redes Bayesianas representan visualmente todas las relaciones entre las variables en el sistema con arcos de conexión.
+    \item Es fácil reconocer la dependencia e independencia entre varios nodos.
+    \item Las redes bayesianas pueden manejar situaciones en las que el conjunto de datos está incompleto ya que el modelo da cuenta de las dependencias entre todas las variables.
+    \item Las redes bayesianas pueden mapear escenarios donde no es factible/práctico medir todas las variables debido a las limitaciones del sistema (costos, falta de suficientes sensores, etc.)
+    \item Ayuda a modelar sistemas ruidosos.
+    \item Se puede utilizar para cualquier modelo de sistema, desde todos los parámetros conocidos hasta ningún parámetro conocido.
+\end{enumerate}
+
+Las limitaciones de las Redes Bayesianas son las siguientes:
+
+\begin{enumerate} 
+    \item Todas diferentes caminos o ramificaciones que pueden tomar los nodos en el grafo, deben ser calculadas para calcular la probabilidad de cualquier rama.
+    \item La calidad de los resultados de la red depende de la calidad de las creencias o modelos previos. Una variable es solo una parte de una red bayesiana si crees que el sistema depende de ella.
+    \item El cálculo de la red es NP-duro, por lo que es muy difícil y posiblemente costoso.
+    \item Los cálculos y probabilidades utilizando la regla y marginación de Bayes pueden volverse complejos.
+\end{enumerate}
