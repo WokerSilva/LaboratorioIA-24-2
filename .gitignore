@@ -62,3 +62,14 @@ Practica06/practica06.out
 Practica06/practica06.run.xml
 Practica06/practica06.toc
 Practica06/build
+
+## Ignorar los archivos generados por la compilación de LaTex en la Practica06
+Practica07/practica07.aux
+Practica07/practica07.bbl
+Practica07/practica07.bcf
+Practica07/practica07.blg
+Practica07/practica07.log
+Practica07/practica07.out
+Practica07/practica07.run.xml
+Practica07/practica07.toc
+Practica07/build
