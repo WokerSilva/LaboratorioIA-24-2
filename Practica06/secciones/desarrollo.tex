@@ -7,29 +7,125 @@
 % --------------------------------------------------------------------------------------\
 % Explicación de las implementaciones, diagrama de flujo, ideas, comentarios, investigación, etc
 % ----------------------------------------------------------------------------------------\
+\begin{center}
+    Implementación de redes bayesianas con pgmpy
+\end{center}
+
+% ----------------------------------------------------------------------------------------\
+% ---------------------------------------------------------------------------------------\
+\subsection{Diseño 1}   
+% ----------------------------------------------------------------------------------------\
+% ---------------------------------------------------------------------------------------\
+
+La descripción completa de como se diseño el modelo de redes bayesianas que indaga en la 
+satisfacción laboral usando horas de trabajo, balance trabajo-vida y satisfacción laboral 
+esta en el archivo:\\ 
+\texttt{src/Redesbayesianas.ipynb}
 
 
 % ----------------------------------------------------------------------------------------\
 % ---------------------------------------------------------------------------------------\
-\subsection{Implementación de redes bayesianas con pgmpy}
+\subsection{Diseño 2}
 % ----------------------------------------------------------------------------------------\
 % ---------------------------------------------------------------------------------------\
 
+En la sección de \textit{análisis e interpretación de resultados} se nos pide hacer un 
+ajuste interesante de las probabilidades, esta es la descripción de dicho cambio.\\ 
+
+
+Recordemos el modelo original, donde las redes bayesianas son las encargadas de indagar en 
+la satisfacción laboral y cuenta con tres variables clave:
+\begin{itemize}
+    \item[] $(a)$ Horas de trabajo $(H)$: \textit{largas, moderadas o cortas}.
+    \item[] $(b)$ Balance trabajo-vida $(B)$: \textit{equilibrado o no equilibrado}.
+    \item[] $(c)$ Satisfacción laboral $(S)$: \textit{satisfecho, neutral e insatisfecho}.
+\end{itemize}
+
+
+Cuando pensé en la modificación para esta parte del trabajo pensé en un cambio que he tenido
+a lo largo de la carrera ya que cuando entre, pensaba que ir a la oficina a programar sería 
+algo que me hiciera muy feliz, paso el tiempo y ahora sé que el cambio que me gustaría es 
+trabajar desde casas. \\ 
+
+Trabajar desde casa no es solo para programadores o trabajos que requieran estar detras de 
+una computadora, pensé en pesonas del campo, más especificamente en un pastor quien tiene que 
+ver que sus ovejas no sa vayan muy lejos y si esta se va, poder encontrarla rapidamente. Es 
+así como pensé en un segundo parametro para esta tarea: ayuda de inteligencia artifical (IA). \\ 
+
+Imaginemos que el pasor esta en una zona montañosa, aunque si debe estar con sus ovejas 
+la ayuda de la inteligencia artifical podría ayudar con un dron que siga a sus ovejas y si 
+una sale del limite, el dron la pueda seguir y decirle al pastor donde esta. \\ 
+
+Basicamente las dos modificaciones que se tendrán contempladas serán las de un horario más 
+flexible (trabajando desde casa) y el poder contar con herramientas con inteligencia artifical
+que ayuden a terminar nuestras tareas dentro del trabajo.\\ 
+
+
+% ---------------------------------------------------------------------------------------\
+\subsubsection*{Horas de trabajo}
+% ----------------------------------------------------------------------------------------\
+La flexibilidad en horarios de trabajo permitido hacerlo desde casa con ayuda de la IA nos 
+da una distribución más equilibrada de las horas de trabajo ya que se pueden cumplir en 
+ciertos lapsos a lo largo del día o poder terminar mucho antes y no estar un una oficina.
+
+\begin{itemize}
+    \item Valores antes: [[0.6], [0.3], [0.1]] \textit{largas, moderadas o cortas}
+    \item Valores ahora: [[0.08], [0.65], [0.27]] \textit{largas, moderadas o cortas}
+\end{itemize}
+
+
+% ---------------------------------------------------------------------------------------\
+\subsubsection*{Balance trabajo-vida}
+% ----------------------------------------------------------------------------------------\
+Arriba mencionamos que un horario en casa y el contar con herramientas que le permitan hacer
+su trabajo más rapido podría hacer que el trabajador termine antes sus actividades lo que 
+le permitira aprovechar el tiempo para hacer otras actividades en su vida.
+
+\begin{itemize}
+    \item Valores antes: [[0.4, 0.7, 0.2], [0.6, 0.3, 0.8]] \textit{equilibrado o no equilibrado}.
+    \item Valores ahora: [[0.5, 0.85, 0.88], [0.5, 0.15, 0.12]] \textit{equilibrado o no equilibrado}.
+\end{itemize}
+
+% ---------------------------------------------------------------------------------------\
+\subsubsection*{Satisfacción laboral}
+% ----------------------------------------------------------------------------------------\
+
+\begin{itemize}
+    \item Valores antes: [[0.8, 0.05], [0.15, 0.6], [0.05, 0.35]] \textit{satisfecho, neutral e insatisfecho}.
+    \item Valores ahora: [[0.88, 0.55], [0.1, 0.35], [0.02, 0.1]] \textit{satisfecho, neutral e insatisfecho}.
+\end{itemize}
+
+Para un trabajador entonces poder terminar sus activades antes y poder estar en casa para ser 
+más productivo en su vida (por supuesto que es el caso optimo) encontrando balance trabajo-vida podría 
+llevar a una mayor satisfacción laboral en general.
+
+El código es exactamente igual que en el diseño 1, lo que cambia son los valores descritos arriba. El 
+archivo que contiene ese códiog es: \texttt{src/redModificada.ipynb}
 
 % ----------------------------------------------------------------------------------------\
 % ---------------------------------------------------------------------------------------\
-\subsection{Contrucción del Modelo:}
+\subsection{Diseño 3}
 % ----------------------------------------------------------------------------------------\
 % ---------------------------------------------------------------------------------------\
 
-\begin{enumerate}
-    \item Crea una red bayesiana que represente estas relaciones.
-    \item Define las tablas de probabilidad condicional para cada una de las tres
-    variables. Para esto, hay que considerar cómo las distintas cantidades de horas
-    laborales podrían influir en el equilibrio trabajo-vida, y cómo este equilibrio
-    afecta a su vez los niveles de satisfacción laboral. Las probabilidades pueden
-    basarse en suposiciones lógicas acerca de estas relaciones.
-    \item Utiliza \textbf{pgmpy} para calcular la probabilidad de estar Satisfecho en
-    térmios de satisfacción laboral, dado que una persona tiene horas de trabajo
-    moderadas y logra un balance trabajo-vida equilibrado.
-\end{enumerate}
+Para esta sección se nos pide plantear una mejora o extensión posible de la red bayesiana creada.Justificando
+la mejora para el análisis y la personalización de las situaciones laborales.\\ 
+
+Para hacer este modelo partiremos del diseño 1, eso quiere decir que adecuaciones realizadas en tiempo y 
+ayuda de herramientas no son consideradas. Entonces para esta mejora tenemos diversos factores a considerar 
+como lo pueden ser los horarios en casa, tendencia del trabajo en el mundo, horas de sueño, calidad de salud, 
+entre otras. Para este tercer modelo usaremos una condición que nos parece engloba de manera general a casi 
+todos los trabajos y es que a muchos nos a tocado estar trabajando y tener un jefe o lider que al que 
+le tenemos que hacer la chamba, o no sabe dirigir al equipo o incluso sabemos mucho más que él o ella.\\ 
+
+
+Entonces la variable es: Impacto del Liderazgo. Este nodo nos dice como el empleado percibe y afecta 
+su trabajo diario el liderazgo de sus jefes con los siguientes valores:
+\begin{itemize}
+    \item Positivo
+    \item Neutral
+    \item Negativo
+\end{itemize}
+
+La implementación en código nuevamente tambien se basa en el diseño 1, la ruta del archvio es:\\
+\texttt{src/redExtension.ipynb}
