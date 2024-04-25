@@ -1,0 +1,20 @@
+\subsection{Análisis equipo}
+
+\begin{itemize}
+    \item Marco Silva Huerta 
+    
+    Para el modelo de Logistic Regression su matriz de confusión muestra un rendimiento bastante bueno con un bajo número de 
+    falsos positivos y falsos negativos, eso le da un equilibrio del $91\%$ en la clasificación de ham y spam. Pero para el 
+    modelo SVM la precisión en números es del $0.9343$, esto pasa porque SVM tiene menos falsos positivos que Logistic Regression.\\ 
+
+    Ahora cuando volteamos a ver a Decision Tree Classifier, muestra un desempeño aceptable en relación a los dos primeros 
+    pues cuenta  con un $87\%$ de exactitud general, esto se pude explicar ya que Los árboles de decisión son propensos al 
+    sobreajuste cuando se entrenan con conjuntos de datos complejos o desbalanceados ya que sus nodos al dividirse pueden 
+    tener dificultades para  generalizar patrones en datos que no han visto durante el entrenamiento.\\ 
+
+    Finalmente el modelo Random Forest Classifier muestra un rendimiento muy muy bueno, fue el que mayor positivos verdaderos tuvo 
+    con 1163 y pese a tener también un $93\%$ en la exactitud del modelo, queda segundo lugar pues tiene un $0.9318$, ligeramente 
+    por debajo de SVM pero arriba de su individual árbol de decisión, esto porque Random Forest utiliza múltiples árboles de decisión 
+    en lugar de uno solo, la combinación de las predicciones reduce el riesgo de sobreajuste.\\ 
+
+\end{itemize}
