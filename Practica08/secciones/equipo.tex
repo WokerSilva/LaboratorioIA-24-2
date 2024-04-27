@@ -17,4 +17,18 @@
     por debajo de SVM pero arriba de su individual árbol de decisión, esto porque Random Forest utiliza múltiples árboles de decisión 
     en lugar de uno solo, la combinación de las predicciones reduce el riesgo de sobreajuste.\\ 
 
+    \item Fernando Mendoza Eslava
+
+    El ajuste de \texttt{class\_weight='balanced'} ha sido esencial en nuestros modelos, permitiendo que estos presten más atención a la clase 
+    minoritaria 'spam'. Este enfoque ha ayudado a mejorar el \textit{recall} de la clase minoritaria sin sacrificar significativamente la precisión, 
+    un balance crucial en aplicaciones reales donde el costo de predecir erróneamente un 'spam' como 'ham' puede ser alto.
+    
+    Elegimos utilizar \texttt{TfidfVectorizer} por su capacidad para no solo contar la frecuencia de palabras, sino también ajustar estos conteos 
+    basándose en la importancia de las palabras dentro del corpus total del documento. Esta técnica ha probado ser efectiva en resaltar 
+    las palabras más relevantes y en minimizar el ruido proveniente de palabras comunes pero irrelevantes.
+    
+    La evaluación detallada utilizando precisión, \textit{recall}, \textit{F1-score} y matrices de confusión ha revelado la robustez de los modelos SVM y 
+    Random Forest, que han mostrado un excelente balance entre precisión y capacidad de \textit{recall}. Estas métricas son fundamentales para 
+    entender el verdadero rendimiento en un escenario de clases desbalanceadas.
+    
 \end{itemize}
